@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="schoolInfo" rowHeight="105" id="KGk-i7-Jjw" customClass="SchoolInfoTableViewCell" customModule="Ukeplaner" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view tag="600" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDE-7N-rSf">
+                        <rect key="frame" x="10" y="5" width="300" height="97.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yy1-dI-8yz">
+                                <rect key="frame" x="10" y="9" width="280" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Fio-mS-0Ul"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Yy1-dI-8yz" firstAttribute="centerX" secondItem="NDE-7N-rSf" secondAttribute="centerX" id="Ehh-UE-owG"/>
+                            <constraint firstItem="Yy1-dI-8yz" firstAttribute="centerY" secondItem="NDE-7N-rSf" secondAttribute="centerY" id="Hxf-Hm-C6K"/>
+                            <constraint firstItem="Yy1-dI-8yz" firstAttribute="leading" secondItem="NDE-7N-rSf" secondAttribute="leading" constant="10" id="J3R-ci-OKu"/>
+                            <constraint firstAttribute="trailing" secondItem="Yy1-dI-8yz" secondAttribute="trailing" constant="10" id="PzK-z8-8K5"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="NDE-7N-rSf" secondAttribute="bottom" constant="2" id="8ff-7q-YgI"/>
+                    <constraint firstItem="NDE-7N-rSf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Mk4-bK-dc3"/>
+                    <constraint firstAttribute="trailing" secondItem="NDE-7N-rSf" secondAttribute="trailing" constant="10" id="k7a-9U-zFl"/>
+                    <constraint firstItem="NDE-7N-rSf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="rzR-R1-hIF"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="schoolInfoTitle" destination="Yy1-dI-8yz" id="CIl-Z7-A0O"/>
+            </connections>
+            <point key="canvasLocation" x="1" y="-20"/>
+        </tableViewCell>
+    </objects>
+</document>

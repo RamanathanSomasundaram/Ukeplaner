@@ -1,0 +1,747 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D4F531C1F3E1E0700F79487 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F531B1F3E1E0700F79487 /* AppDelegate.swift */; };
+		0D4F531E1F3E1E0700F79487 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F531D1F3E1E0700F79487 /* HomeViewController.swift */; };
+		0D4F53211F3E1E0700F79487 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F531F1F3E1E0700F79487 /* Main.storyboard */; };
+		0D4F53231F3E1E0700F79487 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F53221F3E1E0700F79487 /* Assets.xcassets */; };
+		0D4F53261F3E1E0700F79487 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F53241F3E1E0700F79487 /* LaunchScreen.storyboard */; };
+		0D4F53311F3E1E0700F79487 /* UkeplanerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53301F3E1E0700F79487 /* UkeplanerTests.swift */; };
+		0D4F533C1F3E1E0700F79487 /* UkeplanerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F533B1F3E1E0700F79487 /* UkeplanerUITests.swift */; };
+		0D4F534C1F3EDA5500F79487 /* SlideMenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F534B1F3EDA5500F79487 /* SlideMenuList.swift */; };
+		0D4F53521F3EDACD00F79487 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53511F3EDACD00F79487 /* SWRevealViewController.m */; };
+		0D4F53561F3EE99800F79487 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53551F3EE99800F79487 /* Foundation.framework */; };
+		0D4F53581F3EE9A900F79487 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53571F3EE9A900F79487 /* UIKit.framework */; };
+		0D4F535B1F3EEB6100F79487 /* menu_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F535A1F3EEB6100F79487 /* menu_logo.png */; };
+		0D4F535F1F3F113B00F79487 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F535E1F3F113B00F79487 /* Utilities.swift */; };
+		0D4F53631F3F11A400F79487 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53621F3F11A400F79487 /* MBProgressHUD.m */; };
+		0D4F53651F3F11D500F79487 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53641F3F11D500F79487 /* SystemConfiguration.framework */; };
+		0D4F53671F3F11DC00F79487 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53661F3F11DC00F79487 /* StoreKit.framework */; };
+		0D4F53691F3F11E400F79487 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53681F3F11E400F79487 /* QuartzCore.framework */; };
+		0D4F536D1F3F16D100F79487 /* SchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F536B1F3F16D100F79487 /* SchoolTableViewCell.swift */; };
+		0D4F536E1F3F16D100F79487 /* SchoolTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F536C1F3F16D100F79487 /* SchoolTableViewCell.xib */; };
+		0D4F53701F3F2DFB00F79487 /* sampleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F536F1F3F2DFB00F79487 /* sampleImage.png */; };
+		0D4F53721F3F5D2900F79487 /* GroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53711F3F5D2900F79487 /* GroupInfoViewController.swift */; };
+		0D4F53741F3F5E4100F79487 /* informationSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53731F3F5E4100F79487 /* informationSchoolViewController.swift */; };
+		0D4F53761F3F5E5200F79487 /* schoolCouncilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53751F3F5E5200F79487 /* schoolCouncilViewController.swift */; };
+		0D4F53781F3F5E8B00F79487 /* weeklyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53771F3F5E8B00F79487 /* weeklyScheduleViewController.swift */; };
+		0D4F537A1F3F5EAE00F79487 /* schoolLinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53791F3F5EAE00F79487 /* schoolLinksViewController.swift */; };
+		0D4F537C1F3F5EF800F79487 /* schoolRulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F537B1F3F5EF800F79487 /* schoolRulesViewController.swift */; };
+		0D7F12A01F4024EB00BEA6EE /* SchoolInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7F129E1F4024EB00BEA6EE /* SchoolInfoTableViewCell.swift */; };
+		0D7F12A11F4024EB00BEA6EE /* SchoolInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F129F1F4024EB00BEA6EE /* SchoolInfoTableViewCell.xib */; };
+		0D8C63F31F40D8A20043E8F2 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C63F11F40D8A20043E8F2 /* WebViewController.swift */; };
+		0D8C63F41F40D8A20043E8F2 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8C63F21F40D8A20043E8F2 /* WebViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0D4F532D1F3E1E0700F79487 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D4F53101F3E1E0600F79487 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D4F53171F3E1E0700F79487;
+			remoteInfo = Ukeplaner;
+		};
+		0D4F53381F3E1E0700F79487 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D4F53101F3E1E0600F79487 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D4F53171F3E1E0700F79487;
+			remoteInfo = Ukeplaner;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D4F53181F3E1E0700F79487 /* Ukeplaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ukeplaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D4F531B1F3E1E0700F79487 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0D4F531D1F3E1E0700F79487 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0D4F53201F3E1E0700F79487 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0D4F53221F3E1E0700F79487 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0D4F53251F3E1E0700F79487 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0D4F53271F3E1E0700F79487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D4F532C1F3E1E0700F79487 /* UkeplanerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UkeplanerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D4F53301F3E1E0700F79487 /* UkeplanerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UkeplanerTests.swift; sourceTree = "<group>"; };
+		0D4F53321F3E1E0700F79487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D4F53371F3E1E0700F79487 /* UkeplanerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UkeplanerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D4F533B1F3E1E0700F79487 /* UkeplanerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UkeplanerUITests.swift; sourceTree = "<group>"; };
+		0D4F533D1F3E1E0700F79487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D4F534B1F3EDA5500F79487 /* SlideMenuList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuList.swift; sourceTree = "<group>"; };
+		0D4F534F1F3EDACC00F79487 /* Ukeplaner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ukeplaner-Bridging-Header.h"; sourceTree = "<group>"; };
+		0D4F53501F3EDACD00F79487 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		0D4F53511F3EDACD00F79487 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		0D4F53551F3EE99800F79487 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0D4F53571F3EE9A900F79487 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0D4F535A1F3EEB6100F79487 /* menu_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_logo.png; sourceTree = "<group>"; };
+		0D4F535E1F3F113B00F79487 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		0D4F53611F3F11A400F79487 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		0D4F53621F3F11A400F79487 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		0D4F53641F3F11D500F79487 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0D4F53661F3F11DC00F79487 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0D4F53681F3F11E400F79487 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0D4F536B1F3F16D100F79487 /* SchoolTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolTableViewCell.swift; path = CustomCell/SchoolTableViewCell.swift; sourceTree = "<group>"; };
+		0D4F536C1F3F16D100F79487 /* SchoolTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SchoolTableViewCell.xib; path = CustomCell/SchoolTableViewCell.xib; sourceTree = "<group>"; };
+		0D4F536F1F3F2DFB00F79487 /* sampleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleImage.png; sourceTree = "<group>"; };
+		0D4F53711F3F5D2900F79487 /* GroupInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupInfoViewController.swift; sourceTree = "<group>"; };
+		0D4F53731F3F5E4100F79487 /* informationSchoolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = informationSchoolViewController.swift; sourceTree = "<group>"; };
+		0D4F53751F3F5E5200F79487 /* schoolCouncilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schoolCouncilViewController.swift; sourceTree = "<group>"; };
+		0D4F53771F3F5E8B00F79487 /* weeklyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = weeklyScheduleViewController.swift; sourceTree = "<group>"; };
+		0D4F53791F3F5EAE00F79487 /* schoolLinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schoolLinksViewController.swift; sourceTree = "<group>"; };
+		0D4F537B1F3F5EF800F79487 /* schoolRulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schoolRulesViewController.swift; sourceTree = "<group>"; };
+		0D7F129E1F4024EB00BEA6EE /* SchoolInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolInfoTableViewCell.swift; sourceTree = "<group>"; };
+		0D7F129F1F4024EB00BEA6EE /* SchoolInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolInfoTableViewCell.xib; sourceTree = "<group>"; };
+		0D8C63F11F40D8A20043E8F2 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		0D8C63F21F40D8A20043E8F2 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0D4F53151F3E1E0700F79487 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D4F53691F3F11E400F79487 /* QuartzCore.framework in Frameworks */,
+				0D4F53671F3F11DC00F79487 /* StoreKit.framework in Frameworks */,
+				0D4F53651F3F11D500F79487 /* SystemConfiguration.framework in Frameworks */,
+				0D4F53581F3EE9A900F79487 /* UIKit.framework in Frameworks */,
+				0D4F53561F3EE99800F79487 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D4F53291F3E1E0700F79487 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D4F53341F3E1E0700F79487 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D4F530F1F3E1E0600F79487 = {
+			isa = PBXGroup;
+			children = (
+				0D4F531A1F3E1E0700F79487 /* Ukeplaner */,
+				0D4F532F1F3E1E0700F79487 /* UkeplanerTests */,
+				0D4F533A1F3E1E0700F79487 /* UkeplanerUITests */,
+				0D4F53191F3E1E0700F79487 /* Products */,
+				0D4F53541F3EE99800F79487 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0D4F53191F3E1E0700F79487 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F53181F3E1E0700F79487 /* Ukeplaner.app */,
+				0D4F532C1F3E1E0700F79487 /* UkeplanerTests.xctest */,
+				0D4F53371F3E1E0700F79487 /* UkeplanerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0D4F531A1F3E1E0700F79487 /* Ukeplaner */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F53491F3ED89900F79487 /* Application */,
+				0D4F53221F3E1E0700F79487 /* Assets.xcassets */,
+			);
+			path = Ukeplaner;
+			sourceTree = "<group>";
+		};
+		0D4F532F1F3E1E0700F79487 /* UkeplanerTests */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F53301F3E1E0700F79487 /* UkeplanerTests.swift */,
+				0D4F53321F3E1E0700F79487 /* Info.plist */,
+			);
+			path = UkeplanerTests;
+			sourceTree = "<group>";
+		};
+		0D4F533A1F3E1E0700F79487 /* UkeplanerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F533B1F3E1E0700F79487 /* UkeplanerUITests.swift */,
+				0D4F533D1F3E1E0700F79487 /* Info.plist */,
+			);
+			path = UkeplanerUITests;
+			sourceTree = "<group>";
+		};
+		0D4F53491F3ED89900F79487 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F531B1F3E1E0700F79487 /* AppDelegate.swift */,
+				0D4F531F1F3E1E0700F79487 /* Main.storyboard */,
+				0D4F534A1F3ED8A100F79487 /* Controller */,
+				0D4F53591F3EE9CB00F79487 /* Assets */,
+				0D4F534D1F3EDA8D00F79487 /* ExternalLibraries */,
+				0D4F53531F3EE97000F79487 /* Supportingfiles */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		0D4F534A1F3ED8A100F79487 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F534B1F3EDA5500F79487 /* SlideMenuList.swift */,
+				0D4F531D1F3E1E0700F79487 /* HomeViewController.swift */,
+				0D4F53711F3F5D2900F79487 /* GroupInfoViewController.swift */,
+				0D4F53731F3F5E4100F79487 /* informationSchoolViewController.swift */,
+				0D4F53751F3F5E5200F79487 /* schoolCouncilViewController.swift */,
+				0D4F53771F3F5E8B00F79487 /* weeklyScheduleViewController.swift */,
+				0D4F53791F3F5EAE00F79487 /* schoolLinksViewController.swift */,
+				0D4F537B1F3F5EF800F79487 /* schoolRulesViewController.swift */,
+				0D4F536A1F3F16A300F79487 /* CustomCell */,
+				0D4F535C1F3F10F400F79487 /* services */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		0D4F534D1F3EDA8D00F79487 /* ExternalLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F53601F3F11A400F79487 /* LoadingView */,
+				0D4F534E1F3EDAB000F79487 /* SwrevealviewController */,
+			);
+			name = ExternalLibraries;
+			sourceTree = "<group>";
+		};
+		0D4F534E1F3EDAB000F79487 /* SwrevealviewController */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F53501F3EDACD00F79487 /* SWRevealViewController.h */,
+				0D4F53511F3EDACD00F79487 /* SWRevealViewController.m */,
+			);
+			name = SwrevealviewController;
+			sourceTree = "<group>";
+		};
+		0D4F53531F3EE97000F79487 /* Supportingfiles */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F53241F3E1E0700F79487 /* LaunchScreen.storyboard */,
+				0D4F534F1F3EDACC00F79487 /* Ukeplaner-Bridging-Header.h */,
+				0D4F53271F3E1E0700F79487 /* Info.plist */,
+			);
+			name = Supportingfiles;
+			sourceTree = "<group>";
+		};
+		0D4F53541F3EE99800F79487 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F53681F3F11E400F79487 /* QuartzCore.framework */,
+				0D4F53661F3F11DC00F79487 /* StoreKit.framework */,
+				0D4F53641F3F11D500F79487 /* SystemConfiguration.framework */,
+				0D4F53571F3EE9A900F79487 /* UIKit.framework */,
+				0D4F53551F3EE99800F79487 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0D4F53591F3EE9CB00F79487 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F536F1F3F2DFB00F79487 /* sampleImage.png */,
+				0D4F535A1F3EEB6100F79487 /* menu_logo.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		0D4F535C1F3F10F400F79487 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				0D8C63F01F40D86B0043E8F2 /* loadWebview */,
+				0D4F535D1F3F113B00F79487 /* Utilities */,
+			);
+			name = services;
+			sourceTree = "<group>";
+		};
+		0D4F535D1F3F113B00F79487 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F535E1F3F113B00F79487 /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0D4F53601F3F11A400F79487 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F53611F3F11A400F79487 /* MBProgressHUD.h */,
+				0D4F53621F3F11A400F79487 /* MBProgressHUD.m */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		0D4F536A1F3F16A300F79487 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F536B1F3F16D100F79487 /* SchoolTableViewCell.swift */,
+				0D4F536C1F3F16D100F79487 /* SchoolTableViewCell.xib */,
+				0D7F129E1F4024EB00BEA6EE /* SchoolInfoTableViewCell.swift */,
+				0D7F129F1F4024EB00BEA6EE /* SchoolInfoTableViewCell.xib */,
+			);
+			name = CustomCell;
+			sourceTree = "<group>";
+		};
+		0D8C63F01F40D86B0043E8F2 /* loadWebview */ = {
+			isa = PBXGroup;
+			children = (
+				0D8C63F11F40D8A20043E8F2 /* WebViewController.swift */,
+				0D8C63F21F40D8A20043E8F2 /* WebViewController.xib */,
+			);
+			name = loadWebview;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0D4F53171F3E1E0700F79487 /* Ukeplaner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D4F53401F3E1E0700F79487 /* Build configuration list for PBXNativeTarget "Ukeplaner" */;
+			buildPhases = (
+				0D4F53141F3E1E0700F79487 /* Sources */,
+				0D4F53151F3E1E0700F79487 /* Frameworks */,
+				0D4F53161F3E1E0700F79487 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ukeplaner;
+			productName = Ukeplaner;
+			productReference = 0D4F53181F3E1E0700F79487 /* Ukeplaner.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0D4F532B1F3E1E0700F79487 /* UkeplanerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D4F53431F3E1E0700F79487 /* Build configuration list for PBXNativeTarget "UkeplanerTests" */;
+			buildPhases = (
+				0D4F53281F3E1E0700F79487 /* Sources */,
+				0D4F53291F3E1E0700F79487 /* Frameworks */,
+				0D4F532A1F3E1E0700F79487 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0D4F532E1F3E1E0700F79487 /* PBXTargetDependency */,
+			);
+			name = UkeplanerTests;
+			productName = UkeplanerTests;
+			productReference = 0D4F532C1F3E1E0700F79487 /* UkeplanerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0D4F53361F3E1E0700F79487 /* UkeplanerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D4F53461F3E1E0700F79487 /* Build configuration list for PBXNativeTarget "UkeplanerUITests" */;
+			buildPhases = (
+				0D4F53331F3E1E0700F79487 /* Sources */,
+				0D4F53341F3E1E0700F79487 /* Frameworks */,
+				0D4F53351F3E1E0700F79487 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0D4F53391F3E1E0700F79487 /* PBXTargetDependency */,
+			);
+			name = UkeplanerUITests;
+			productName = UkeplanerUITests;
+			productReference = 0D4F53371F3E1E0700F79487 /* UkeplanerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0D4F53101F3E1E0600F79487 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = lakeba;
+				TargetAttributes = {
+					0D4F53171F3E1E0700F79487 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 6U6D63WXPD;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Manual;
+					};
+					0D4F532B1F3E1E0700F79487 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 6U6D63WXPD;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0D4F53171F3E1E0700F79487;
+					};
+					0D4F53361F3E1E0700F79487 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 6U6D63WXPD;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0D4F53171F3E1E0700F79487;
+					};
+				};
+			};
+			buildConfigurationList = 0D4F53131F3E1E0600F79487 /* Build configuration list for PBXProject "Ukeplaner" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0D4F530F1F3E1E0600F79487;
+			productRefGroup = 0D4F53191F3E1E0700F79487 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0D4F53171F3E1E0700F79487 /* Ukeplaner */,
+				0D4F532B1F3E1E0700F79487 /* UkeplanerTests */,
+				0D4F53361F3E1E0700F79487 /* UkeplanerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0D4F53161F3E1E0700F79487 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D4F536E1F3F16D100F79487 /* SchoolTableViewCell.xib in Resources */,
+				0D4F53261F3E1E0700F79487 /* LaunchScreen.storyboard in Resources */,
+				0D4F535B1F3EEB6100F79487 /* menu_logo.png in Resources */,
+				0D8C63F41F40D8A20043E8F2 /* WebViewController.xib in Resources */,
+				0D4F53231F3E1E0700F79487 /* Assets.xcassets in Resources */,
+				0D4F53211F3E1E0700F79487 /* Main.storyboard in Resources */,
+				0D4F53701F3F2DFB00F79487 /* sampleImage.png in Resources */,
+				0D7F12A11F4024EB00BEA6EE /* SchoolInfoTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D4F532A1F3E1E0700F79487 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D4F53351F3E1E0700F79487 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0D4F53141F3E1E0700F79487 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D4F53721F3F5D2900F79487 /* GroupInfoViewController.swift in Sources */,
+				0D4F53741F3F5E4100F79487 /* informationSchoolViewController.swift in Sources */,
+				0D4F531E1F3E1E0700F79487 /* HomeViewController.swift in Sources */,
+				0D7F12A01F4024EB00BEA6EE /* SchoolInfoTableViewCell.swift in Sources */,
+				0D4F53631F3F11A400F79487 /* MBProgressHUD.m in Sources */,
+				0D4F531C1F3E1E0700F79487 /* AppDelegate.swift in Sources */,
+				0D4F534C1F3EDA5500F79487 /* SlideMenuList.swift in Sources */,
+				0D4F537C1F3F5EF800F79487 /* schoolRulesViewController.swift in Sources */,
+				0D4F53761F3F5E5200F79487 /* schoolCouncilViewController.swift in Sources */,
+				0D4F53781F3F5E8B00F79487 /* weeklyScheduleViewController.swift in Sources */,
+				0D4F535F1F3F113B00F79487 /* Utilities.swift in Sources */,
+				0D4F536D1F3F16D100F79487 /* SchoolTableViewCell.swift in Sources */,
+				0D4F537A1F3F5EAE00F79487 /* schoolLinksViewController.swift in Sources */,
+				0D8C63F31F40D8A20043E8F2 /* WebViewController.swift in Sources */,
+				0D4F53521F3EDACD00F79487 /* SWRevealViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D4F53281F3E1E0700F79487 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D4F53311F3E1E0700F79487 /* UkeplanerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D4F53331F3E1E0700F79487 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D4F533C1F3E1E0700F79487 /* UkeplanerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0D4F532E1F3E1E0700F79487 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D4F53171F3E1E0700F79487 /* Ukeplaner */;
+			targetProxy = 0D4F532D1F3E1E0700F79487 /* PBXContainerItemProxy */;
+		};
+		0D4F53391F3E1E0700F79487 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D4F53171F3E1E0700F79487 /* Ukeplaner */;
+			targetProxy = 0D4F53381F3E1E0700F79487 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0D4F531F1F3E1E0700F79487 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D4F53201F3E1E0700F79487 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0D4F53241F3E1E0700F79487 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D4F53251F3E1E0700F79487 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0D4F533E1F3E1E0700F79487 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0D4F533F1F3E1E0700F79487 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0D4F53411F3E1E0700F79487 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 6U6D63WXPD;
+				INFOPLIST_FILE = Ukeplaner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.Ukeplaner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "fa211e06-04ad-4165-9417-0ba0748db9f7";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS Development Common";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ukeplaner/Ukeplaner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		0D4F53421F3E1E0700F79487 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 6U6D63WXPD;
+				INFOPLIST_FILE = Ukeplaner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.Ukeplaner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "91fe924d-9638-4f54-b0ad-cc6765a90738";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS Distribution Common";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ukeplaner/Ukeplaner-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		0D4F53441F3E1E0700F79487 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6U6D63WXPD;
+				INFOPLIST_FILE = UkeplanerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.UkeplanerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ukeplaner.app/Ukeplaner";
+			};
+			name = Debug;
+		};
+		0D4F53451F3E1E0700F79487 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6U6D63WXPD;
+				INFOPLIST_FILE = UkeplanerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.UkeplanerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ukeplaner.app/Ukeplaner";
+			};
+			name = Release;
+		};
+		0D4F53471F3E1E0700F79487 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 6U6D63WXPD;
+				INFOPLIST_FILE = UkeplanerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.UkeplanerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Ukeplaner;
+			};
+			name = Debug;
+		};
+		0D4F53481F3E1E0700F79487 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 6U6D63WXPD;
+				INFOPLIST_FILE = UkeplanerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.UkeplanerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Ukeplaner;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0D4F53131F3E1E0600F79487 /* Build configuration list for PBXProject "Ukeplaner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D4F533E1F3E1E0700F79487 /* Debug */,
+				0D4F533F1F3E1E0700F79487 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D4F53401F3E1E0700F79487 /* Build configuration list for PBXNativeTarget "Ukeplaner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D4F53411F3E1E0700F79487 /* Debug */,
+				0D4F53421F3E1E0700F79487 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D4F53431F3E1E0700F79487 /* Build configuration list for PBXNativeTarget "UkeplanerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D4F53441F3E1E0700F79487 /* Debug */,
+				0D4F53451F3E1E0700F79487 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D4F53461F3E1E0700F79487 /* Build configuration list for PBXNativeTarget "UkeplanerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D4F53471F3E1E0700F79487 /* Debug */,
+				0D4F53481F3E1E0700F79487 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0D4F53101F3E1E0600F79487 /* Project object */;
+}

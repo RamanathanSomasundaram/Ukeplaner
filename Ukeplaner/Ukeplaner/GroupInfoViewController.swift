@@ -1,0 +1,174 @@
+//
+//  GroupInfoViewController.swift
+//  Ukeplaner
+//
+//  Created by Lakeba_26 on 12/08/17.
+//  Copyright © 2017 lakeba. All rights reserved.
+//
+
+import UIKit
+
+class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+    @IBOutlet var collectionView: UICollectionView!
+    var collectionviewFlowlayout : UICollectionViewFlowLayout!
+    var schoolID : Int!
+    var groupInfolist : NSMutableArray!
+    @IBOutlet var refreshButton: UIButton!
+    var refreshControl : UIRefreshControl!
+    
+    @IBOutlet var noGroupLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.loadNavigationItem()
+        self.title = "Gruppeinfo"
+        schoolID = commonAppDelegate.school_id
+        self.refreshButton.isHidden = true
+        self.groupInfolist = NSMutableArray()
+        self.loadInitialData()
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+        collectionView.addSubview(refreshControl)
+        collectionView.backgroundColor = UIColor.lightGray
+        self.noGroupLabel.isHidden = true
+        // Do any additional setup after loading the view.
+    }
+    func loadNavigationItem()
+    {
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.barTintColor = ThemeColor
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
+        flipButton.tintColor = UIColor.white
+        self.navigationItem.leftBarButtonItem = flipButton
+    }
+    func refreshTableView()
+    {
+        self.collectionView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        collectionviewFlowlayout = UICollectionViewFlowLayout()
+        let size1 = (self.view.frame.size.width - 4 ) / 2
+        collectionviewFlowlayout.itemSize = CGSize(width: size1, height: 100)
+        collectionviewFlowlayout.minimumLineSpacing = 1
+        collectionviewFlowlayout.minimumInteritemSpacing = 1
+        collectionviewFlowlayout.scrollDirection = .vertical
+        self.collectionView.collectionViewLayout = collectionviewFlowlayout
+    }
+    
+    @IBAction func refreshAction(_ sender: Any) {
+        self.loadInitialData()
+    }
+    
+    func loadInitialData()
+    {
+        if(Utilities.checkForInternet())
+        {
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+            self.refreshButton.isHidden = true
+            Utilities.showLoading()
+            let url = URL(string: "http://ukeplaner.com/api/groupList?schoolid=\(schoolID!)")
+            DispatchQueue.main.async {
+                let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+                    guard error == nil else {
+                        print(error!)
+                        Utilities.hideLoading()
+                        Utilities.showAlert("\(error!)")
+                        return
+                    }
+                    guard let data = data else {
+                        print("Data is empty")
+                        Utilities.hideLoading()
+                        self.noGroupLabel.isHidden = false
+                        return
+                    }
+                    
+                    let json = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as! [Any]
+                    for i in 0..<json.count
+                    {
+                         self.groupInfolist.add(json[i])
+                    }
+                    DispatchQueue.main.sync {
+                    self.collectionView.reloadData()
+                        Utilities.hideLoading()
+                    }
+                }
+                task.resume()
+            }
+        }
+        else
+        {
+            self.internetConnection()
+        }
+    }
+    //Loss internet connection
+    func internetConnection()
+    {
+        self.noGroupLabel.isHidden = true
+        Utilities.showAlert("Please check your internet connection!")
+        groupInfolist.removeAllObjects()
+        collectionView.reloadData()
+        refreshButton.isHidden = false
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+    }
+    //Make card view on cell View
+    func makeCardView (_ cell : UIView)
+    {
+        cell.layer.cornerRadius = 8
+        cell.layer.shadowRadius = 2.5
+        cell.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0.0, height: 0.2)
+        cell.layer.masksToBounds  = false
+        let shadowPath = UIBezierPath(rect: cell.bounds)
+        cell.layer.shadowPath = shadowPath.cgPath
+        cell.layer.shadowOpacity = 0.9
+    }
+    //MARK: - Collection view datasource and delegate methods
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return groupInfolist.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: UICollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: "CellIdentifier", for: indexPath)
+        if cell == nil {
+            // print("empty value")
+        }
+        let view = (cell?.viewWithTag(2001)!)
+        self.makeCardView(view!)
+        cell?.backgroundColor = UIColor.lightGray
+        let infoTitle : UILabel = (cell?.viewWithTag(500) as! UILabel)
+        infoTitle.textColor = TextColor
+        let dicLoad = groupInfolist.object(at: indexPath.row) as! NSDictionary
+        if(dicLoad.value(forKey: "msg") != nil)
+        {
+            self.noGroupLabel.isHidden = false
+        }
+        else
+        {
+            self.noGroupLabel.isHidden = true
+        infoTitle.text = (dicLoad.value(forKey: "group_name") as! String)
+        }
+        return cell!
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

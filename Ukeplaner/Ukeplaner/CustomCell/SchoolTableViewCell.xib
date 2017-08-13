@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="schoolCell" rowHeight="170" id="KGk-i7-Jjw" customClass="SchoolTableViewCell" customModule="Ukeplaner" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="521" height="134"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="521" height="134"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view tag="2000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="20O-GG-Rfa">
+                        <rect key="frame" x="10" y="5" width="501" height="126.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sampleImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="BVo-72-5In">
+                                <rect key="frame" x="10" y="13.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="8YY-JX-PeP"/>
+                                    <constraint firstAttribute="height" constant="100" id="hfI-cV-Ule"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hY-c7-rU4">
+                                <rect key="frame" x="130" y="17.5" width="371" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxY-0D-AEL">
+                                <rect key="frame" x="130" y="88.5" width="371" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email-ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5G-zp-zlB">
+                                <rect key="frame" x="130" y="48.5" width="371" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="mDB-mv-gm4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="D5G-zp-zlB" secondAttribute="trailing" id="H8x-LF-Dyw"/>
+                            <constraint firstItem="BVo-72-5In" firstAttribute="centerY" secondItem="D5G-zp-zlB" secondAttribute="centerY" id="NQd-Ux-l8C"/>
+                            <constraint firstItem="BVo-72-5In" firstAttribute="leading" secondItem="20O-GG-Rfa" secondAttribute="leading" constant="10" id="Wzw-XF-Duj"/>
+                            <constraint firstItem="D5G-zp-zlB" firstAttribute="top" secondItem="0hY-c7-rU4" secondAttribute="bottom" constant="10" id="XAh-vu-cR6"/>
+                            <constraint firstItem="kxY-0D-AEL" firstAttribute="top" secondItem="D5G-zp-zlB" secondAttribute="bottom" constant="10" id="cZI-El-6Lu"/>
+                            <constraint firstItem="D5G-zp-zlB" firstAttribute="trailing" secondItem="0hY-c7-rU4" secondAttribute="trailing" id="gEU-67-yNF"/>
+                            <constraint firstItem="D5G-zp-zlB" firstAttribute="leading" secondItem="kxY-0D-AEL" secondAttribute="leading" id="hCS-0I-yrt"/>
+                            <constraint firstItem="D5G-zp-zlB" firstAttribute="leading" secondItem="BVo-72-5In" secondAttribute="trailing" constant="20" id="lUx-FY-ifQ"/>
+                            <constraint firstItem="D5G-zp-zlB" firstAttribute="trailing" secondItem="kxY-0D-AEL" secondAttribute="trailing" id="tb1-h8-LHz"/>
+                            <constraint firstItem="D5G-zp-zlB" firstAttribute="leading" secondItem="0hY-c7-rU4" secondAttribute="leading" id="uMz-hB-C6r"/>
+                            <constraint firstItem="BVo-72-5In" firstAttribute="centerY" secondItem="20O-GG-Rfa" secondAttribute="centerY" id="xD6-KK-fWa"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="20O-GG-Rfa" secondAttribute="trailing" constant="10" id="H6Y-nQ-PPd"/>
+                    <constraint firstItem="20O-GG-Rfa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="PP5-zU-7gx"/>
+                    <constraint firstItem="20O-GG-Rfa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="pP1-xu-0tw"/>
+                    <constraint firstAttribute="bottom" secondItem="20O-GG-Rfa" secondAttribute="bottom" constant="2" id="wm3-VH-f3z"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="schoolEmailID" destination="D5G-zp-zlB" id="s3r-fo-knQ"/>
+                <outlet property="schoolLogo" destination="BVo-72-5In" id="QMy-KY-Q5d"/>
+                <outlet property="schoolName" destination="0hY-c7-rU4" id="3Mm-tf-7rj"/>
+                <outlet property="schoolPhoneNo" destination="kxY-0D-AEL" id="DdO-Ct-6Ub"/>
+            </connections>
+            <point key="canvasLocation" x="86.5" y="103"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="sampleImage.png" width="96" height="96"/>
+    </resources>
+</document>
