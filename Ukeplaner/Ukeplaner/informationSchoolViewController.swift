@@ -59,6 +59,7 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
     {
         if(Utilities.checkForInternet())
         {
+            self.tbl_schoolinfo.isUserInteractionEnabled = true
            self.refreshButton.isHidden = true
             Utilities.showLoading()
             let url = URL(string: "http://ukeplaner.com/api/GroupMsg_1?schoolid=\(school_id!)")
@@ -97,6 +98,7 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
     //Loss internet connection
     func internetConnection()
     {
+        self.tbl_schoolinfo.isUserInteractionEnabled = false
         Utilities.showAlert("Please check your internet connection!")
         schoolinfoList.removeAllObjects()
         tbl_schoolinfo.reloadData()

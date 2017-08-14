@@ -141,8 +141,10 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func loadInitialData()
     {
+        tbl_schoolList.register(UINib.init(nibName: "SchoolTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolCell")
         if(Utilities.checkForInternet())
         {
+            tbl_schoolList.isUserInteractionEnabled = true
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             self.refreshButton.isHidden = true
         Utilities.showLoading()
@@ -168,10 +170,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }
             DispatchQueue.main.sync {
                 self.tbl_schoolList.reloadData()
-                let  dispatchTime = DispatchTime.now() +  .seconds(1)
-                DispatchQueue.main.asyncAfter(deadline: dispatchTime , execute: {
-                    Utilities.hideLoading()
-                })
+                Utilities.hideLoading()
             }
         }
         task.resume()
@@ -210,27 +209,18 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        var cell = tableView.dequeueReusableCell(withIdentifier: "schoolCell") as? SchoolTableViewCell
-        if(cell == nil)
-        {
-            //Load the top-level objects from the custom cell XIB.
-            var topLevelObjects = Bundle.main.loadNibNamed("SchoolTableViewCell", owner: self, options: nil)
-            // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
-            cell = topLevelObjects?[0] as! SchoolTableViewCell?
-        }
+        let cell: SchoolTableViewCell = tableView.dequeueReusableCell(withIdentifier: "schoolCell") as! SchoolTableViewCell
         if(Utilities.checkForInternet())
         {
-        let view : UIView = (cell?.viewWithTag(2000))!
+        let view : UIView = (cell.viewWithTag(2000))!
         self.makeCardView(view)
-        cell?.selectionStyle = UITableViewCellSelectionStyle.none
-        cell?.separatorInset = .zero
-            var dictValues : NSDictionary!
-            var image : UIImage!
-
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.separatorInset = .zero
+        var dictValues : NSDictionary!
         if(isFiltered)
         {
             dictValues = self.arrayForSearchFiles.object(at: indexPath.row) as! NSDictionary
-            for subview: UIView in (cell?.contentView.subviews)!{
+            for subview: UIView in (cell.contentView.subviews){
                 if (subview is UIButton) {
                     subview.removeFromSuperview()
                 }
@@ -241,18 +231,15 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             dictValues = self.schoolListArray.object(at: indexPath.row) as! NSDictionary
         }
         DispatchQueue.main.async {
-       if(self.checkImageUrl(imageUrl: (dictValues.value(forKey: "school_logo") as! String)))
-       {
-        if(Utilities.checkForInternet())
-        {
-            do
-            {
-                let imageData = try Data.init(contentsOf: URL(string: (dictValues.value(forKey: "school_logo") as! String))!)
-                image = UIImage.init(data: imageData)
-            }
-            catch
-            {
-                print(error.localizedDescription)
+        let image : UIImage = UIImage(named: "sampleImage.png")!
+        cell.schoolLogo.sd_setShowActivityIndicatorView(true)
+        cell.schoolLogo.sd_setIndicatorStyle(.gray)
+        cell.schoolLogo.sd_setImage(with: URL(string: (dictValues!.value(forKey: "school_logo")! as! String))! , placeholderImage: image, options: .refreshCached)
+        cell.schoolLogo.image = image
+        cell.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
+        cell.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
+        cell.schoolPhoneNo.text = (dictValues.value(forKey: "phone_number") as! String)
+        cell.setNeedsDisplay()
             }
         
         }
@@ -260,24 +247,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         {
             self.internetConnection()
         }
-       }
-        else
-       {
-        image = UIImage(named: "sampleImage.png")
-        }
-        cell?.schoolLogo.image = image
-        cell?.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
-        cell?.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
-        cell?.schoolPhoneNo.text = (dictValues.value(forKey: "phone_number") as! String)
-        cell?.setNeedsDisplay()
-            }
-        
-        }
-        else
-        {
-            self.internetConnection()
-        }
-        return cell!
+        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -306,28 +276,11 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func internetConnection()
     {
         Utilities.showAlert("Please check your internet connection!")
+        tbl_schoolList.isUserInteractionEnabled = false
         schoolListArray.removeAllObjects()
         tbl_schoolList.reloadData()
         self.refreshButton.isHidden = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false
-    }
-    //Check image URL
-    func checkImageUrl (imageUrl : String) -> Bool
-    {
-        var success : Bool = false
-        let urlString = (imageUrl as NSString).lastPathComponent
-        if(urlString != "school")
-        {
-            if (urlString != "0")
-            {
-            success = true
-            }
-        }
-        else
-        {
-        success = false
-        }
-        return success
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130

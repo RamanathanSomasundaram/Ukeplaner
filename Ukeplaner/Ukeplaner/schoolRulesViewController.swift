@@ -15,8 +15,7 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
     var refreshControl : UIRefreshControl!
     @IBOutlet var refreshButton: UIButton!
     @IBOutlet var noRulesLabel: UILabel!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -59,6 +58,7 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
     {
         if(Utilities.checkForInternet())
         {
+            self.tbl_schoolRules.isUserInteractionEnabled = true
             self.refreshButton.isHidden = true
             Utilities.showLoading()
             let url = URL(string: "http://ukeplaner.com/api/GroupRoules?schoolid=\(school_id!)")
@@ -97,6 +97,7 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
     //Loss internet connection
     func internetConnection()
     {
+        self.tbl_schoolRules.isUserInteractionEnabled = false
         Utilities.showAlert("Please check your internet connection!")
         schoolRulesList.removeAllObjects()
         tbl_schoolRules.reloadData()

@@ -68,6 +68,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     {
         if(Utilities.checkForInternet())
         {
+            self.collectionView.isUserInteractionEnabled = true
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             self.refreshButton.isHidden = true
             Utilities.showLoading()
@@ -108,6 +109,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     //Loss internet connection
     func internetConnection()
     {
+        self.collectionView.isUserInteractionEnabled = false
         self.noGroupLabel.isHidden = true
         Utilities.showAlert("Please check your internet connection!")
         groupInfolist.removeAllObjects()
@@ -155,6 +157,10 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         infoTitle.text = (dicLoad.value(forKey: "group_name") as! String)
         }
         return cell!
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let weekList = self.storyboard?.instantiateViewController(withIdentifier: "weekdayViewController") as! weekdayViewController
+        self.navigationController?.pushViewController(weekList, animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

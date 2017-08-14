@@ -60,6 +60,7 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
     {
         if(Utilities.checkForInternet())
         {
+            self.tbl_weeklyList.isUserInteractionEnabled = true
             self.refreshButton.isHidden = true
             Utilities.showLoading()
             let url = URL(string: "http://ukeplaner.com/api/GroupMsg_3?schoolid=\(school_id!)")
@@ -99,6 +100,7 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
     //Loss internet connection
     func internetConnection()
     {
+        self.tbl_weeklyList.isUserInteractionEnabled = false
         Utilities.showAlert("Please check your internet connection!")
         schoolWeekList.removeAllObjects()
         self.tbl_weeklyList.reloadData()

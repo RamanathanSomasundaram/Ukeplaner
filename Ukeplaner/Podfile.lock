@@ -1,0 +1,17 @@
+PODS:
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - SpreadsheetView (0.7.2)
+
+DEPENDENCIES:
+  - SDWebImage
+  - SpreadsheetView
+
+SPEC CHECKSUMS:
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SpreadsheetView: 84accc93f46aab9ecd95e08e384e6ab073ffb14b
+
+PODFILE CHECKSUM: c68bee75f2ef9816062d41cbff964313da517f73
+
+COCOAPODS: 1.2.1
