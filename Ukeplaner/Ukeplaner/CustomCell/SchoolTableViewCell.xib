@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -75,10 +75,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="schoolEmailID" destination="D5G-zp-zlB" id="s3r-fo-knQ"/>
-                <outlet property="schoolLogo" destination="BVo-72-5In" id="QMy-KY-Q5d"/>
-                <outlet property="schoolName" destination="0hY-c7-rU4" id="3Mm-tf-7rj"/>
-                <outlet property="schoolPhoneNo" destination="kxY-0D-AEL" id="DdO-Ct-6Ub"/>
+                <outlet property="schoolEmailID" destination="D5G-zp-zlB" id="yWl-Bn-4F2"/>
+                <outlet property="schoolLogo" destination="BVo-72-5In" id="vLx-rO-G4b"/>
+                <outlet property="schoolName" destination="0hY-c7-rU4" id="G2l-M7-EXW"/>
+                <outlet property="schoolPhoneNo" destination="kxY-0D-AEL" id="sax-B3-RP3"/>
             </connections>
             <point key="canvasLocation" x="86.5" y="103"/>
         </tableViewCell>

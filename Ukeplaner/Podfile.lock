@@ -1,17 +1,37 @@
 PODS:
+  - Firebase/Core (4.0.3):
+    - FirebaseAnalytics (= 4.0.2)
+    - FirebaseCore (= 4.0.3)
+  - FirebaseAnalytics (4.0.2):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (4.0.3):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (2.0.0):
+    - FirebaseCore (~> 4.0)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
-  - SpreadsheetView (0.7.2)
+  - TabPageViewController (0.2.7)
 
 DEPENDENCIES:
+  - Firebase/Core
   - SDWebImage
-  - SpreadsheetView
+  - TabPageViewController
 
 SPEC CHECKSUMS:
+  Firebase: 9e33fdfbca37cab635c693883caa90a4475b842b
+  FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
+  FirebaseCore: c709067051de07bdaffdc4e735cd7299a23c463a
+  FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
-  SpreadsheetView: 84accc93f46aab9ecd95e08e384e6ab073ffb14b
+  TabPageViewController: c37a1257a50c2b50712dde61bf499768eee95b67
 
-PODFILE CHECKSUM: c68bee75f2ef9816062d41cbff964313da517f73
+PODFILE CHECKSUM: 68bd5ee46bcd5445c43ef87f379b0590633083c3
 
 COCOAPODS: 1.2.1

@@ -1,6 +1,7 @@
 platform :ios, '8.0'
 target 'Ukeplaner' do
 pod 'SDWebImage'
-pod 'SpreadsheetView'
+pod 'Firebase/Core'
+pod 'TabPageViewController'
 use_frameworks!
 end

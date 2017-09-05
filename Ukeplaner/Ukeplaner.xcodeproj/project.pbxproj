@@ -7,39 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D1492941F5F1760002B2701 /* menu_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1492741F5F1760002B2701 /* menu_logo.png */; };
+		0D1492951F5F1760002B2701 /* sampleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1492751F5F1760002B2701 /* sampleImage.png */; };
+		0D1492961F5F1760002B2701 /* SchoolInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1492771F5F1760002B2701 /* SchoolInfoTableViewCell.swift */; };
+		0D1492971F5F1760002B2701 /* SchoolInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D1492781F5F1760002B2701 /* SchoolInfoTableViewCell.xib */; };
+		0D1492981F5F1760002B2701 /* SchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1492791F5F1760002B2701 /* SchoolTableViewCell.swift */; };
+		0D1492991F5F1760002B2701 /* SchoolTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D14927A1F5F1760002B2701 /* SchoolTableViewCell.xib */; };
+		0D14929A1F5F1760002B2701 /* GroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D14927C1F5F1760002B2701 /* GroupInfoViewController.swift */; };
+		0D14929B1F5F1760002B2701 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D14927D1F5F1760002B2701 /* HomeViewController.swift */; };
+		0D14929C1F5F1760002B2701 /* weekdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D14927E1F5F1760002B2701 /* weekdayViewController.swift */; };
+		0D14929D1F5F1760002B2701 /* WeekTimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D14927F1F5F1760002B2701 /* WeekTimeTableViewController.swift */; };
+		0D14929E1F5F1760002B2701 /* SlideMenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1492811F5F1760002B2701 /* SlideMenuList.swift */; };
+		0D14929F1F5F1760002B2701 /* informationSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1492831F5F1760002B2701 /* informationSchoolViewController.swift */; };
+		0D1492A01F5F1760002B2701 /* schoolCouncilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1492841F5F1760002B2701 /* schoolCouncilViewController.swift */; };
+		0D1492A11F5F1760002B2701 /* schoolLinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1492851F5F1760002B2701 /* schoolLinksViewController.swift */; };
+		0D1492A21F5F1760002B2701 /* schoolRulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1492861F5F1760002B2701 /* schoolRulesViewController.swift */; };
+		0D1492A31F5F1760002B2701 /* weeklyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1492871F5F1760002B2701 /* weeklyScheduleViewController.swift */; };
+		0D1492A41F5F1760002B2701 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D14928B1F5F1760002B2701 /* MBProgressHUD.m */; };
+		0D1492A51F5F1760002B2701 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D14928E1F5F1760002B2701 /* SWRevealViewController.m */; };
+		0D1492A61F5F1760002B2701 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1492901F5F1760002B2701 /* Utilities.swift */; };
+		0D1492A71F5F1760002B2701 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1492921F5F1760002B2701 /* WebViewController.swift */; };
+		0D1492A81F5F1760002B2701 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D1492931F5F1760002B2701 /* WebViewController.xib */; };
 		0D4F531C1F3E1E0700F79487 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F531B1F3E1E0700F79487 /* AppDelegate.swift */; };
-		0D4F531E1F3E1E0700F79487 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F531D1F3E1E0700F79487 /* HomeViewController.swift */; };
 		0D4F53211F3E1E0700F79487 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F531F1F3E1E0700F79487 /* Main.storyboard */; };
 		0D4F53231F3E1E0700F79487 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F53221F3E1E0700F79487 /* Assets.xcassets */; };
 		0D4F53261F3E1E0700F79487 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F53241F3E1E0700F79487 /* LaunchScreen.storyboard */; };
 		0D4F53311F3E1E0700F79487 /* UkeplanerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53301F3E1E0700F79487 /* UkeplanerTests.swift */; };
 		0D4F533C1F3E1E0700F79487 /* UkeplanerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F533B1F3E1E0700F79487 /* UkeplanerUITests.swift */; };
-		0D4F534C1F3EDA5500F79487 /* SlideMenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F534B1F3EDA5500F79487 /* SlideMenuList.swift */; };
-		0D4F53521F3EDACD00F79487 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53511F3EDACD00F79487 /* SWRevealViewController.m */; };
 		0D4F53561F3EE99800F79487 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53551F3EE99800F79487 /* Foundation.framework */; };
 		0D4F53581F3EE9A900F79487 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53571F3EE9A900F79487 /* UIKit.framework */; };
-		0D4F535B1F3EEB6100F79487 /* menu_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F535A1F3EEB6100F79487 /* menu_logo.png */; };
-		0D4F535F1F3F113B00F79487 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F535E1F3F113B00F79487 /* Utilities.swift */; };
-		0D4F53631F3F11A400F79487 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53621F3F11A400F79487 /* MBProgressHUD.m */; };
 		0D4F53651F3F11D500F79487 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53641F3F11D500F79487 /* SystemConfiguration.framework */; };
 		0D4F53671F3F11DC00F79487 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53661F3F11DC00F79487 /* StoreKit.framework */; };
 		0D4F53691F3F11E400F79487 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53681F3F11E400F79487 /* QuartzCore.framework */; };
-		0D4F536D1F3F16D100F79487 /* SchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F536B1F3F16D100F79487 /* SchoolTableViewCell.swift */; };
-		0D4F536E1F3F16D100F79487 /* SchoolTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F536C1F3F16D100F79487 /* SchoolTableViewCell.xib */; };
-		0D4F53701F3F2DFB00F79487 /* sampleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F536F1F3F2DFB00F79487 /* sampleImage.png */; };
-		0D4F53721F3F5D2900F79487 /* GroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53711F3F5D2900F79487 /* GroupInfoViewController.swift */; };
-		0D4F53741F3F5E4100F79487 /* informationSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53731F3F5E4100F79487 /* informationSchoolViewController.swift */; };
-		0D4F53761F3F5E5200F79487 /* schoolCouncilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53751F3F5E5200F79487 /* schoolCouncilViewController.swift */; };
-		0D4F53781F3F5E8B00F79487 /* weeklyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53771F3F5E8B00F79487 /* weeklyScheduleViewController.swift */; };
-		0D4F537A1F3F5EAE00F79487 /* schoolLinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F53791F3F5EAE00F79487 /* schoolLinksViewController.swift */; };
-		0D4F537C1F3F5EF800F79487 /* schoolRulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F537B1F3F5EF800F79487 /* schoolRulesViewController.swift */; };
-		0D7F12A01F4024EB00BEA6EE /* SchoolInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7F129E1F4024EB00BEA6EE /* SchoolInfoTableViewCell.swift */; };
-		0D7F12A11F4024EB00BEA6EE /* SchoolInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F129F1F4024EB00BEA6EE /* SchoolInfoTableViewCell.xib */; };
-		0D8C63F31F40D8A20043E8F2 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C63F11F40D8A20043E8F2 /* WebViewController.swift */; };
-		0D8C63F41F40D8A20043E8F2 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8C63F21F40D8A20043E8F2 /* WebViewController.xib */; };
-		0D8D77AB1F41F29900143B8F /* weekdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D77AA1F41F29900143B8F /* weekdayViewController.swift */; };
-		0D8D77AD1F420C7B00143B8F /* WeekTimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D77AC1F420C7B00143B8F /* WeekTimeTableViewController.swift */; };
-		0D8D77AF1F420D1D00143B8F /* TimeTableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D77AE1F420D1D00143B8F /* TimeTableCells.swift */; };
 		8F667416022915E1E47D1C03 /* Pods_Ukeplaner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083CB76D5A697A35523066D4 /* Pods_Ukeplaner.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,9 +61,31 @@
 
 /* Begin PBXFileReference section */
 		083CB76D5A697A35523066D4 /* Pods_Ukeplaner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ukeplaner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D1492741F5F1760002B2701 /* menu_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_logo.png; sourceTree = "<group>"; };
+		0D1492751F5F1760002B2701 /* sampleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleImage.png; sourceTree = "<group>"; };
+		0D1492771F5F1760002B2701 /* SchoolInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolInfoTableViewCell.swift; sourceTree = "<group>"; };
+		0D1492781F5F1760002B2701 /* SchoolInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolInfoTableViewCell.xib; sourceTree = "<group>"; };
+		0D1492791F5F1760002B2701 /* SchoolTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolTableViewCell.swift; sourceTree = "<group>"; };
+		0D14927A1F5F1760002B2701 /* SchoolTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolTableViewCell.xib; sourceTree = "<group>"; };
+		0D14927C1F5F1760002B2701 /* GroupInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupInfoViewController.swift; sourceTree = "<group>"; };
+		0D14927D1F5F1760002B2701 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0D14927E1F5F1760002B2701 /* weekdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = weekdayViewController.swift; sourceTree = "<group>"; };
+		0D14927F1F5F1760002B2701 /* WeekTimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekTimeTableViewController.swift; sourceTree = "<group>"; };
+		0D1492811F5F1760002B2701 /* SlideMenuList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuList.swift; sourceTree = "<group>"; };
+		0D1492831F5F1760002B2701 /* informationSchoolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = informationSchoolViewController.swift; sourceTree = "<group>"; };
+		0D1492841F5F1760002B2701 /* schoolCouncilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schoolCouncilViewController.swift; sourceTree = "<group>"; };
+		0D1492851F5F1760002B2701 /* schoolLinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schoolLinksViewController.swift; sourceTree = "<group>"; };
+		0D1492861F5F1760002B2701 /* schoolRulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schoolRulesViewController.swift; sourceTree = "<group>"; };
+		0D1492871F5F1760002B2701 /* weeklyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = weeklyScheduleViewController.swift; sourceTree = "<group>"; };
+		0D14928A1F5F1760002B2701 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		0D14928B1F5F1760002B2701 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		0D14928D1F5F1760002B2701 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		0D14928E1F5F1760002B2701 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		0D1492901F5F1760002B2701 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		0D1492921F5F1760002B2701 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		0D1492931F5F1760002B2701 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		0D4F53181F3E1E0700F79487 /* Ukeplaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ukeplaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D4F531B1F3E1E0700F79487 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0D4F531D1F3E1E0700F79487 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0D4F53201F3E1E0700F79487 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D4F53221F3E1E0700F79487 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D4F53251F3E1E0700F79487 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -75,35 +96,12 @@
 		0D4F53371F3E1E0700F79487 /* UkeplanerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UkeplanerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D4F533B1F3E1E0700F79487 /* UkeplanerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UkeplanerUITests.swift; sourceTree = "<group>"; };
 		0D4F533D1F3E1E0700F79487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0D4F534B1F3EDA5500F79487 /* SlideMenuList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuList.swift; sourceTree = "<group>"; };
 		0D4F534F1F3EDACC00F79487 /* Ukeplaner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ukeplaner-Bridging-Header.h"; sourceTree = "<group>"; };
-		0D4F53501F3EDACD00F79487 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		0D4F53511F3EDACD00F79487 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		0D4F53551F3EE99800F79487 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D4F53571F3EE9A900F79487 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		0D4F535A1F3EEB6100F79487 /* menu_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_logo.png; sourceTree = "<group>"; };
-		0D4F535E1F3F113B00F79487 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		0D4F53611F3F11A400F79487 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		0D4F53621F3F11A400F79487 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		0D4F53641F3F11D500F79487 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0D4F53661F3F11DC00F79487 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0D4F53681F3F11E400F79487 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		0D4F536B1F3F16D100F79487 /* SchoolTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolTableViewCell.swift; path = CustomCell/SchoolTableViewCell.swift; sourceTree = "<group>"; };
-		0D4F536C1F3F16D100F79487 /* SchoolTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SchoolTableViewCell.xib; path = CustomCell/SchoolTableViewCell.xib; sourceTree = "<group>"; };
-		0D4F536F1F3F2DFB00F79487 /* sampleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleImage.png; sourceTree = "<group>"; };
-		0D4F53711F3F5D2900F79487 /* GroupInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupInfoViewController.swift; sourceTree = "<group>"; };
-		0D4F53731F3F5E4100F79487 /* informationSchoolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = informationSchoolViewController.swift; sourceTree = "<group>"; };
-		0D4F53751F3F5E5200F79487 /* schoolCouncilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schoolCouncilViewController.swift; sourceTree = "<group>"; };
-		0D4F53771F3F5E8B00F79487 /* weeklyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = weeklyScheduleViewController.swift; sourceTree = "<group>"; };
-		0D4F53791F3F5EAE00F79487 /* schoolLinksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schoolLinksViewController.swift; sourceTree = "<group>"; };
-		0D4F537B1F3F5EF800F79487 /* schoolRulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schoolRulesViewController.swift; sourceTree = "<group>"; };
-		0D7F129E1F4024EB00BEA6EE /* SchoolInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolInfoTableViewCell.swift; sourceTree = "<group>"; };
-		0D7F129F1F4024EB00BEA6EE /* SchoolInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolInfoTableViewCell.xib; sourceTree = "<group>"; };
-		0D8C63F11F40D8A20043E8F2 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		0D8C63F21F40D8A20043E8F2 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
-		0D8D77AA1F41F29900143B8F /* weekdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = weekdayViewController.swift; sourceTree = "<group>"; };
-		0D8D77AC1F420C7B00143B8F /* WeekTimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekTimeTableViewController.swift; sourceTree = "<group>"; };
-		0D8D77AE1F420D1D00143B8F /* TimeTableCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableCells.swift; sourceTree = "<group>"; };
 		3AF7B8B32CAC81EFEB5361E4 /* Pods-Ukeplaner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ukeplaner.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ukeplaner/Pods-Ukeplaner.release.xcconfig"; sourceTree = "<group>"; };
 		4881DFF51BC9BE4FEE6FE32A /* Pods-Ukeplaner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ukeplaner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ukeplaner/Pods-Ukeplaner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +137,105 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D1492731F5F1760002B2701 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				0D1492741F5F1760002B2701 /* menu_logo.png */,
+				0D1492751F5F1760002B2701 /* sampleImage.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		0D1492761F5F1760002B2701 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D1492771F5F1760002B2701 /* SchoolInfoTableViewCell.swift */,
+				0D1492781F5F1760002B2701 /* SchoolInfoTableViewCell.xib */,
+				0D1492791F5F1760002B2701 /* SchoolTableViewCell.swift */,
+				0D14927A1F5F1760002B2701 /* SchoolTableViewCell.xib */,
+			);
+			name = CustomCell;
+			path = ../CustomCell;
+			sourceTree = "<group>";
+		};
+		0D14927B1F5F1760002B2701 /* HomeController */ = {
+			isa = PBXGroup;
+			children = (
+				0D14927D1F5F1760002B2701 /* HomeViewController.swift */,
+				0D14927C1F5F1760002B2701 /* GroupInfoViewController.swift */,
+				0D14927E1F5F1760002B2701 /* weekdayViewController.swift */,
+				0D14927F1F5F1760002B2701 /* WeekTimeTableViewController.swift */,
+				0D1492761F5F1760002B2701 /* CustomCell */,
+			);
+			path = HomeController;
+			sourceTree = "<group>";
+		};
+		0D1492801F5F1760002B2701 /* MenuList */ = {
+			isa = PBXGroup;
+			children = (
+				0D1492811F5F1760002B2701 /* SlideMenuList.swift */,
+			);
+			path = MenuList;
+			sourceTree = "<group>";
+		};
+		0D1492821F5F1760002B2701 /* Schoolinfo */ = {
+			isa = PBXGroup;
+			children = (
+				0D1492831F5F1760002B2701 /* informationSchoolViewController.swift */,
+				0D1492841F5F1760002B2701 /* schoolCouncilViewController.swift */,
+				0D1492851F5F1760002B2701 /* schoolLinksViewController.swift */,
+				0D1492861F5F1760002B2701 /* schoolRulesViewController.swift */,
+				0D1492871F5F1760002B2701 /* weeklyScheduleViewController.swift */,
+			);
+			path = Schoolinfo;
+			sourceTree = "<group>";
+		};
+		0D1492881F5F1760002B2701 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0D1492891F5F1760002B2701 /* LoadingView */,
+				0D14928C1F5F1760002B2701 /* swrevealController */,
+				0D14928F1F5F1760002B2701 /* Utilities */,
+				0D1492911F5F1760002B2701 /* WebView */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0D1492891F5F1760002B2701 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				0D14928A1F5F1760002B2701 /* MBProgressHUD.h */,
+				0D14928B1F5F1760002B2701 /* MBProgressHUD.m */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		0D14928C1F5F1760002B2701 /* swrevealController */ = {
+			isa = PBXGroup;
+			children = (
+				0D14928D1F5F1760002B2701 /* SWRevealViewController.h */,
+				0D14928E1F5F1760002B2701 /* SWRevealViewController.m */,
+			);
+			path = swrevealController;
+			sourceTree = "<group>";
+		};
+		0D14928F1F5F1760002B2701 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0D1492901F5F1760002B2701 /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0D1492911F5F1760002B2701 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				0D1492921F5F1760002B2701 /* WebViewController.swift */,
+				0D1492931F5F1760002B2701 /* WebViewController.xib */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		0D4F530F1F3E1E0600F79487 = {
 			isa = PBXGroup;
 			children = (
@@ -194,8 +291,6 @@
 				0D4F531B1F3E1E0700F79487 /* AppDelegate.swift */,
 				0D4F531F1F3E1E0700F79487 /* Main.storyboard */,
 				0D4F534A1F3ED8A100F79487 /* Controller */,
-				0D4F53591F3EE9CB00F79487 /* Assets */,
-				0D4F534D1F3EDA8D00F79487 /* ExternalLibraries */,
 				0D4F53531F3EE97000F79487 /* Supportingfiles */,
 			);
 			name = Application;
@@ -204,43 +299,18 @@
 		0D4F534A1F3ED8A100F79487 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0D4F534B1F3EDA5500F79487 /* SlideMenuList.swift */,
-				0D4F531D1F3E1E0700F79487 /* HomeViewController.swift */,
-				0D4F53711F3F5D2900F79487 /* GroupInfoViewController.swift */,
-				0D4F53731F3F5E4100F79487 /* informationSchoolViewController.swift */,
-				0D4F53751F3F5E5200F79487 /* schoolCouncilViewController.swift */,
-				0D4F53771F3F5E8B00F79487 /* weeklyScheduleViewController.swift */,
-				0D4F53791F3F5EAE00F79487 /* schoolLinksViewController.swift */,
-				0D4F537B1F3F5EF800F79487 /* schoolRulesViewController.swift */,
-				0D8D77AA1F41F29900143B8F /* weekdayViewController.swift */,
-				0D8D77AC1F420C7B00143B8F /* WeekTimeTableViewController.swift */,
-				0D4F536A1F3F16A300F79487 /* CustomCell */,
-				0D4F535C1F3F10F400F79487 /* services */,
+				0D14927B1F5F1760002B2701 /* HomeController */,
+				0D1492801F5F1760002B2701 /* MenuList */,
+				0D1492821F5F1760002B2701 /* Schoolinfo */,
+				0D1492881F5F1760002B2701 /* Services */,
 			);
 			name = Controller;
-			sourceTree = "<group>";
-		};
-		0D4F534D1F3EDA8D00F79487 /* ExternalLibraries */ = {
-			isa = PBXGroup;
-			children = (
-				0D4F53601F3F11A400F79487 /* LoadingView */,
-				0D4F534E1F3EDAB000F79487 /* SwrevealviewController */,
-			);
-			name = ExternalLibraries;
-			sourceTree = "<group>";
-		};
-		0D4F534E1F3EDAB000F79487 /* SwrevealviewController */ = {
-			isa = PBXGroup;
-			children = (
-				0D4F53501F3EDACD00F79487 /* SWRevealViewController.h */,
-				0D4F53511F3EDACD00F79487 /* SWRevealViewController.m */,
-			);
-			name = SwrevealviewController;
 			sourceTree = "<group>";
 		};
 		0D4F53531F3EE97000F79487 /* Supportingfiles */ = {
 			isa = PBXGroup;
 			children = (
+				0D1492731F5F1760002B2701 /* Assets */,
 				0D4F53241F3E1E0700F79487 /* LaunchScreen.storyboard */,
 				0D4F534F1F3EDACC00F79487 /* Ukeplaner-Bridging-Header.h */,
 				0D4F53271F3E1E0700F79487 /* Info.plist */,
@@ -259,62 +329,6 @@
 				083CB76D5A697A35523066D4 /* Pods_Ukeplaner.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		0D4F53591F3EE9CB00F79487 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				0D4F536F1F3F2DFB00F79487 /* sampleImage.png */,
-				0D4F535A1F3EEB6100F79487 /* menu_logo.png */,
-			);
-			name = Assets;
-			sourceTree = "<group>";
-		};
-		0D4F535C1F3F10F400F79487 /* services */ = {
-			isa = PBXGroup;
-			children = (
-				0D8C63F01F40D86B0043E8F2 /* loadWebview */,
-				0D4F535D1F3F113B00F79487 /* Utilities */,
-			);
-			name = services;
-			sourceTree = "<group>";
-		};
-		0D4F535D1F3F113B00F79487 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				0D4F535E1F3F113B00F79487 /* Utilities.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		0D4F53601F3F11A400F79487 /* LoadingView */ = {
-			isa = PBXGroup;
-			children = (
-				0D4F53611F3F11A400F79487 /* MBProgressHUD.h */,
-				0D4F53621F3F11A400F79487 /* MBProgressHUD.m */,
-			);
-			path = LoadingView;
-			sourceTree = "<group>";
-		};
-		0D4F536A1F3F16A300F79487 /* CustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				0D8D77AE1F420D1D00143B8F /* TimeTableCells.swift */,
-				0D4F536B1F3F16D100F79487 /* SchoolTableViewCell.swift */,
-				0D4F536C1F3F16D100F79487 /* SchoolTableViewCell.xib */,
-				0D7F129E1F4024EB00BEA6EE /* SchoolInfoTableViewCell.swift */,
-				0D7F129F1F4024EB00BEA6EE /* SchoolInfoTableViewCell.xib */,
-			);
-			name = CustomCell;
-			sourceTree = "<group>";
-		};
-		0D8C63F01F40D86B0043E8F2 /* loadWebview */ = {
-			isa = PBXGroup;
-			children = (
-				0D8C63F11F40D8A20043E8F2 /* WebViewController.swift */,
-				0D8C63F21F40D8A20043E8F2 /* WebViewController.xib */,
-			);
-			name = loadWebview;
 			sourceTree = "<group>";
 		};
 		50D182A10E2AF1DFF12392F6 /* Pods */ = {
@@ -440,14 +454,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D4F536E1F3F16D100F79487 /* SchoolTableViewCell.xib in Resources */,
+				0D1492991F5F1760002B2701 /* SchoolTableViewCell.xib in Resources */,
 				0D4F53261F3E1E0700F79487 /* LaunchScreen.storyboard in Resources */,
-				0D4F535B1F3EEB6100F79487 /* menu_logo.png in Resources */,
-				0D8C63F41F40D8A20043E8F2 /* WebViewController.xib in Resources */,
+				0D1492941F5F1760002B2701 /* menu_logo.png in Resources */,
+				0D1492A81F5F1760002B2701 /* WebViewController.xib in Resources */,
 				0D4F53231F3E1E0700F79487 /* Assets.xcassets in Resources */,
+				0D1492971F5F1760002B2701 /* SchoolInfoTableViewCell.xib in Resources */,
 				0D4F53211F3E1E0700F79487 /* Main.storyboard in Resources */,
-				0D4F53701F3F2DFB00F79487 /* sampleImage.png in Resources */,
-				0D7F12A11F4024EB00BEA6EE /* SchoolInfoTableViewCell.xib in Resources */,
+				0D1492951F5F1760002B2701 /* sampleImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,24 +534,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D4F53721F3F5D2900F79487 /* GroupInfoViewController.swift in Sources */,
-				0D4F53741F3F5E4100F79487 /* informationSchoolViewController.swift in Sources */,
-				0D4F531E1F3E1E0700F79487 /* HomeViewController.swift in Sources */,
-				0D7F12A01F4024EB00BEA6EE /* SchoolInfoTableViewCell.swift in Sources */,
-				0D4F53631F3F11A400F79487 /* MBProgressHUD.m in Sources */,
-				0D8D77AF1F420D1D00143B8F /* TimeTableCells.swift in Sources */,
+				0D14929E1F5F1760002B2701 /* SlideMenuList.swift in Sources */,
+				0D1492A31F5F1760002B2701 /* weeklyScheduleViewController.swift in Sources */,
+				0D1492A51F5F1760002B2701 /* SWRevealViewController.m in Sources */,
+				0D14929F1F5F1760002B2701 /* informationSchoolViewController.swift in Sources */,
+				0D14929B1F5F1760002B2701 /* HomeViewController.swift in Sources */,
+				0D14929C1F5F1760002B2701 /* weekdayViewController.swift in Sources */,
+				0D1492A61F5F1760002B2701 /* Utilities.swift in Sources */,
+				0D14929A1F5F1760002B2701 /* GroupInfoViewController.swift in Sources */,
 				0D4F531C1F3E1E0700F79487 /* AppDelegate.swift in Sources */,
-				0D4F534C1F3EDA5500F79487 /* SlideMenuList.swift in Sources */,
-				0D4F537C1F3F5EF800F79487 /* schoolRulesViewController.swift in Sources */,
-				0D4F53761F3F5E5200F79487 /* schoolCouncilViewController.swift in Sources */,
-				0D4F53781F3F5E8B00F79487 /* weeklyScheduleViewController.swift in Sources */,
-				0D4F535F1F3F113B00F79487 /* Utilities.swift in Sources */,
-				0D4F536D1F3F16D100F79487 /* SchoolTableViewCell.swift in Sources */,
-				0D4F537A1F3F5EAE00F79487 /* schoolLinksViewController.swift in Sources */,
-				0D8C63F31F40D8A20043E8F2 /* WebViewController.swift in Sources */,
-				0D8D77AD1F420C7B00143B8F /* WeekTimeTableViewController.swift in Sources */,
-				0D4F53521F3EDACD00F79487 /* SWRevealViewController.m in Sources */,
-				0D8D77AB1F41F29900143B8F /* weekdayViewController.swift in Sources */,
+				0D1492A01F5F1760002B2701 /* schoolCouncilViewController.swift in Sources */,
+				0D1492981F5F1760002B2701 /* SchoolTableViewCell.swift in Sources */,
+				0D1492A21F5F1760002B2701 /* schoolRulesViewController.swift in Sources */,
+				0D1492A71F5F1760002B2701 /* WebViewController.swift in Sources */,
+				0D1492961F5F1760002B2701 /* SchoolInfoTableViewCell.swift in Sources */,
+				0D1492A11F5F1760002B2701 /* schoolLinksViewController.swift in Sources */,
+				0D14929D1F5F1760002B2701 /* WeekTimeTableViewController.swift in Sources */,
+				0D1492A41F5F1760002B2701 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,7 @@
 //  SchoolTableViewCell.swift
 //  Ukeplaner
 //
-//  Created by Lakeba_26 on 12/08/17.
+//  Created by Lakeba_26 on 05/09/17.
 //  Copyright © 2017 lakeba. All rights reserved.
 //
 
@@ -25,5 +25,5 @@ class SchoolTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }
