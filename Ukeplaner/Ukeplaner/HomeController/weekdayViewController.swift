@@ -147,7 +147,6 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         self.makeCardView(view!)
         cell?.backgroundColor = UIColor.lightGray
         let infoTitle : UILabel = (cell?.viewWithTag(701) as! UILabel)
-        infoTitle.textColor = UIColor(red: 255.0 / 255.0, green: 165.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)
         let infoweekTitle : UILabel = (cell?.viewWithTag(700) as! UILabel)
         let dicValues = schoolWeekList.object(at: indexPath.row) as! NSDictionary
         if(dicValues.value(forKey: "ErrorMessage") != nil)
@@ -161,11 +160,24 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         infoTitle.text = (dicValues.value(forKey: "week_no") as! String)
         infoweekTitle.textColor = TextColor //255,165
         infoweekTitle.text = (dicValues.value(forKey: "week_date") as! String)
+        infoweekTitle.numberOfLines = 1
+        infoweekTitle.adjustsFontSizeToFitWidth = true
+        let calendar = Calendar.current
+        let weekOfYear = calendar.component(.weekOfYear, from: Date.init(timeIntervalSinceNow: 0))
+        if((dicValues.value(forKey: "week_no") as! NSString).integerValue == weekOfYear)
+        {
+            infoTitle.textColor = UIColor(red: 92.0 / 255.0, green: 0.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
+        }
+        else
+        {
+            infoTitle.textColor = UIColor(red: 255.0 / 255.0, green: 165.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)
+        }
         return cell!
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let dicValues = schoolWeekList.object(at: indexPath.row) as! NSDictionary
         commonAppDelegate.week_id = (dicValues.value(forKey: "week_id") as! NSString).integerValue
+        Utilities.loadweekTimeTable(weekId: commonAppDelegate.week_id)
         let weekTime = self.storyboard?.instantiateViewController(withIdentifier: "WeekTimeTableViewController") as! WeekTimeTableViewController
         self.navigationController?.pushViewController(weekTime, animated: true)
     }

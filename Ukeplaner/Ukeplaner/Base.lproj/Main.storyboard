@@ -128,7 +128,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="500" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sic-pb-9XN">
-                                                    <rect key="frame" x="5" y="26" width="110" height="50"/>
+                                                    <rect key="frame" x="5" y="25" width="110" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="o1h-YQ-Dno"/>
                                                     </constraints>
@@ -733,18 +733,24 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="701" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dk7-d6-y8Y">
                                                             <rect key="frame" x="10" y="18" width="140" height="30"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular-widthClass=compact">
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                            </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="700" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBW-00-ZzL">
                                                             <rect key="frame" x="10" y="53" width="140" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="glp-Ds-XaB"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular-widthClass=compact">
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                            </variation>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -840,31 +846,186 @@
                     <view key="view" contentMode="scaleToFill" id="ZVr-2o-idv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3B2-d3-42J">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="212-6K-yD5"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="3B2-d3-42J" secondAttribute="trailing" id="6Fq-C9-I94"/>
-                            <constraint firstItem="3B2-d3-42J" firstAttribute="leading" secondItem="ZVr-2o-idv" secondAttribute="leading" id="Q4w-ue-1pM"/>
-                            <constraint firstItem="3B2-d3-42J" firstAttribute="top" secondItem="ZVr-2o-idv" secondAttribute="top" id="lUP-rh-JiO"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4R-e1-IIt" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2631" y="-378"/>
+            <point key="canvasLocation" x="2610" y="-560"/>
+        </scene>
+        <!--Monday View Controller-->
+        <scene sceneID="Pq1-hv-403">
+            <objects>
+                <viewController storyboardIdentifier="MondayViewController" id="XXI-dX-IQx" customClass="MondayViewController" customModule="Ukeplaner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X5x-Ka-BVz"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Ri-ZC-qOt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3ke-Cx-p6a">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8SL-9x-JdV">
+                                <rect key="frame" x="0.0" y="120" width="320" height="448"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8SL-9x-JdV" secondAttribute="trailing" id="VDo-H3-vHw"/>
+                            <constraint firstItem="8SL-9x-JdV" firstAttribute="top" secondItem="X5x-Ka-BVz" secondAttribute="bottom" constant="100" id="Wte-LS-8H9"/>
+                            <constraint firstItem="8SL-9x-JdV" firstAttribute="leading" secondItem="3ke-Cx-p6a" secondAttribute="leading" id="YTK-vP-QAg"/>
+                            <constraint firstItem="0Ri-ZC-qOt" firstAttribute="top" secondItem="8SL-9x-JdV" secondAttribute="bottom" id="syA-Qn-3qO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mondayTable" destination="8SL-9x-JdV" id="HUU-Hi-SU1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rLu-WV-Ycu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3281" y="-563"/>
+        </scene>
+        <!--Tuesday View Controller-->
+        <scene sceneID="tyw-mH-TL7">
+            <objects>
+                <viewController storyboardIdentifier="TuesdayViewController" id="BXA-86-h2K" customClass="TuesdayViewController" customModule="Ukeplaner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z0Y-PZ-bIG"/>
+                        <viewControllerLayoutGuide type="bottom" id="KLT-FG-hk4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oWI-fa-9mT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PKg-3P-0L2">
+                                <rect key="frame" x="0.0" y="120" width="320" height="448"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KLT-FG-hk4" firstAttribute="top" secondItem="PKg-3P-0L2" secondAttribute="bottom" id="V1a-ZJ-uRX"/>
+                            <constraint firstAttribute="trailing" secondItem="PKg-3P-0L2" secondAttribute="trailing" id="YAj-kk-PQw"/>
+                            <constraint firstItem="PKg-3P-0L2" firstAttribute="leading" secondItem="oWI-fa-9mT" secondAttribute="leading" id="bae-Ii-ZIB"/>
+                            <constraint firstItem="PKg-3P-0L2" firstAttribute="top" secondItem="Z0Y-PZ-bIG" secondAttribute="bottom" constant="100" id="tay-nc-fRN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tuesdayTable" destination="PKg-3P-0L2" id="TIl-Kj-hgS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yUC-mD-keG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3966" y="-563"/>
+        </scene>
+        <!--Wednesday View Controller-->
+        <scene sceneID="4bO-o3-bZ8">
+            <objects>
+                <viewController storyboardIdentifier="WednesdayViewController" id="kmI-dP-Wm7" customClass="WednesdayViewController" customModule="Ukeplaner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iCS-ZA-lcT"/>
+                        <viewControllerLayoutGuide type="bottom" id="3mw-Oo-zLi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ASw-jT-zOf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mJo-14-GCd">
+                                <rect key="frame" x="0.0" y="120" width="320" height="448"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="mJo-14-GCd" secondAttribute="trailing" id="3Kd-rO-dbf"/>
+                            <constraint firstItem="mJo-14-GCd" firstAttribute="leading" secondItem="ASw-jT-zOf" secondAttribute="leading" id="Q6E-Wl-GUI"/>
+                            <constraint firstItem="mJo-14-GCd" firstAttribute="top" secondItem="iCS-ZA-lcT" secondAttribute="bottom" constant="100" id="aqW-Y8-i57"/>
+                            <constraint firstItem="3mw-Oo-zLi" firstAttribute="top" secondItem="mJo-14-GCd" secondAttribute="bottom" id="hEK-Xz-PXE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="wednesdayTable" destination="mJo-14-GCd" id="rgV-xY-fkp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="72L-lY-fSF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4627" y="-568"/>
+        </scene>
+        <!--Thursday View Controller-->
+        <scene sceneID="Dz8-fZ-Add">
+            <objects>
+                <viewController storyboardIdentifier="ThursdayViewController" id="4Pw-ID-blD" customClass="ThursdayViewController" customModule="Ukeplaner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NpQ-85-Tv2"/>
+                        <viewControllerLayoutGuide type="bottom" id="uay-Kd-UXm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vt5-K5-Jph">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dIZ-87-cl1">
+                                <rect key="frame" x="0.0" y="120" width="320" height="448"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dIZ-87-cl1" secondAttribute="trailing" id="2hh-nX-1gY"/>
+                            <constraint firstItem="dIZ-87-cl1" firstAttribute="leading" secondItem="Vt5-K5-Jph" secondAttribute="leading" id="EUi-V2-wox"/>
+                            <constraint firstItem="uay-Kd-UXm" firstAttribute="top" secondItem="dIZ-87-cl1" secondAttribute="bottom" id="Umg-TF-YW2"/>
+                            <constraint firstItem="dIZ-87-cl1" firstAttribute="top" secondItem="NpQ-85-Tv2" secondAttribute="bottom" constant="100" id="jHg-nz-Wzd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="thursdayTable" destination="dIZ-87-cl1" id="BOu-pn-quU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E0v-ac-3MS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5296" y="-577"/>
+        </scene>
+        <!--Friday View Controller-->
+        <scene sceneID="AHd-MU-T7m">
+            <objects>
+                <viewController storyboardIdentifier="FridayViewController" id="8Xl-Uk-dpZ" customClass="FridayViewController" customModule="Ukeplaner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BZe-ka-Ndr"/>
+                        <viewControllerLayoutGuide type="bottom" id="keb-4I-RFA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NMM-WL-4sn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3kb-lv-zP9">
+                                <rect key="frame" x="0.0" y="120" width="320" height="448"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3kb-lv-zP9" firstAttribute="leading" secondItem="NMM-WL-4sn" secondAttribute="leading" id="69H-l1-Ynm"/>
+                            <constraint firstItem="keb-4I-RFA" firstAttribute="top" secondItem="3kb-lv-zP9" secondAttribute="bottom" id="jfZ-qD-6o7"/>
+                            <constraint firstItem="3kb-lv-zP9" firstAttribute="top" secondItem="BZe-ka-Ndr" secondAttribute="bottom" constant="100" id="r6y-x7-ytl"/>
+                            <constraint firstAttribute="trailing" secondItem="3kb-lv-zP9" secondAttribute="trailing" id="rFf-Ng-E4z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fridayTable" destination="3kb-lv-zP9" id="BFM-3D-lrQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OBK-j6-ccL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5965" y="-583"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="wuN-s4-sR6">
             <objects>
                 <viewController id="YKG-QB-wcs" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bEw-7k-jr8"/>
+                        <viewControllerLayoutGuide type="bottom" id="jCS-cw-PBg"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="86l-Vy-w3n">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

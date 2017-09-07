@@ -39,6 +39,13 @@
 		0D4F53651F3F11D500F79487 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53641F3F11D500F79487 /* SystemConfiguration.framework */; };
 		0D4F53671F3F11DC00F79487 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53661F3F11DC00F79487 /* StoreKit.framework */; };
 		0D4F53691F3F11E400F79487 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53681F3F11E400F79487 /* QuartzCore.framework */; };
+		0DA8571F1F60605000DE954F /* MondayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8571E1F60605000DE954F /* MondayViewController.swift */; };
+		0DA857211F60606800DE954F /* TuesdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA857201F60606800DE954F /* TuesdayViewController.swift */; };
+		0DA857231F60607600DE954F /* WednesdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA857221F60607600DE954F /* WednesdayViewController.swift */; };
+		0DA857251F60608E00DE954F /* ThursdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA857241F60608D00DE954F /* ThursdayViewController.swift */; };
+		0DA857271F6060D600DE954F /* FridayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA857261F6060D600DE954F /* FridayViewController.swift */; };
+		0DA8572B1F60623400DE954F /* WeekTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA857291F60623400DE954F /* WeekTimeTableViewCell.swift */; };
+		0DA8572C1F60623400DE954F /* WeekTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA8572A1F60623400DE954F /* WeekTimeTableViewCell.xib */; };
 		8F667416022915E1E47D1C03 /* Pods_Ukeplaner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083CB76D5A697A35523066D4 /* Pods_Ukeplaner.framework */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +109,13 @@
 		0D4F53641F3F11D500F79487 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0D4F53661F3F11DC00F79487 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0D4F53681F3F11E400F79487 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0DA8571E1F60605000DE954F /* MondayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MondayViewController.swift; sourceTree = "<group>"; };
+		0DA857201F60606800DE954F /* TuesdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuesdayViewController.swift; sourceTree = "<group>"; };
+		0DA857221F60607600DE954F /* WednesdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WednesdayViewController.swift; sourceTree = "<group>"; };
+		0DA857241F60608D00DE954F /* ThursdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThursdayViewController.swift; sourceTree = "<group>"; };
+		0DA857261F6060D600DE954F /* FridayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridayViewController.swift; sourceTree = "<group>"; };
+		0DA857291F60623400DE954F /* WeekTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekTimeTableViewCell.swift; sourceTree = "<group>"; };
+		0DA8572A1F60623400DE954F /* WeekTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekTimeTableViewCell.xib; sourceTree = "<group>"; };
 		3AF7B8B32CAC81EFEB5361E4 /* Pods-Ukeplaner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ukeplaner.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ukeplaner/Pods-Ukeplaner.release.xcconfig"; sourceTree = "<group>"; };
 		4881DFF51BC9BE4FEE6FE32A /* Pods-Ukeplaner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ukeplaner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ukeplaner/Pods-Ukeplaner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,6 +179,7 @@
 				0D14927C1F5F1760002B2701 /* GroupInfoViewController.swift */,
 				0D14927E1F5F1760002B2701 /* weekdayViewController.swift */,
 				0D14927F1F5F1760002B2701 /* WeekTimeTableViewController.swift */,
+				0DA8571B1F6054FF00DE954F /* WeekDays */,
 				0D1492761F5F1760002B2701 /* CustomCell */,
 			);
 			path = HomeController;
@@ -331,6 +346,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0DA8571B1F6054FF00DE954F /* WeekDays */ = {
+			isa = PBXGroup;
+			children = (
+				0DA8571E1F60605000DE954F /* MondayViewController.swift */,
+				0DA857201F60606800DE954F /* TuesdayViewController.swift */,
+				0DA857221F60607600DE954F /* WednesdayViewController.swift */,
+				0DA857241F60608D00DE954F /* ThursdayViewController.swift */,
+				0DA857261F6060D600DE954F /* FridayViewController.swift */,
+				0DA857281F60621300DE954F /* WeekDaysCustomCell */,
+			);
+			name = WeekDays;
+			path = Ukeplaner/WeekDays;
+			sourceTree = SOURCE_ROOT;
+		};
+		0DA857281F60621300DE954F /* WeekDaysCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				0DA857291F60623400DE954F /* WeekTimeTableViewCell.swift */,
+				0DA8572A1F60623400DE954F /* WeekTimeTableViewCell.xib */,
+			);
+			path = WeekDaysCustomCell;
+			sourceTree = "<group>";
+		};
 		50D182A10E2AF1DFF12392F6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +492,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DA8572C1F60623400DE954F /* WeekTimeTableViewCell.xib in Resources */,
 				0D1492991F5F1760002B2701 /* SchoolTableViewCell.xib in Resources */,
 				0D4F53261F3E1E0700F79487 /* LaunchScreen.storyboard in Resources */,
 				0D1492941F5F1760002B2701 /* menu_logo.png in Resources */,
@@ -534,6 +573,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DA8571F1F60605000DE954F /* MondayViewController.swift in Sources */,
 				0D14929E1F5F1760002B2701 /* SlideMenuList.swift in Sources */,
 				0D1492A31F5F1760002B2701 /* weeklyScheduleViewController.swift in Sources */,
 				0D1492A51F5F1760002B2701 /* SWRevealViewController.m in Sources */,
@@ -548,6 +588,11 @@
 				0D1492A21F5F1760002B2701 /* schoolRulesViewController.swift in Sources */,
 				0D1492A71F5F1760002B2701 /* WebViewController.swift in Sources */,
 				0D1492961F5F1760002B2701 /* SchoolInfoTableViewCell.swift in Sources */,
+				0DA857231F60607600DE954F /* WednesdayViewController.swift in Sources */,
+				0DA857251F60608E00DE954F /* ThursdayViewController.swift in Sources */,
+				0DA857271F6060D600DE954F /* FridayViewController.swift in Sources */,
+				0DA857211F60606800DE954F /* TuesdayViewController.swift in Sources */,
+				0DA8572B1F60623400DE954F /* WeekTimeTableViewCell.swift in Sources */,
 				0D1492A11F5F1760002B2701 /* schoolLinksViewController.swift in Sources */,
 				0D14929D1F5F1760002B2701 /* WeekTimeTableViewController.swift in Sources */,
 				0D1492A41F5F1760002B2701 /* MBProgressHUD.m in Sources */,
@@ -708,6 +753,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 6U6D63WXPD;
 				INFOPLIST_FILE = Ukeplaner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.Ukeplaner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -728,6 +774,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 6U6D63WXPD;
 				INFOPLIST_FILE = Ukeplaner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.Ukeplaner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
