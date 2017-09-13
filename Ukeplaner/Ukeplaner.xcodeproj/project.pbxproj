@@ -39,11 +39,10 @@
 		0D4F53651F3F11D500F79487 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53641F3F11D500F79487 /* SystemConfiguration.framework */; };
 		0D4F53671F3F11DC00F79487 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53661F3F11DC00F79487 /* StoreKit.framework */; };
 		0D4F53691F3F11E400F79487 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F53681F3F11E400F79487 /* QuartzCore.framework */; };
+		0D5ADF4E1F69698200CC87AD /* TeacherInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5ADF4D1F69698200CC87AD /* TeacherInfoViewController.swift */; };
+		0D5ADF511F698CFA00CC87AD /* WebViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5ADF4F1F698CFA00CC87AD /* WebViewTableViewCell.swift */; };
+		0D5ADF521F698CFA00CC87AD /* WebViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D5ADF501F698CFA00CC87AD /* WebViewTableViewCell.xib */; };
 		0DA8571F1F60605000DE954F /* MondayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8571E1F60605000DE954F /* MondayViewController.swift */; };
-		0DA857211F60606800DE954F /* TuesdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA857201F60606800DE954F /* TuesdayViewController.swift */; };
-		0DA857231F60607600DE954F /* WednesdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA857221F60607600DE954F /* WednesdayViewController.swift */; };
-		0DA857251F60608E00DE954F /* ThursdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA857241F60608D00DE954F /* ThursdayViewController.swift */; };
-		0DA857271F6060D600DE954F /* FridayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA857261F6060D600DE954F /* FridayViewController.swift */; };
 		0DA8572B1F60623400DE954F /* WeekTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA857291F60623400DE954F /* WeekTimeTableViewCell.swift */; };
 		0DA8572C1F60623400DE954F /* WeekTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA8572A1F60623400DE954F /* WeekTimeTableViewCell.xib */; };
 		8F667416022915E1E47D1C03 /* Pods_Ukeplaner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083CB76D5A697A35523066D4 /* Pods_Ukeplaner.framework */; };
@@ -109,11 +108,10 @@
 		0D4F53641F3F11D500F79487 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0D4F53661F3F11DC00F79487 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0D4F53681F3F11E400F79487 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0D5ADF4D1F69698200CC87AD /* TeacherInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherInfoViewController.swift; sourceTree = "<group>"; };
+		0D5ADF4F1F698CFA00CC87AD /* WebViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewTableViewCell.swift; sourceTree = "<group>"; };
+		0D5ADF501F698CFA00CC87AD /* WebViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewTableViewCell.xib; sourceTree = "<group>"; };
 		0DA8571E1F60605000DE954F /* MondayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MondayViewController.swift; sourceTree = "<group>"; };
-		0DA857201F60606800DE954F /* TuesdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuesdayViewController.swift; sourceTree = "<group>"; };
-		0DA857221F60607600DE954F /* WednesdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WednesdayViewController.swift; sourceTree = "<group>"; };
-		0DA857241F60608D00DE954F /* ThursdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThursdayViewController.swift; sourceTree = "<group>"; };
-		0DA857261F6060D600DE954F /* FridayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridayViewController.swift; sourceTree = "<group>"; };
 		0DA857291F60623400DE954F /* WeekTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekTimeTableViewCell.swift; sourceTree = "<group>"; };
 		0DA8572A1F60623400DE954F /* WeekTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekTimeTableViewCell.xib; sourceTree = "<group>"; };
 		3AF7B8B32CAC81EFEB5361E4 /* Pods-Ukeplaner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ukeplaner.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ukeplaner/Pods-Ukeplaner.release.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +165,8 @@
 				0D1492781F5F1760002B2701 /* SchoolInfoTableViewCell.xib */,
 				0D1492791F5F1760002B2701 /* SchoolTableViewCell.swift */,
 				0D14927A1F5F1760002B2701 /* SchoolTableViewCell.xib */,
+				0D5ADF4F1F698CFA00CC87AD /* WebViewTableViewCell.swift */,
+				0D5ADF501F698CFA00CC87AD /* WebViewTableViewCell.xib */,
 			);
 			name = CustomCell;
 			path = ../CustomCell;
@@ -179,6 +179,7 @@
 				0D14927C1F5F1760002B2701 /* GroupInfoViewController.swift */,
 				0D14927E1F5F1760002B2701 /* weekdayViewController.swift */,
 				0D14927F1F5F1760002B2701 /* WeekTimeTableViewController.swift */,
+				0D5ADF4D1F69698200CC87AD /* TeacherInfoViewController.swift */,
 				0DA8571B1F6054FF00DE954F /* WeekDays */,
 				0D1492761F5F1760002B2701 /* CustomCell */,
 			);
@@ -350,10 +351,6 @@
 			isa = PBXGroup;
 			children = (
 				0DA8571E1F60605000DE954F /* MondayViewController.swift */,
-				0DA857201F60606800DE954F /* TuesdayViewController.swift */,
-				0DA857221F60607600DE954F /* WednesdayViewController.swift */,
-				0DA857241F60608D00DE954F /* ThursdayViewController.swift */,
-				0DA857261F6060D600DE954F /* FridayViewController.swift */,
 				0DA857281F60621300DE954F /* WeekDaysCustomCell */,
 			);
 			name = WeekDays;
@@ -444,7 +441,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = lakeba;
 				TargetAttributes = {
 					0D4F53171F3E1E0700F79487 = {
@@ -499,6 +496,7 @@
 				0D1492A81F5F1760002B2701 /* WebViewController.xib in Resources */,
 				0D4F53231F3E1E0700F79487 /* Assets.xcassets in Resources */,
 				0D1492971F5F1760002B2701 /* SchoolInfoTableViewCell.xib in Resources */,
+				0D5ADF521F698CFA00CC87AD /* WebViewTableViewCell.xib in Resources */,
 				0D4F53211F3E1E0700F79487 /* Main.storyboard in Resources */,
 				0D1492951F5F1760002B2701 /* sampleImage.png in Resources */,
 			);
@@ -574,6 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DA8571F1F60605000DE954F /* MondayViewController.swift in Sources */,
+				0D5ADF511F698CFA00CC87AD /* WebViewTableViewCell.swift in Sources */,
 				0D14929E1F5F1760002B2701 /* SlideMenuList.swift in Sources */,
 				0D1492A31F5F1760002B2701 /* weeklyScheduleViewController.swift in Sources */,
 				0D1492A51F5F1760002B2701 /* SWRevealViewController.m in Sources */,
@@ -588,12 +587,9 @@
 				0D1492A21F5F1760002B2701 /* schoolRulesViewController.swift in Sources */,
 				0D1492A71F5F1760002B2701 /* WebViewController.swift in Sources */,
 				0D1492961F5F1760002B2701 /* SchoolInfoTableViewCell.swift in Sources */,
-				0DA857231F60607600DE954F /* WednesdayViewController.swift in Sources */,
-				0DA857251F60608E00DE954F /* ThursdayViewController.swift in Sources */,
-				0DA857271F6060D600DE954F /* FridayViewController.swift in Sources */,
-				0DA857211F60606800DE954F /* TuesdayViewController.swift in Sources */,
 				0DA8572B1F60623400DE954F /* WeekTimeTableViewCell.swift in Sources */,
 				0D1492A11F5F1760002B2701 /* schoolLinksViewController.swift in Sources */,
+				0D5ADF4E1F69698200CC87AD /* TeacherInfoViewController.swift in Sources */,
 				0D14929D1F5F1760002B2701 /* WeekTimeTableViewController.swift in Sources */,
 				0D1492A41F5F1760002B2701 /* MBProgressHUD.m in Sources */,
 			);
@@ -660,7 +656,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -668,7 +666,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -711,7 +713,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -719,7 +723,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

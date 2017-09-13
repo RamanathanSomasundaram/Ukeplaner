@@ -11,6 +11,7 @@ import UIKit
 
 class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet var tbl_schoolMenu: UITableView!
+    
     var menuTitleList : NSMutableArray!
     var menuIconList : NSMutableArray!
     override func viewDidLoad() {
@@ -25,7 +26,7 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
     {
         let appIcon: UIImageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 250, height: 250))
         appIcon.image = UIImage(named: "menu_logo.png")
-        let statusBarView = UIView.init(frame: CGRect(x: 0, y: 0, width: 320, height: 200))
+       let statusBarView = UIView.init(frame: CGRect(x: 0, y: 0, width: 320, height: 200))
         statusBarView.backgroundColor = UIColor(red: 200.0 / 255.0, green: 230.0 / 255.0, blue: 201.0 / 255.0, alpha: 1.0)
         self.view.addSubview(statusBarView)
         statusBarView.addSubview(appIcon)

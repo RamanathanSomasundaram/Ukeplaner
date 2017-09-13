@@ -35,6 +35,9 @@ class schoolCouncilViewController: UIViewController,UITableViewDelegate,UITableV
         tbl_schoolcouncil.addSubview(refreshControl)
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
+    override func viewDidAppear(_ animated: Bool) {
+        self.tbl_schoolcouncil.reloadData()
+    }
     func refreshTableView()
     {
         self.tbl_schoolcouncil.reloadData()
@@ -64,33 +67,31 @@ class schoolCouncilViewController: UIViewController,UITableViewDelegate,UITableV
             self.tbl_schoolcouncil.isUserInteractionEnabled = true
             self.refreshButton.isHidden = true
             Utilities.showLoading()
-            let url = URL(string: "http://ukeplaner.com/api/Informasjon?schoolid=\(school_id!)")
-            DispatchQueue.main.async {
-                let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-                    guard error == nil else {
-                        print(error!)
-                        Utilities.hideLoading()
-                        Utilities.showAlert("\(error!)")
-                        return
-                    }
-                    guard let data = data else {
-                        print("Data is empty")
-                        Utilities.hideLoading()
-                        self.nocouncilLabel.isHidden = false
-                        return
-                    }
-                    let json = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as! [Any]
-                    for i in 0..<json.count
+            Alamofire.request("\(CommonAPI)Informasjon?schoolid=\(school_id!)").responseJSON { response in
+                if let json = response.result.value {
+                    if ((json as AnyObject).isKind(of: NSArray.self))
                     {
-                        self.studentCouncilList.add(json[i])
+                        let jsonResponse = (json as! [Any])
+                        for i in 0..<jsonResponse.count
+                        {
+                            self.studentCouncilList.add(jsonResponse[i])
+                        }
+
                     }
-                    DispatchQueue.main.sync {
+                    else
+                    {
+                        let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
+                        self.nocouncilLabel.isHidden = false
+                        print(jsonError)
+                    }
+                    DispatchQueue.main.async {
+                         self.tbl_schoolcouncil.register(UINib.init(nibName: "SchoolInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolInfo")
                         self.tbl_schoolcouncil.reloadData()
-                            Utilities.hideLoading()
+                        Utilities.hideLoading()
                         
                     }
                 }
-                task.resume()
+                
             }
         }
         else
@@ -129,25 +130,24 @@ class schoolCouncilViewController: UIViewController,UITableViewDelegate,UITableV
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: "schoolinfo") as? SchoolInfoTableViewCell
-        if(cell == nil)
-        {
-            //Load the top-level objects from the custom cell XIB.
-            var topLevelObjects = Bundle.main.loadNibNamed("SchoolInfoTableViewCell", owner: self, options: nil)
-            // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
-            cell = topLevelObjects?[0] as! SchoolInfoTableViewCell?
-        }
-        cell?.selectionStyle = UITableViewCellSelectionStyle.none
-        cell?.separatorInset = .zero
-        let cellView = (cell?.viewWithTag(600)!)
-        self.makeCardView(cellView!)
+        let cell : SchoolInfoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "schoolInfo") as! SchoolInfoTableViewCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.separatorInset = .zero
+        let cellView = (cell.viewWithTag(600)!)
+        self.makeCardView(cellView)
         let dictValues = self.studentCouncilList.object(at: indexPath.row) as! NSDictionary
-        cell?.schoolInfoTitle.textColor = TextColor
-        cell?.schoolInfoTitle.text = (dictValues.value(forKey: "studentinfo") as! String)
-        return cell!
+        cell.schoolInfoTitle.textColor = TextColor
+        cell.schoolInfoTitle.text = (dictValues.value(forKey: "studentinfo") as! String)
+        cell.schoolInfoTitle.sizeToFit()
+        return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        
+        return UITableViewAutomaticDimension
+    }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     deinit {
         self.studentCouncilList.removeAllObjects()

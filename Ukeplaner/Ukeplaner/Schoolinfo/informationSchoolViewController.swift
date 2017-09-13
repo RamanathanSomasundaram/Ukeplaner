@@ -15,7 +15,7 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
     @IBOutlet var noInfoLabel: UILabel!
     @IBOutlet var tbl_schoolinfo: UITableView!
     var refreshControl : UIRefreshControl!
-
+    
     @IBOutlet var refreshButton: UIButton!
     
     override func viewDidLoad() {
@@ -34,11 +34,13 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
         tbl_schoolinfo.addSubview(refreshControl)
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
+    override func viewDidAppear(_ animated: Bool) {
+        self.tbl_schoolinfo.reloadData()
+    }
     func refreshTableView()
     {
         self.tbl_schoolinfo.reloadData()
         refreshControl.endRefreshing()
-        
     }
     func loadNavigationItem()
     {
@@ -60,34 +62,30 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
         if(Utilities.checkForInternet())
         {
             self.tbl_schoolinfo.isUserInteractionEnabled = true
-           self.refreshButton.isHidden = true
+            self.refreshButton.isHidden = true
             Utilities.showLoading()
-            let url = URL(string: "http://ukeplaner.com/api/Informasjon_fra_skolen?schoolid=\(school_id!)")
-            DispatchQueue.main.async {
-                let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-                    guard error == nil else {
-                        print(error!)
-                        Utilities.hideLoading()
-                        Utilities.showAlert("\(error!)")
-                        return
-                    }
-                    guard let data = data else {
-                        print("Data is empty")
-                        Utilities.hideLoading()
-                        self.noInfoLabel.isHidden = false
-                        return
-                    }
-                    let json = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as! [Any]
-                    for i in 0..<json.count
+            Alamofire.request("\(CommonAPI)Informasjon_fra_skolen?schoolid=\(school_id!)").responseJSON { response in
+                if let json = response.result.value {
+                    if ((json as AnyObject).isKind(of: NSArray.self))
                     {
-                        self.schoolinfoList.add(json[i])
+                        let jsonResponse = (json as! [Any])
+                        for i in 0..<jsonResponse.count
+                        {
+                            self.schoolinfoList.add(jsonResponse[i])
+                        }
                     }
-                    DispatchQueue.main.sync {
+                    else
+                    {
+                        let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
+                        self.noInfoLabel.isHidden = false
+                        print(jsonError)
+                    }
+                    DispatchQueue.main.async {
+                        self.tbl_schoolinfo.register(UINib.init(nibName: "SchoolInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolInfo")
                         self.tbl_schoolinfo.reloadData()
-                            Utilities.hideLoading()
+                        Utilities.hideLoading()
                     }
                 }
-                task.resume()
             }
         }
         else
@@ -121,30 +119,27 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         return schoolinfoList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: "schoolinfo") as? SchoolInfoTableViewCell
-        if(cell == nil)
-        {
-            //Load the top-level objects from the custom cell XIB.
-            var topLevelObjects = Bundle.main.loadNibNamed("SchoolInfoTableViewCell", owner: self, options: nil)
-            // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
-            cell = topLevelObjects?[0] as! SchoolInfoTableViewCell?
-        }
-        cell?.selectionStyle = UITableViewCellSelectionStyle.none
-        cell?.separatorInset = .zero
-        let cellView = (cell?.viewWithTag(600)!)
-        self.makeCardView(cellView!)
+        let cell : SchoolInfoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "schoolInfo") as! SchoolInfoTableViewCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.separatorInset = .zero
+        let cellView = (cell.viewWithTag(600)!)
+        self.makeCardView(cellView)
         let dictValues = self.schoolinfoList.object(at: indexPath.row) as! NSDictionary
-        cell?.schoolInfoTitle.textColor = TextColor
-        cell?.schoolInfoTitle.text = (dictValues.value(forKey: "schoolinfo") as! String)
-        return cell!
+        cell.schoolInfoTitle.textColor = TextColor
+        cell.schoolInfoTitle.text = (dictValues.value(forKey: "schoolinfo") as! String)
+        cell.schoolInfoTitle.sizeToFit()
+        return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        
+        return UITableViewAutomaticDimension
+    }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     deinit {
         self.schoolinfoList.removeAllObjects()
@@ -154,15 +149,15 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

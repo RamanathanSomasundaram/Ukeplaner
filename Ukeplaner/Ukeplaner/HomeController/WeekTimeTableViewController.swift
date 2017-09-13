@@ -14,15 +14,7 @@ class WeekTimeTableViewController: UIViewController{
         let tc = TabPageViewController.create()
         let vc1 = MondayViewController()
         vc1.view.backgroundColor = UIColor.yellow
-        let vc2 = TuesdayViewController()
-        vc2.view.backgroundColor = UIColor.blue
-        let vc3 = WednesdayViewController()
-        vc3.view.backgroundColor = UIColor(red: 149/255, green: 218/255, blue: 252/255, alpha: 1.0)
-        let vc4 = ThursdayViewController()
-        vc4.view.backgroundColor = UIColor(red: 149/255, green: 252/255, blue: 197/255, alpha: 1.0)
-        let vc5 = FridayViewController()
-        vc5.view.backgroundColor = UIColor(red: 252/255, green: 182/255, blue: 106/255, alpha: 1.0)
-        tc.tabItems = [(vc1, "Monday\n22-7-2017"), (vc2, "Tuesday\n23-7-2017"), (vc3, "Wednesday 27-3-2017"), (vc4, "Thursday 28-7-2017"), (vc5, "Friday 30-8-2017")]
+        tc.tabItems = [(vc1, "Monday\n22-7-2017")]
         //tc.isInfinity = true
         var option = TabPageOption()
         option.tabBackgroundColor = UIColor.green

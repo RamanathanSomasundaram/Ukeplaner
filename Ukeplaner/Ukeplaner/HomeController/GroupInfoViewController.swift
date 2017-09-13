@@ -72,33 +72,27 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             self.refreshButton.isHidden = true
             Utilities.showLoading()
-            let url = URL(string: "http://ukeplaner.com/api/groupList?schoolid=\(schoolID!)")
-            DispatchQueue.main.async {
-                let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-                    guard error == nil else {
-                        print(error!)
-                        Utilities.hideLoading()
-                        Utilities.showAlert("\(error!)")
-                        return
-                    }
-                    guard let data = data else {
-                        print("Data is empty")
-                        Utilities.hideLoading()
-                        self.noGroupLabel.isHidden = false
-                        return
-                    }
-                    
-                    let json = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as! [Any]
-                    for i in 0..<json.count
+            Alamofire.request("\(CommonAPI)groupList?schoolid=\(schoolID!)").responseJSON { response in
+                if let json = response.result.value {
+                    if ((json as AnyObject).isKind(of: NSArray.self))
                     {
-                         self.groupInfolist.add(json[i])
+                        let jsonResponse = (json as! [Any])
+                        for i in 0..<jsonResponse.count
+                        {
+                            self.groupInfolist.add(jsonResponse[i])
+                        }
                     }
-                    DispatchQueue.main.sync {
-                    self.collectionView.reloadData()
+                    else
+                    {
+                        let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
+                        self.noGroupLabel.isHidden = false
+                        print(jsonError)
+                    }
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
                         Utilities.hideLoading()
                     }
                 }
-                task.resume()
             }
         }
         else

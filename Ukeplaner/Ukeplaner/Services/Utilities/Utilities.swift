@@ -15,6 +15,7 @@ extension UIColor {
         self.init(red: CGFloat((Float((netHex & 0xFF0000) >> 16)) / 255.0), green: CGFloat((Float((netHex & 0xFF00) >> 8)) / 255.0), blue: CGFloat((Float(netHex & 0xFF)) / 255.0), alpha: CGFloat(1.0))
     }
 }
+let CommonAPI = "http://ukeplaner.com/api/"
 class Utilities: NSObject {
     
     

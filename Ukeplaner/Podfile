@@ -3,5 +3,6 @@ target 'Ukeplaner' do
 pod 'SDWebImage'
 pod 'Firebase/Core'
 pod 'TabPageViewController'
+pod 'Alamofire'
 use_frameworks!
 end

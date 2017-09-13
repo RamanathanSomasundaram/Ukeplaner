@@ -43,6 +43,9 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
+        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(teacherInfo))
+        flipRightButton.tintColor = UIColor.white
+        self.navigationItem.rightBarButtonItem = flipRightButton
         weekCollectionView.backgroundColor = UIColor.lightGray
         collectionViewFlowLayout = UICollectionViewFlowLayout()
         let size1 = (self.view.frame.size.width - 4 ) / 1
@@ -58,6 +61,11 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         schoolWeekList.removeAllObjects()
         self.navigationController?.popViewController(animated: true)
     }
+    func teacherInfo()
+    {
+        let teacherInfo = self.storyboard?.instantiateViewController(withIdentifier: "TeacherInfoViewController") as! TeacherInfoViewController
+        self.navigationController?.pushViewController(teacherInfo, animated: true)
+    }
     func refreshTableView()
     {
         self.weekCollectionView.reloadData()
@@ -70,32 +78,27 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
             self.weekCollectionView.isUserInteractionEnabled = true
             self.refreshButton.isHidden = true
             Utilities.showLoading()
-            let url = URL(string: "http://ukeplaner.com/api/weekList?schoolid=\(school_id!)&group_id=\(group_id!)")
-            DispatchQueue.main.async {
-                let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-                    guard error == nil else {
-                        print(error!)
-                        Utilities.hideLoading()
-                        Utilities.showAlert("\(error!)")
-                        return
-                    }
-                    guard let data = data else {
-                        print("Data is empty")
-                        Utilities.hideLoading()
-                        self.noWeekLabel.isHidden = false
-                        return
-                    }
-                    let json = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as! [Any]
-                    for i in 0..<json.count
+            Alamofire.request("\(CommonAPI)weekList?schoolid=\(school_id!)&group_id=\(group_id!)").responseJSON { response in
+                if let json = response.result.value {
+                    if ((json as AnyObject).isKind(of: NSArray.self))
                     {
-                        self.schoolWeekList.add(json[i])
+                        let jsonResponse = (json as! [Any])
+                        for i in 0..<jsonResponse.count
+                        {
+                            self.schoolWeekList.add(jsonResponse[i])
+                        }
                     }
-                    DispatchQueue.main.sync {
+                    else
+                    {
+                        let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
+                        self.noWeekLabel.isHidden = false
+                        print(jsonError)
+                    }
+                    DispatchQueue.main.async {
                         self.weekCollectionView.reloadData()
                         Utilities.hideLoading()
                     }
                 }
-                task.resume()
             }
         }
         else

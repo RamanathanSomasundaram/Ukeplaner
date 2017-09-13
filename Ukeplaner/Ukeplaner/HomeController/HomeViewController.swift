@@ -11,7 +11,7 @@ import Foundation
 let ThemeColor : UIColor = UIColor(red: 30.0/255.0, green: 34.0/255.0, blue: 39.0/255.0, alpha: 1.0)
 let TextColor : UIColor = UIColor(red: 140.0/255.0, green: 198.0/255.0, blue: 62.0/255.0, alpha: 1.0)
 class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
-
+    
     @IBOutlet var searchbarConstraint: NSLayoutConstraint!
     @IBOutlet var tableviewConstraint: NSLayoutConstraint!
     @IBOutlet var searchBarController: UISearchBar!
@@ -32,13 +32,13 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.searchbarConstraint.constant = -40
         self.tbl_schoolList.tableFooterView = UIView()
         self.navigationBarItems()
-        self.loadInitialData()
         refreshControl = UIRefreshControl()
         refreshControl.tintColor = TextColor
         let attr = [NSForegroundColorAttributeName:UIColor.white]
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes:attr)
         refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
         tbl_schoolList.addSubview(refreshControl)
+        self.loadInitialData()
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
     func refreshTableView()
@@ -147,34 +147,28 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             tbl_schoolList.isUserInteractionEnabled = true
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             self.refreshButton.isHidden = true
-        Utilities.showLoading()
-        let url = URL(string: "http://ukeplaner.com/api/schoolList")
-        DispatchQueue.main.async {
-        let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-            guard error == nil else {
-                print(error!)
-                Utilities.hideLoading()
-                Utilities.showAlert("\(error!)")
-                return
+            Utilities.showLoading()
+            Alamofire.request("\(CommonAPI)schoolList").responseJSON { response in
+                if let json = response.result.value {
+                    if ((json as AnyObject).isKind(of: NSArray.self))
+                    {
+                        let jsonResponse = (json as! [Any])
+                        for i in 0..<jsonResponse.count
+                        {
+                            self.schoolListArray.add(jsonResponse[i])
+                        }
+                    }
+                    else
+                    {
+                        let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
+                        print(jsonError)
+                    }
+                    DispatchQueue.main.async {
+                        self.tbl_schoolList.reloadData()
+                        Utilities.hideLoading()
+                    }
+                }
             }
-            guard let data = data else {
-                print("Data is empty")
-                Utilities.hideLoading()
-                self.noSchoolInfo.isHidden = false
-                return
-            }
-            let json = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as! [Any]
-            for i in 0..<json.count
-            {
-            self.schoolListArray.add(json[i])
-            }
-            DispatchQueue.main.sync {
-                self.tbl_schoolList.reloadData()
-                Utilities.hideLoading()
-            }
-        }
-        task.resume()
-    }
         }
         else
         {
