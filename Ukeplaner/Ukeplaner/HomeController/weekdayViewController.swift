@@ -92,6 +92,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
                     {
                         let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
                         self.noWeekLabel.isHidden = false
+                        self.noWeekLabel.text = (jsonError as! String)
                         print(jsonError)
                     }
                     DispatchQueue.main.async {
@@ -180,6 +181,8 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let dicValues = schoolWeekList.object(at: indexPath.row) as! NSDictionary
         commonAppDelegate.week_id = (dicValues.value(forKey: "week_id") as! NSString).integerValue
+        commonAppDelegate.weekid_first = ((schoolWeekList.object(at: 0) as! NSDictionary).value(forKey: "week_id") as! NSString).integerValue
+        commonAppDelegate.weekid_last = ((schoolWeekList.object(at: schoolWeekList.count - 1) as! NSDictionary).value(forKey: "week_id") as! NSString).integerValue
         print("Week-id \(commonAppDelegate.week_id)")
         let weekTime = self.storyboard?.instantiateViewController(withIdentifier: "WeekTimeTableViewController") as! WeekTimeTableViewController
         self.navigationController?.pushViewController(weekTime, animated: true)

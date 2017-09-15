@@ -78,6 +78,7 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
                     {
                         let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
                         self.noInfoLabel.isHidden = false
+                        self.noInfoLabel.text = (jsonError as! String)
                         print(jsonError)
                     }
                     DispatchQueue.main.async {

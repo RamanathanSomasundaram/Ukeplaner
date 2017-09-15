@@ -78,6 +78,7 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
                     {
                         let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
                         self.noRulesLabel.isHidden = false
+                        self.noRulesLabel.text = (jsonError as! String)
                         print(jsonError)
                     }
                     DispatchQueue.main.async {

@@ -161,6 +161,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                     else
                     {
                         let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
+                        self.noSchoolInfo.text = (jsonError as! String)
                         print(jsonError)
                     }
                     DispatchQueue.main.async {

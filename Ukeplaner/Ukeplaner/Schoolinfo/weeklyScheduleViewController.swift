@@ -80,6 +80,7 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
                     {
                         let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
                         self.noweekLabel.isHidden = false
+                        self.noweekLabel.text = (jsonError as! String)
                         print(jsonError)
                     }
                     DispatchQueue.main.async {

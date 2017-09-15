@@ -82,6 +82,7 @@ class schoolCouncilViewController: UIViewController,UITableViewDelegate,UITableV
                     {
                         let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
                         self.nocouncilLabel.isHidden = false
+                        self.nocouncilLabel.text = (jsonError as! String)
                         print(jsonError)
                     }
                     DispatchQueue.main.async {
