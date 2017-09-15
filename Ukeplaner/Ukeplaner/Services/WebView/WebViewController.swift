@@ -8,18 +8,49 @@
 
 import UIKit
 
-class WebViewController: UIViewController {
+class WebViewController: UIViewController,UIWebViewDelegate {
 
     @IBOutlet var myWebView: UIWebView!
     var URLString : String!
     override func viewDidLoad() {
         super.viewDidLoad()
+        commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.navigationBarCustomButton()
         let url = URL (string: URLString)
         let requestObj = URLRequest(url: url!)
         myWebView.loadRequest(requestObj)
         // Do any additional setup after loading the view.
     }
-
+    
+    func navigationBarCustomButton()
+    {
+        //Navigation BackButton hide
+        self.title = "WebView"
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.barTintColor = ThemeColor
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
+        flipButton.tintColor = UIColor.white
+        self.navigationItem.leftBarButtonItem = flipButton
+    }
+    //Navigation controller custom back button action
+    func backHome()
+    {
+        self.navigationController?.popViewController(animated: true)
+    }
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        //print("load start")
+        MBProgressHUD.showAdded(to: commonAppDelegate.window, animated: true)
+    }
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        //print("Load completed")
+       MBProgressHUD.hideAllHUDs(for: commonAppDelegate.window, animated: true)
+    }
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        MBProgressHUD.hideAllHUDs(for: commonAppDelegate.window, animated: true)
+        webView.reload()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

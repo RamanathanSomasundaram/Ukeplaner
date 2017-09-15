@@ -43,9 +43,9 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
-        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(teacherInfo))
-        flipRightButton.tintColor = UIColor.white
-        self.navigationItem.rightBarButtonItem = flipRightButton
+//        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(teacherInfo))
+//        flipRightButton.tintColor = UIColor.white
+//        self.navigationItem.rightBarButtonItem = flipRightButton
         weekCollectionView.backgroundColor = UIColor.lightGray
         collectionViewFlowLayout = UICollectionViewFlowLayout()
         let size1 = (self.view.frame.size.width - 4 ) / 1
@@ -180,7 +180,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let dicValues = schoolWeekList.object(at: indexPath.row) as! NSDictionary
         commonAppDelegate.week_id = (dicValues.value(forKey: "week_id") as! NSString).integerValue
-        Utilities.loadweekTimeTable(weekId: commonAppDelegate.week_id)
+        print("Week-id \(commonAppDelegate.week_id)")
         let weekTime = self.storyboard?.instantiateViewController(withIdentifier: "WeekTimeTableViewController") as! WeekTimeTableViewController
         self.navigationController?.pushViewController(weekTime, animated: true)
     }

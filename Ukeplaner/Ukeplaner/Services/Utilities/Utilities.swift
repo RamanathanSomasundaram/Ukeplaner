@@ -130,57 +130,6 @@ class Utilities: NSObject {
         #endif
         
     }
-    class func loadweekTimeTable(weekId : Int)
-    {
-        commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
-        Utilities.showLoading()
-        let url = URL(string: "http://ukeplaner.com/api/weekplanner?schoolid=\(commonAppDelegate.school_id!)&group_id=\(commonAppDelegate.group_id!)&week_id=\(weekId)")
-        DispatchQueue.main.async {
-            let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-                guard error == nil else {
-                    print(error!)
-                    Utilities.hideLoading()
-                    Utilities.showAlert("\(error!)")
-                    return
-                }
-                guard let data = data else {
-                    print("Data is empty")
-                    Utilities.hideLoading()
-                    return
-                }
-                let json = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as! [Any]
-                for i in 0..<json.count
-                {
-                    let dicValues = json[i] as! NSDictionary
-                    let weekDay = (dicValues.value(forKey: "week_day")! as! String)
-                    if(weekDay == "Monday")
-                    {
-                        commonAppDelegate.mondayArray.add(dicValues)
-                    }
-                    else if (weekDay == "Tuesday")
-                    {
-                        commonAppDelegate.tuesdayArray.add(dicValues)
-                    }
-                    else if (weekDay == "Wednesday")
-                    {
-                        commonAppDelegate.wednesdayArray.add(dicValues)
-                    }
-                    else if (weekDay == "Thursday")
-                    {
-                        commonAppDelegate.thursdayArray.add(dicValues)
-                    }
-                    else if (weekDay == "Friday")
-                    {
-                        commonAppDelegate.fridayArray.add(dicValues)
-                    }
-                }
-                DispatchQueue.main.sync {
-                    Utilities.hideLoading()
-                }
-            }
-            task.resume()
-        }
-
-    }
+   
 }
 
