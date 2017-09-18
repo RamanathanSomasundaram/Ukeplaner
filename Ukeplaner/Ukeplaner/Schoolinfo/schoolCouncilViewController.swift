@@ -36,7 +36,10 @@ class schoolCouncilViewController: UIViewController,UITableViewDelegate,UITableV
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
     override func viewDidAppear(_ animated: Bool) {
+        let dispatchTime = DispatchTime.now() + .seconds(1)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime , execute: {
         self.tbl_schoolcouncil.reloadData()
+        })
     }
     func refreshTableView()
     {

@@ -33,6 +33,7 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
         self.tbl_schoolLinks.tableFooterView = UIView()
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
+    
     func refreshTableView()
     {
         self.tbl_schoolLinks.reloadData()

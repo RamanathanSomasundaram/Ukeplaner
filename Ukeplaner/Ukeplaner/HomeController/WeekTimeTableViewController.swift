@@ -114,6 +114,7 @@ class WeekTimeTableViewController: UIViewController{
                         {
                             let dicArray = self.dicvalue.value(forKey: key) as! NSMutableArray
                             dicArray.add(jsonresponse)
+                            self.dicvalue.setValue(dicArray, forKey: key)
                         }
                         else
                         {
@@ -122,7 +123,7 @@ class WeekTimeTableViewController: UIViewController{
                             self.dicvalue.setValue(dicArray, forKey: key)
                         }
                     }
-                    
+                   // print("DicValue : \(self.dicvalue)")
                     //Take date and day in dictionary
                     let mutArray = NSMutableArray()
                     for i in 0..<jsondic.count
@@ -139,7 +140,6 @@ class WeekTimeTableViewController: UIViewController{
                             self.daysArray.add(obj)
                         }
                     }
-                    print(self.daysArray)
                     indicator.stopAnimating()
                     self.noHomeLabel.isHidden = true
                     self.loadPageViewController()
@@ -149,8 +149,6 @@ class WeekTimeTableViewController: UIViewController{
                     let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
                     self.noHomeLabel.isHidden = false
                     self.noHomeLabel.text = (jsonError as! String)
-                    print(jsonError)
-                    print("Object")
                     indicator.stopAnimating()
                 }
             }
@@ -163,7 +161,6 @@ class WeekTimeTableViewController: UIViewController{
         tc = TabPageViewController.create()
         //let commonArray = NSMutableArray()
         var tabItems:[(viewController: UIViewController, title: String)] = []
-        print("First \(self.daysArray)")
         for i in 0..<self.daysArray.count
         {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "MondayViewController") as! MondayViewController
@@ -173,7 +170,6 @@ class WeekTimeTableViewController: UIViewController{
             tabItems.append((viewController: vc, title: "\(week_day)\n\(week_date)"))
             vc.subjects = dicvalue.value(forKey: week_day) as? NSMutableArray
         }
-        print("DicValue \(dicvalue)")
         tc.tabItems = tabItems
         var option = TabPageOption()
         option.tabBackgroundColor = TextColor

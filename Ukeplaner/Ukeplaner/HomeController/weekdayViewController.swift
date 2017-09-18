@@ -48,7 +48,16 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
 //        self.navigationItem.rightBarButtonItem = flipRightButton
         weekCollectionView.backgroundColor = UIColor.lightGray
         collectionViewFlowLayout = UICollectionViewFlowLayout()
-        let size1 = (self.view.frame.size.width - 4 ) / 1
+        var size1 : CGFloat!
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad)
+        {
+            size1 = (self.view.frame.size.width - 4 ) / 2
+        }
+        else
+        {
+            size1 = (self.view.frame.size.width - 4 ) / 1
+            
+        }
         collectionViewFlowLayout.itemSize = CGSize(width: size1, height: 80)
         collectionViewFlowLayout.minimumLineSpacing = 1
         collectionViewFlowLayout.minimumInteritemSpacing = 1

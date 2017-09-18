@@ -33,7 +33,10 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
     override func viewDidAppear(_ animated: Bool) {
-        self.tbl_schoolRules.reloadData()
+        let dispatchTime = DispatchTime.now() + .seconds(1)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime , execute: {
+            self.tbl_schoolRules.reloadData()
+        })
     }
     func refreshTableView()
     {

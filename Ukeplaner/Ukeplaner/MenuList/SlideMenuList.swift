@@ -12,14 +12,18 @@ import UIKit
 class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet var tbl_schoolMenu: UITableView!
     
+    @IBOutlet var bgIconView: UIView!
     var menuTitleList : NSMutableArray!
     var menuIconList : NSMutableArray!
+    var selectMenuIconList : NSMutableArray!
     override func viewDidLoad() {
         self.navigationBarimage()
         menuTitleList = NSMutableArray()
         menuIconList = NSMutableArray()
+        selectMenuIconList = NSMutableArray()
         menuTitleList = ["Skoler","Gruppeinfo","Informasjon fra skolen", "Informasjon fra elevrådet","Ukeplanregler","lenker","Rulleliste"]
-        menuIconList = ["ic_school","ic_group_info","ic_information_school","ic_student_council","ic_weekly_schedule","ic_student_links","ic_student_rules"]
+        menuIconList = ["gic_school","gic_group_info","gic_information_school","gic_student_council","gic_weekly_schedule","gic_student_links","gic_student_rules"]
+        selectMenuIconList = ["ic_school","ic_group_info","ic_information_school","ic_student_council","ic_weekly_schedule","ic_student_links","ic_student_rules"]
     }
     //Navigation controller load image view
     func navigationBarimage()
@@ -51,9 +55,13 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
         cell?.imageView?.tintColor = UIColor.lightGray
         cell?.textLabel?.text = (menuTitleList.object(at: indexPath.row) as! String)
         cell?.imageView?.image = UIImage.init(named: (menuIconList.object(at: indexPath.row) as! String))
+        cell?.imageView?.highlightedImage = UIImage.init(named: (selectMenuIconList.object(at: indexPath.row) as! String))
+        
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let cell = tableView.cellForRow(at: indexPath)
+//        cell?.imageView?.image = UIImage.init(named: (selectMenuIconList.object(at: indexPath.row) as! String))
         if(indexPath.row == 0)
         {
             self.performSegue(withIdentifier: "home", sender: nil)

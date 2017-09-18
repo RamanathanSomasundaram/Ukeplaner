@@ -36,7 +36,10 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
     override func viewDidAppear(_ animated: Bool) {
-        self.tbl_weeklyList.reloadData()
+        let dispatchTime = DispatchTime.now() + .seconds(1)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime , execute: {
+            self.tbl_weeklyList.reloadData()
+        })
     }
     func refreshTableView()
     {
@@ -139,7 +142,6 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return UITableViewAutomaticDimension
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

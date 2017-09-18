@@ -46,15 +46,26 @@ class MondayViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        for i in 0..<subjects!.count
+        //load day waise Subjects and Description value
+        let dicSubj = NSMutableArray()
+        for subjectIems in subjects!
         {
-            let dicValues = subjects?.object(at: i) as! NSDictionary
-            let desc = (dicValues.value(forKey: "description") as! String)
-            if(!desc.isEmpty)
+            if(!dicSubj.contains(subjectIems))
             {
-                subjDesc.add(subjects!.object(at: i))
+                dicSubj.add(subjectIems)
             }
         }
+        //Load subject description without empty value
+        for i in 0..<dicSubj.count
+        {
+            let dicValues = dicSubj.object(at: i) as! NSDictionary
+            let desc = (dicValues.value(forKey: "description") as! String)
+            if(desc != "")
+            {
+                subjDesc.add(dicSubj.object(at: i))
+            }
+        }
+        print(subjDesc)
         self.EnableAction()
         self.Tbl_timetable.register(UINib.init(nibName: "WeekTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "weekTimeTable")
     }

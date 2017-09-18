@@ -23,6 +23,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var searchString: String!
     var refreshControl : UIRefreshControl!
     @IBOutlet var noSchoolInfo: UILabel!
+    var searchBarBool : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshButton.isHidden = true
@@ -64,11 +65,26 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     func search()
     {
+        if(!searchBarBool)
+        {
+        searchBarBool = true
         searchbarConstraint.constant = 0
         tableviewConstraint.constant = 40
         searchBarController.showsCancelButton = true
         searchBarController.delegate = self
         searchBarController.returnKeyType = .search
+        }
+        else
+        {
+            searchBarBool = false
+            searchbarConstraint.constant = -40
+            tableviewConstraint.constant = 0
+            searchBarController.resignFirstResponder()
+            searchBarController.text = ""
+            searchString = ""
+            isFiltered = false
+            self.tbl_schoolList.reloadData()
+        }
     }
     //MARK: - user click on the search icon to search the items in the tables list
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -128,6 +144,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         searchBar.resignFirstResponder()
         searchBarController.resignFirstResponder()
         searchBar.text = ""
+        searchBarBool = false
         searchbarConstraint.constant = -40
         self.tableviewConstraint.constant = 0
         isFiltered = false
@@ -258,7 +275,6 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 dicSelected = self.schoolListArray.object(at: indexPath.row) as! NSDictionary
             }
             let groupInfo = self.storyboard?.instantiateViewController(withIdentifier: "GroupInfoViewController") as! GroupInfoViewController
-            //groupInfo.schoolID = (dicSelected.value(forKey: "school_id") as! NSString).integerValue
             commonAppDelegate.school_id = (dicSelected.value(forKey: "school_id") as! NSString).integerValue
             self.navigationController?.pushViewController(groupInfo, animated: true)
         }
