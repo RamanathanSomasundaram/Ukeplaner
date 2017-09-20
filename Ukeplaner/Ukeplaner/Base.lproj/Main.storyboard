@@ -867,10 +867,27 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVJ-G4-e4T">
+                                <rect key="frame" x="110" y="264" width="100" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.77647058820000003" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dBp-Rf-dg2"/>
+                                    <constraint firstAttribute="width" constant="100" id="foa-Qo-qaF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="forfriske">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="RefreshAction:" destination="cLV-PI-qP8" eventType="touchUpInside" id="bwM-rs-3eI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mVj-Ya-gzy" firstAttribute="top" secondItem="oZW-AL-brH" secondAttribute="bottom" id="0ev-mu-JCz"/>
+                            <constraint firstItem="SVJ-G4-e4T" firstAttribute="centerX" secondItem="ZVr-2o-idv" secondAttribute="centerX" id="6j9-J9-MHD"/>
+                            <constraint firstItem="SVJ-G4-e4T" firstAttribute="centerY" secondItem="ZVr-2o-idv" secondAttribute="centerY" id="7p2-pO-xaD"/>
                             <constraint firstItem="WNR-VJ-5dT" firstAttribute="centerX" secondItem="ZVr-2o-idv" secondAttribute="centerX" id="9gl-i6-FMs"/>
                             <constraint firstItem="mVj-Ya-gzy" firstAttribute="leading" secondItem="ZVr-2o-idv" secondAttribute="leading" id="MSE-2k-Kec"/>
                             <constraint firstAttribute="trailing" secondItem="mVj-Ya-gzy" secondAttribute="trailing" id="pWl-QW-9BO"/>
@@ -883,6 +900,7 @@
                         <outlet property="nextBtn" destination="BGR-sq-3Vm" id="2Dm-Hb-CUl"/>
                         <outlet property="noHomeLabel" destination="WNR-VJ-5dT" id="7Un-jC-Utz"/>
                         <outlet property="prevBtn" destination="1bA-Af-BEx" id="wf4-ca-KTD"/>
+                        <outlet property="refreshButton" destination="SVJ-G4-e4T" id="R0E-DK-1sl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4R-e1-IIt" sceneMemberID="firstResponder"/>

@@ -40,12 +40,12 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
     }
-    func refreshTableView()
+    @objc func refreshTableView()
     {
         self.collectionView.reloadData()
         refreshControl.endRefreshing()

@@ -29,13 +29,13 @@ class WebViewController: UIViewController,UIWebViewDelegate {
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
     }
     //Navigation controller custom back button action
-    func backHome()
+    @objc func backHome()
     {
         self.navigationController?.popViewController(animated: true)
     }

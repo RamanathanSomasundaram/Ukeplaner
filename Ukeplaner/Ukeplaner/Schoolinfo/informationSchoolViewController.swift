@@ -26,6 +26,7 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
         self.school_id = commonAppDelegate.school_id
         self.loadNavigationItem()
         schoolinfoList = NSMutableArray()
+        self.tbl_schoolinfo.register(UINib.init(nibName: "SchoolInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolInfo")
         self.loadInitialData()
         // Do any additional setup after loading the view.
         refreshControl = UIRefreshControl()
@@ -34,13 +35,8 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
         tbl_schoolinfo.addSubview(refreshControl)
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
-    override func viewDidAppear(_ animated: Bool) {
-        let dispatchTime = DispatchTime.now() + .seconds(1)
-        DispatchQueue.main.asyncAfter(deadline: dispatchTime , execute: {
-            self.tbl_schoolinfo.reloadData()
-        })
-    }
-    func refreshTableView()
+    
+    @objc func refreshTableView()
     {
         self.tbl_schoolinfo.reloadData()
         refreshControl.endRefreshing()
@@ -50,7 +46,7 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
@@ -76,6 +72,7 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
                         {
                             self.schoolinfoList.add(jsonResponse[i])
                         }
+                        self.tbl_schoolinfo.reloadData()
                     }
                     else
                     {
@@ -85,7 +82,6 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
                         print(jsonError)
                     }
                     DispatchQueue.main.async {
-                        self.tbl_schoolinfo.register(UINib.init(nibName: "SchoolInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolInfo")
                         self.tbl_schoolinfo.reloadData()
                         Utilities.hideLoading()
                     }

@@ -12,7 +12,7 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
     var schoolLinksList : NSMutableArray!
     var school_id : Int!
     @IBOutlet var refreshButton: UIButton!
-    var refreshControl : UIRefreshControl!
+   // var refreshControl : UIRefreshControl!
     @IBOutlet var tbl_schoolLinks: UITableView!
     var schoolWebLink : NSMutableArray!
     override func viewDidLoad() {
@@ -24,28 +24,28 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
         self.refreshButton.isHidden = true
         schoolLinksList = ["Melsom vgs","It's Learning","NDLA","Læreplaner","VKT (Bussen)","Ungt Entreprenørskap","Vestfold fylkeskommune","Eksamenskontoret"]
         schoolWebLink = ["https://www.vfk.no/Melsom-vgs/","https://vfk.itslearning.com/Index.aspx","https://ndla.no/","https://www.udir.no/laring-og-trivsel/lareplanverket/finn-lareplan/","https://www.vkt.no/","http://www.ukeplaner.com/school_info/groupinfo/www.ue.no","http://www.ukeplaner.com/school_info/groupinfo/www.vfk.no","https://www.vfk.no/Tema-og-tjenester/Utdanning/Eksamen/"]
-        refreshControl = UIRefreshControl()
-        refreshControl.tintColor = TextColor
-        let attr = [NSForegroundColorAttributeName:UIColor.white]
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes:attr)
-        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
-        tbl_schoolLinks.addSubview(refreshControl)
+//        refreshControl = UIRefreshControl()
+//        refreshControl.tintColor = TextColor
+//        let attr = [NSAttributedStringKey.foregroundColor:UIColor.white]
+//        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes:attr)
+//        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+//        tbl_schoolLinks.addSubview(refreshControl)
         self.tbl_schoolLinks.tableFooterView = UIView()
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
     
-    func refreshTableView()
-    {
-        self.tbl_schoolLinks.reloadData()
-        refreshControl.endRefreshing()
-        
-    }
+//    @objc func refreshTableView()
+//    {
+//        self.tbl_schoolLinks.reloadData()
+//        refreshControl.endRefreshing()
+//
+//    }
     func loadNavigationItem()
     {
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton

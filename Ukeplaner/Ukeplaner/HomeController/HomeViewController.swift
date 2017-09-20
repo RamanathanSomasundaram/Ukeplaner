@@ -35,14 +35,14 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.navigationBarItems()
         refreshControl = UIRefreshControl()
         refreshControl.tintColor = TextColor
-        let attr = [NSForegroundColorAttributeName:UIColor.white]
+        let attr = [NSAttributedStringKey.foregroundColor:UIColor.white]
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes:attr)
         refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
         tbl_schoolList.addSubview(refreshControl)
         self.loadInitialData()
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
-    func refreshTableView()
+    @objc func refreshTableView()
     {
         self.tbl_schoolList.reloadData()
         refreshControl.endRefreshing()
@@ -52,7 +52,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     {
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         commonAppDelegate.recordController = self
         let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_school_search.png"), style: .plain, target: self, action: #selector(search))
         flipRightButton.tintColor = UIColor.white
@@ -63,7 +63,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         isFiltered = false
 
     }
-    func search()
+    @objc func search()
     {
         if(!searchBarBool)
         {
@@ -163,6 +163,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         {
             tbl_schoolList.isUserInteractionEnabled = true
             self.navigationItem.rightBarButtonItem?.isEnabled = true
+            self.noSchoolInfo.isHidden = true
             self.refreshButton.isHidden = true
             Utilities.showLoading()
             Alamofire.request("\(CommonAPI)schoolList").responseJSON { response in
@@ -178,6 +179,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                     else
                     {
                         let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
+                        self.noSchoolInfo.isHidden = false
                         self.noSchoolInfo.text = (jsonError as! String)
                         print(jsonError)
                     }
@@ -288,6 +290,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     {
         Utilities.showAlert("Please check your internet connection!")
         tbl_schoolList.isUserInteractionEnabled = false
+        self.noSchoolInfo.isHidden = true
         schoolListArray.removeAllObjects()
         tbl_schoolList.reloadData()
         self.refreshButton.isHidden = false

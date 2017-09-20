@@ -26,6 +26,7 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
         self.loadNavigationItem()
         school_id = commonAppDelegate.school_id
         schoolWeekList = NSMutableArray()
+        self.tbl_weeklyList.register(UINib.init(nibName: "SchoolInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolInfo")
         self.loadInitialData()
         
         // Do any additional setup after loading the view.
@@ -35,13 +36,8 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
         tbl_weeklyList.addSubview(refreshControl)
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
-    override func viewDidAppear(_ animated: Bool) {
-        let dispatchTime = DispatchTime.now() + .seconds(1)
-        DispatchQueue.main.asyncAfter(deadline: dispatchTime , execute: {
-            self.tbl_weeklyList.reloadData()
-        })
-    }
-    func refreshTableView()
+
+    @objc func refreshTableView()
     {
         self.tbl_weeklyList.reloadData()
         refreshControl.endRefreshing()
@@ -52,7 +48,7 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
@@ -78,6 +74,7 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
                         {
                             self.schoolWeekList.add(jsonResponse[i])
                         }
+                        self.tbl_weeklyList.reloadData()
                     }
                     else
                     {
@@ -87,7 +84,7 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
                         print(jsonError)
                     }
                     DispatchQueue.main.async {
-                        self.tbl_weeklyList.register(UINib.init(nibName: "SchoolInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolInfo")
+                        
                         self.tbl_weeklyList.reloadData()
                         Utilities.hideLoading()
                     }

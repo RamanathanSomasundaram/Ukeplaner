@@ -15,6 +15,7 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
     var group_id : Int!
     var teacherInfoArray : NSMutableArray!
     var tbl_height : CGFloat!
+    var contentHeights : [CGFloat] = [0.0, 0.0]
     override func viewDidLoad() {
         super.viewDidLoad()
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -31,7 +32,7 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
         self.webTableView.tableFooterView = UIView()
         // Do any additional setup after loading the view.
     }
-    func refreshTableView()
+    @objc func refreshTableView()
     {
         self.webTableView.reloadData()
         refreshControl.endRefreshing()
@@ -43,13 +44,13 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
     }
     //Navigation controller custom back button action
-    func backHome()
+    @objc func backHome()
     {
         //schoolWeekList.removeAllObjects()
         self.navigationController?.popViewController(animated: true)
@@ -123,39 +124,30 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : WebViewTableViewCell = tableView.dequeueReusableCell(withIdentifier: "WebViewCell") as! WebViewTableViewCell
+        let htmlHeight = contentHeights[indexPath.row]
         let dicValue = self.teacherInfoArray.object(at: indexPath.row) as! NSDictionary
         let teacher_name = (dicValue.value(forKey: "Teacher Name")! as! String)
         let message = (dicValue.value(forKey: "message")! as! String)
+        
+        cell.webViewContent.tag  = indexPath.row
         cell.webViewContent.loadHTMLString("<html><body>\(teacher_name)\(message)</body></html>", baseURL: nil)
         cell.webViewContent.delegate = self
-        cell.webViewContent.scrollView.delegate = self
-        cell.webViewContent.scrollView.showsHorizontalScrollIndicator = false
+        cell.webViewContent.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: htmlHeight)
         cell.contentSize.constant = tbl_height
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tbl_height
-    }
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tbl_height
+        return contentHeights[indexPath.row]
     }
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        webView.frame.size.height = 1
-        webView.frame.size = webView.sizeThatFits(.zero)
-//        webView.scrollView.isScrollEnabled=false;
-        tbl_height = webView.scrollView.contentSize.height
-        //webView.scalesPageToFit = true
-    }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (scrollView.contentOffset.x > 0)
+        if (contentHeights[webView.tag] != 0.0)
         {
-            scrollView.contentOffset = CGPoint(x: 0, y: scrollView.contentOffset.y)
+            // we already know height, no need to reload cell
+            return
         }
-        if (scrollView.contentOffset.x < 0)
-        {
-            scrollView.contentOffset = CGPoint(x: 0, y: scrollView.contentOffset.y)
-
-        }
+        
+        contentHeights[webView.tag] = webView.scrollView.contentSize.height
+        webTableView.reloadRows(at: [NSIndexPath(row: webView.tag, section: 0) as IndexPath] , with: .automatic)
     }
 
     override func didReceiveMemoryWarning() {

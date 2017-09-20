@@ -39,13 +39,13 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
-//        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(teacherInfo))
-//        flipRightButton.tintColor = UIColor.white
-//        self.navigationItem.rightBarButtonItem = flipRightButton
+        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(teacherInfo))
+        flipRightButton.tintColor = UIColor.white
+        self.navigationItem.rightBarButtonItem = flipRightButton
         weekCollectionView.backgroundColor = UIColor.lightGray
         collectionViewFlowLayout = UICollectionViewFlowLayout()
         var size1 : CGFloat!
@@ -65,17 +65,17 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         self.weekCollectionView.collectionViewLayout = collectionViewFlowLayout
     }
     //Navigation controller custom back button action
-    func backHome()
+    @objc func backHome()
     {
         schoolWeekList.removeAllObjects()
         self.navigationController?.popViewController(animated: true)
     }
-    func teacherInfo()
+    @objc func teacherInfo()
     {
         let teacherInfo = self.storyboard?.instantiateViewController(withIdentifier: "TeacherInfoViewController") as! TeacherInfoViewController
         self.navigationController?.pushViewController(teacherInfo, animated: true)
     }
-    func refreshTableView()
+    @objc func refreshTableView()
     {
         self.weekCollectionView.reloadData()
         refreshControl.endRefreshing()
@@ -86,6 +86,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         {
             self.weekCollectionView.isUserInteractionEnabled = true
             self.refreshButton.isHidden = true
+            self.noWeekLabel.isHidden = true
             Utilities.showLoading()
             Alamofire.request("\(CommonAPI)weekList?schoolid=\(school_id!)&group_id=\(group_id!)").responseJSON { response in
                 if let json = response.result.value {
@@ -120,6 +121,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
     func internetConnection()
     {
         self.weekCollectionView.isUserInteractionEnabled = false
+        self.noWeekLabel.isHidden = true
         Utilities.showAlert("Please check your internet connection!")
         schoolWeekList.removeAllObjects()
         weekCollectionView.reloadData()

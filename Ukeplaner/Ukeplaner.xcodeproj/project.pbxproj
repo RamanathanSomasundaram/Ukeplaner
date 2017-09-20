@@ -197,9 +197,9 @@
 			children = (
 				0D1492831F5F1760002B2701 /* informationSchoolViewController.swift */,
 				0D1492841F5F1760002B2701 /* schoolCouncilViewController.swift */,
+				0D1492871F5F1760002B2701 /* weeklyScheduleViewController.swift */,
 				0D1492851F5F1760002B2701 /* schoolLinksViewController.swift */,
 				0D1492861F5F1760002B2701 /* schoolRulesViewController.swift */,
-				0D1492871F5F1760002B2701 /* weeklyScheduleViewController.swift */,
 			);
 			path = Schoolinfo;
 			sourceTree = "<group>";
@@ -444,18 +444,20 @@
 					0D4F53171F3E1E0700F79487 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 6U6D63WXPD;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
 					0D4F532B1F3E1E0700F79487 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 6U6D63WXPD;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0D4F53171F3E1E0700F79487;
 					};
 					0D4F53361F3E1E0700F79487 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 6U6D63WXPD;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0D4F53171F3E1E0700F79487;
 					};
@@ -765,7 +767,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "iOS Development Common";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ukeplaner/Ukeplaner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -785,7 +788,8 @@
 				PROVISIONING_PROFILE = "91fe924d-9638-4f54-b0ad-cc6765a90738";
 				PROVISIONING_PROFILE_SPECIFIER = "iOS Distribution Common";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ukeplaner/Ukeplaner-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -799,7 +803,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.UkeplanerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ukeplaner.app/Ukeplaner";
 			};
 			name = Debug;
@@ -814,7 +819,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.UkeplanerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ukeplaner.app/Ukeplaner";
 			};
 			name = Release;
@@ -828,7 +834,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.UkeplanerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Ukeplaner;
 			};
 			name = Debug;
@@ -842,7 +849,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.UkeplanerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Ukeplaner;
 			};
 			name = Release;

@@ -19,9 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwX-K0-k94">
-                        <rect key="frame" x="10" y="10" width="120" height="82.5"/>
+                        <rect key="frame" x="10" y="26.5" width="120" height="50"/>
                         <color key="backgroundColor" red="0.54901960780000003" green="0.77647058820000003" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="50" id="A0V-hO-Pin"/>
                             <constraint firstAttribute="width" constant="120" id="nBt-Ae-1iE">
                                 <variation key="heightClass=regular-widthClass=regular" constant="200"/>
                             </constraint>
@@ -42,8 +43,6 @@
                     <constraint firstItem="UwX-K0-k94" firstAttribute="centerY" secondItem="I8v-C7-mO9" secondAttribute="centerY" id="HUF-bg-PBI"/>
                     <constraint firstAttribute="bottom" secondItem="I8v-C7-mO9" secondAttribute="bottom" constant="10" id="Oos-Uc-oWh"/>
                     <constraint firstAttribute="trailing" secondItem="I8v-C7-mO9" secondAttribute="trailing" constant="10" id="VDo-cH-NGe"/>
-                    <constraint firstAttribute="bottom" secondItem="UwX-K0-k94" secondAttribute="bottom" constant="10" id="f1F-Fv-GGP"/>
-                    <constraint firstItem="UwX-K0-k94" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="roz-uu-fRa"/>
                     <constraint firstItem="I8v-C7-mO9" firstAttribute="leading" secondItem="UwX-K0-k94" secondAttribute="trailing" constant="10" id="vOs-ZQ-fp7"/>
                     <constraint firstItem="I8v-C7-mO9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="yIi-UF-1CL"/>
                 </constraints>

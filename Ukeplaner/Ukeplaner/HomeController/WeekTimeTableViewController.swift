@@ -19,6 +19,7 @@ class WeekTimeTableViewController: UIViewController{
     @IBOutlet var prevBtn: UIButton!
     @IBOutlet var nextBtn: UIButton!
     @IBOutlet var noHomeLabel: UILabel!
+    @IBOutlet var refreshButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -38,13 +39,13 @@ class WeekTimeTableViewController: UIViewController{
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
     }
     //Navigation controller custom back button action
-    func backHome()
+    @objc func backHome()
     {
         self.navigationController?.popViewController(animated: true)
     }
@@ -84,8 +85,12 @@ class WeekTimeTableViewController: UIViewController{
     }
     
     //Load Week Time table API service to get value
-    func loadweekTimeTable()
+    @objc func loadweekTimeTable()
     {
+        if(Utilities.checkForInternet())
+        {
+            self.refreshButton.isHidden = true
+        self.noHomeLabel.isHidden = true
         if(dicvalue.count > 0 && daysArray.count > 0)
         {
             tc.view.removeFromSuperview()
@@ -96,11 +101,7 @@ class WeekTimeTableViewController: UIViewController{
         school_id = commonAppDelegate.school_id!
         group_id = commonAppDelegate.group_id!
         week_id = commonAppDelegate.week_id!
-        let indicator = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
-        indicator.color = TextColor
-        indicator.center = (commonAppDelegate.window?.rootViewController?.view.center)!
-        commonAppDelegate.window?.rootViewController?.view.addSubview(indicator)
-        indicator.startAnimating()
+        Utilities.showLoading()
         Alamofire.request("\(CommonAPI)weekplanner?schoolid=\(school_id!)&group_id=\(group_id!)&week_id=\(week_id!)").responseJSON { response in
             if let json = response.result.value {
                 if ((json as AnyObject).isKind(of: NSArray.self))
@@ -140,7 +141,7 @@ class WeekTimeTableViewController: UIViewController{
                             self.daysArray.add(obj)
                         }
                     }
-                    indicator.stopAnimating()
+                    Utilities.hideLoading()
                     self.noHomeLabel.isHidden = true
                     self.loadPageViewController()
                 }
@@ -149,12 +150,32 @@ class WeekTimeTableViewController: UIViewController{
                     let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
                     self.noHomeLabel.isHidden = false
                     self.noHomeLabel.text = (jsonError as! String)
-                    indicator.stopAnimating()
+                    Utilities.hideLoading()
                 }
             }
             
         }
+        }
+        else
+        {
+         self.internetConnection()
+        }
     }
+    //Loss internet connection
+    func internetConnection()
+    {
+        self.noHomeLabel.isHidden = true
+        Utilities.showAlert("Please check your internet connection!")
+        daysArray.removeAllObjects()
+        dicvalue.removeAllObjects()
+        refreshButton.isHidden = false
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+    }
+    
+    @IBAction func RefreshAction(_ sender: Any) {
+        self.loadweekTimeTable()
+    }
+    
     //Load page view controller - Tabpageviewcontroller class
     func loadPageViewController()
     {
