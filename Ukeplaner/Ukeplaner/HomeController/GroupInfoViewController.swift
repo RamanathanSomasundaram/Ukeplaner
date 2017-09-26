@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,SWRevealViewControllerDelegate {
     @IBOutlet var collectionView: UICollectionView!
     var collectionviewFlowlayout : UICollectionViewFlowLayout!
     var schoolID : Int!
@@ -26,6 +26,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         schoolID = commonAppDelegate.school_id
         self.refreshButton.isHidden = true
         self.groupInfolist = NSMutableArray()
+        self.revealViewController().delegate = self
         self.loadInitialData()
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -162,6 +163,29 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     deinit {
         self.groupInfolist.removeAllObjects()
     }
+    //MARK: - REVEAL VIEW CONTROLLER DELEGATE
+    
+    func revealController(_ revealController: SWRevealViewController!, didMoveTo position: FrontViewPosition) {
+        if(position == FrontViewPositionLeft){
+            self.view.isUserInteractionEnabled = true
+            //   self.navigationItem.rightBarButtonItem?.isEnabled = true
+            
+        } else {
+            self.view.isUserInteractionEnabled = false
+            //  self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
+    
+    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
+        if(position == FrontViewPositionLeft)
+        {
+            self.view.isUserInteractionEnabled = true
+            
+        } else {
+            self.view.isUserInteractionEnabled = false
+        }
+    }
+    //** End of reveal view controller delegate **//
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,SWRevealViewControllerDelegate {
     var schoolRulesList : NSMutableArray!
     var school_id : Int!
     @IBOutlet var tbl_schoolRules: UITableView!
@@ -24,6 +24,7 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
         self.title = "Roules List"
         school_id = commonAppDelegate.school_id
         schoolRulesList = NSMutableArray()
+        self.revealViewController().delegate = self
         self.tbl_schoolRules.register(UINib.init(nibName: "SchoolInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolInfo")
         self.loadInitialData()
         // Do any additional setup after loading the view.
@@ -144,6 +145,29 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
     deinit {
         self.schoolRulesList.removeAllObjects()
     }
+    //MARK: - REVEAL VIEW CONTROLLER DELEGATE
+    
+    func revealController(_ revealController: SWRevealViewController!, didMoveTo position: FrontViewPosition) {
+        if(position == FrontViewPositionLeft){
+            self.view.isUserInteractionEnabled = true
+            //   self.navigationItem.rightBarButtonItem?.isEnabled = true
+            
+        } else {
+            self.view.isUserInteractionEnabled = false
+            //  self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
+    
+    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
+        if(position == FrontViewPositionLeft)
+        {
+            self.view.isUserInteractionEnabled = true
+            
+        } else {
+            self.view.isUserInteractionEnabled = false
+        }
+    }
+    //** End of reveal view controller delegate **//
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

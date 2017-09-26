@@ -12,6 +12,7 @@ class WeekTimeTableViewCell: UITableViewCell {
     
     @IBOutlet var subjectName: UILabel!
     @IBOutlet var subjectDesc: UILabel!
+    @IBOutlet var weekBgView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

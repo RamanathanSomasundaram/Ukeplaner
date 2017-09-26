@@ -87,10 +87,18 @@ class MondayViewController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return subjDesc.count
     }
+    //Make card view on cell View
+    func makeCardView (_ cell : UIView)
+    {
+        cell.layer.cornerRadius = 8
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : WeekTimeTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "weekTimeTable") as! WeekTimeTableViewCell
+        let viewCell = cell.viewWithTag(610)!
+        self.makeCardView(viewCell)
         let dictValues = self.subjDesc.object(at: indexPath.row) as! NSDictionary
         cell.subjectName.text = (dictValues.value(forKey: "subject_name") as! String)
+        cell.subjectName.layer.cornerRadius = 8
         cell.subjectDesc.text = (dictValues.value(forKey: "description") as! String)
         cell.isUserInteractionEnabled = false
         return cell

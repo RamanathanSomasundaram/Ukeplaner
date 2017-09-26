@@ -8,7 +8,7 @@
 
 import UIKit
 
-class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,SWRevealViewControllerDelegate {
     var schoolLinksList : NSMutableArray!
     var school_id : Int!
     @IBOutlet var refreshButton: UIButton!
@@ -22,6 +22,7 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
         self.loadNavigationItem()
         school_id = commonAppDelegate.school_id
         self.refreshButton.isHidden = true
+        self.revealViewController().delegate = self
         schoolLinksList = ["Melsom vgs","It's Learning","NDLA","Læreplaner","VKT (Bussen)","Ungt Entreprenørskap","Vestfold fylkeskommune","Eksamenskontoret"]
         schoolWebLink = ["https://www.vfk.no/Melsom-vgs/","https://vfk.itslearning.com/Index.aspx","https://ndla.no/","https://www.udir.no/laring-og-trivsel/lareplanverket/finn-lareplan/","https://www.vkt.no/","http://www.ukeplaner.com/school_info/groupinfo/www.ue.no","http://www.ukeplaner.com/school_info/groupinfo/www.vfk.no","https://www.vfk.no/Tema-og-tjenester/Utdanning/Eksamen/"]
 //        refreshControl = UIRefreshControl()
@@ -119,6 +120,29 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
             self.internetConnection()
         }
     }
+    //MARK: - REVEAL VIEW CONTROLLER DELEGATE
+    
+    func revealController(_ revealController: SWRevealViewController!, didMoveTo position: FrontViewPosition) {
+        if(position == FrontViewPositionLeft){
+            self.view.isUserInteractionEnabled = true
+            //   self.navigationItem.rightBarButtonItem?.isEnabled = true
+            
+        } else {
+            self.view.isUserInteractionEnabled = false
+            //  self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
+    
+    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
+        if(position == FrontViewPositionLeft)
+        {
+            self.view.isUserInteractionEnabled = true
+            
+        } else {
+            self.view.isUserInteractionEnabled = false
+        }
+    }
+    //** End of reveal view controller delegate **//
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -46,7 +46,6 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     {
         self.tbl_schoolList.reloadData()
         refreshControl.endRefreshing()
-
     }
     func navigationBarItems()
     {
@@ -57,7 +56,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_school_search.png"), style: .plain, target: self, action: #selector(search))
         flipRightButton.tintColor = UIColor.white
         self.navigationItem.rightBarButtonItem = flipRightButton
-        let slideMenu : SlideMenuList? = (self.revealViewController().rearViewController as! SlideMenuList)
+        let slideMenu : SlideMenuList? = (self.revealViewController().rearViewController as? SlideMenuList)
         slideMenu?.tbl_schoolMenu.selectRow(at: [0,1], animated: true, scrollPosition: .none)
         self.title = "SKOLER"
         isFiltered = false

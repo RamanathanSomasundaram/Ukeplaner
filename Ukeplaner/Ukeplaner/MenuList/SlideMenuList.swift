@@ -11,13 +11,10 @@ import UIKit
 
 class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet var tbl_schoolMenu: UITableView!
-    
-    @IBOutlet var bgIconView: UIView!
     var menuTitleList : NSMutableArray!
     var menuIconList : NSMutableArray!
     var selectMenuIconList : NSMutableArray!
     override func viewDidLoad() {
-        self.navigationBarimage()
         menuTitleList = NSMutableArray()
         menuIconList = NSMutableArray()
         selectMenuIconList = NSMutableArray()
@@ -25,18 +22,6 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
         menuIconList = ["gic_school","gic_group_info","gic_information_school","gic_student_council","gic_weekly_schedule","gic_student_links","gic_student_rules"]
         selectMenuIconList = ["ic_school","ic_group_info","ic_information_school","ic_student_council","ic_weekly_schedule","ic_student_links","ic_student_rules"]
     }
-    //Navigation controller load image view
-    func navigationBarimage()
-    {
-        let appIcon: UIImageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 250, height: 250))
-        appIcon.image = UIImage(named: "menu_logo.png")
-       let statusBarView = UIView.init(frame: CGRect(x: 0, y: 0, width: 320, height: 200))
-        statusBarView.backgroundColor = UIColor(red: 200.0 / 255.0, green: 230.0 / 255.0, blue: 201.0 / 255.0, alpha: 1.0)
-        self.view.addSubview(statusBarView)
-        statusBarView.addSubview(appIcon)
-        UINavigationBar.appearance().addSubview(statusBarView)
-    }
-    
     //MARK: - Tableview Datasource and Delegates
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -60,8 +45,6 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let cell = tableView.cellForRow(at: indexPath)
-//        cell?.imageView?.image = UIImage.init(named: (selectMenuIconList.object(at: indexPath.row) as! String))
         if(indexPath.row == 0)
         {
             self.performSegue(withIdentifier: "home", sender: nil)

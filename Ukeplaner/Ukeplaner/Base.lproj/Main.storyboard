@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -592,7 +593,7 @@
                     </view>
                     <connections>
                         <segue destination="PKF-fb-qbw" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="D7d-a2-QhC"/>
-                        <segue destination="uas-oV-UHA" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="KwK-Vj-nwr"/>
+                        <segue destination="F8p-XV-uqR" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="cRg-ij-I3O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hN1-or-q9p" sceneMemberID="firstResponder"/>
@@ -615,46 +616,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zbn-eJ-X3n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="118" y="293"/>
-        </scene>
-        <!--Slide Menu List-->
-        <scene sceneID="eSR-OC-OQP">
-            <objects>
-                <viewController storyboardIdentifier="SlideMenuList" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uas-oV-UHA" customClass="SlideMenuList" customModule="Ukeplaner" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BSz-4B-Zdw"/>
-                        <viewControllerLayoutGuide type="bottom" id="2Ah-CM-gs9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="klF-uS-gNy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="hOO-VF-g1U">
-                                <rect key="frame" x="0.0" y="165" width="320" height="395"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="uas-oV-UHA" id="Czu-Ro-RP9"/>
-                                    <outlet property="delegate" destination="uas-oV-UHA" id="Cxs-cg-isq"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="tbl_schoolMenu" destination="hOO-VF-g1U" id="HsV-g8-NYd"/>
-                        <segue destination="Saz-yh-W4k" kind="custom" identifier="groupinfo" customClass="SWRevealViewControllerSegue" id="tja-uR-KLY"/>
-                        <segue destination="BYZ-38-t0r" kind="custom" identifier="home" customClass="SWRevealViewControllerSegue" id="srM-RE-eiN"/>
-                        <segue destination="FIA-nd-dwC" kind="custom" identifier="rules" customClass="SWRevealViewControllerSegue" id="aUx-pJ-35J"/>
-                        <segue destination="nDg-tB-U2n" kind="custom" identifier="links" customClass="SWRevealViewControllerSegue" id="4Xk-I1-7jY"/>
-                        <segue destination="e1h-5n-z4g" kind="custom" identifier="weekly" customClass="SWRevealViewControllerSegue" id="5fx-w2-Y2l"/>
-                        <segue destination="eVW-Wx-e59" kind="custom" identifier="schoolcouncil" customClass="SWRevealViewControllerSegue" id="njg-Fn-Fbv"/>
-                        <segue destination="cDU-na-MXy" kind="custom" identifier="schoolinfo" customClass="SWRevealViewControllerSegue" id="qL1-Xj-M1m"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DwT-ON-PO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="461.25" y="-529.22535211267609"/>
         </scene>
         <!--Weekday View Controller-->
         <scene sceneID="M0p-oc-kla">
@@ -972,9 +933,9 @@
                                     <constraint firstItem="MXq-FA-8AP" firstAttribute="centerX" secondItem="nar-kW-jdz" secondAttribute="centerX" id="mUN-Jw-1gn"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8SL-9x-JdV">
-                                <rect key="frame" x="0.0" y="90" width="320" height="408"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8SL-9x-JdV">
+                                <rect key="frame" x="0.0" y="90" width="320" height="414"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="XXI-dX-IQx" id="cGa-5U-24B"/>
                                     <outlet property="delegate" destination="XXI-dX-IQx" id="jbV-aq-7LW"/>
@@ -989,7 +950,7 @@
                             <constraint firstAttribute="trailing" secondItem="8SL-9x-JdV" secondAttribute="trailing" id="VDo-H3-vHw"/>
                             <constraint firstItem="8SL-9x-JdV" firstAttribute="leading" secondItem="3ke-Cx-p6a" secondAttribute="leading" id="YTK-vP-QAg"/>
                             <constraint firstItem="8SL-9x-JdV" firstAttribute="top" secondItem="nar-kW-jdz" secondAttribute="bottom" constant="50" id="mKR-39-W7W"/>
-                            <constraint firstItem="0Ri-ZC-qOt" firstAttribute="top" secondItem="8SL-9x-JdV" secondAttribute="bottom" constant="70" id="syA-Qn-3qO"/>
+                            <constraint firstItem="0Ri-ZC-qOt" firstAttribute="top" secondItem="8SL-9x-JdV" secondAttribute="bottom" constant="64" id="syA-Qn-3qO"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1039,12 +1000,79 @@
             </objects>
             <point key="canvasLocation" x="4110" y="-571"/>
         </scene>
+        <!--Slide Menu List-->
+        <scene sceneID="Sq7-Ys-ZxW">
+            <objects>
+                <viewController storyboardIdentifier="SlideMenuList" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F8p-XV-uqR" customClass="SlideMenuList" customModule="Ukeplaner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rbh-W5-8xa"/>
+                        <viewControllerLayoutGuide type="bottom" id="fAn-61-hAA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yZN-4I-0QA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meX-hs-pms">
+                                <rect key="frame" x="0.0" y="0.0" width="256" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="mjr-ww-zS2">
+                                        <rect key="frame" x="3.5" y="-25" width="250" height="250"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="PBW-GX-dIo"/>
+                                            <constraint firstAttribute="height" constant="250" id="h35-4c-iMh"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.78431372549019607" green="0.90196078431372551" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="mjr-ww-zS2" firstAttribute="centerX" secondItem="meX-hs-pms" secondAttribute="centerX" id="CK1-NG-IkF"/>
+                                    <constraint firstItem="mjr-ww-zS2" firstAttribute="centerY" secondItem="meX-hs-pms" secondAttribute="centerY" id="NDh-f9-LOv"/>
+                                    <constraint firstAttribute="height" constant="200" id="bkU-tA-9KL"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vCV-Ma-PnZ">
+                                <rect key="frame" x="0.0" y="200" width="320" height="368"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="F8p-XV-uqR" id="PB9-69-2BW"/>
+                                    <outlet property="delegate" destination="F8p-XV-uqR" id="oSK-rk-4jm"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.7843137255" green="0.90196078430000004" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vCV-Ma-PnZ" secondAttribute="trailing" id="38G-4R-PXl"/>
+                            <constraint firstItem="meX-hs-pms" firstAttribute="top" secondItem="yZN-4I-0QA" secondAttribute="top" id="4nX-9U-Q75"/>
+                            <constraint firstItem="fAn-61-hAA" firstAttribute="top" secondItem="vCV-Ma-PnZ" secondAttribute="bottom" id="5MB-f1-uCz"/>
+                            <constraint firstItem="vCV-Ma-PnZ" firstAttribute="top" secondItem="meX-hs-pms" secondAttribute="bottom" id="7Ai-ub-8tr"/>
+                            <constraint firstItem="meX-hs-pms" firstAttribute="leading" secondItem="yZN-4I-0QA" secondAttribute="leading" id="8zM-sA-DgU"/>
+                            <constraint firstItem="vCV-Ma-PnZ" firstAttribute="leading" secondItem="yZN-4I-0QA" secondAttribute="leading" id="Ove-el-Ban"/>
+                            <constraint firstItem="meX-hs-pms" firstAttribute="width" secondItem="yZN-4I-0QA" secondAttribute="width" multiplier="0.8" id="rGC-lK-eQx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tbl_schoolMenu" destination="vCV-Ma-PnZ" id="XFA-jP-JZn"/>
+                        <segue destination="Saz-yh-W4k" kind="custom" identifier="groupinfo" customClass="SWRevealViewControllerSegue" id="QFC-bj-9ej"/>
+                        <segue destination="cDU-na-MXy" kind="custom" identifier="schoolinfo" customClass="SWRevealViewControllerSegue" id="QHD-hX-NOw"/>
+                        <segue destination="eVW-Wx-e59" kind="custom" identifier="schoolcouncil" customClass="SWRevealViewControllerSegue" id="mvA-ol-hAs"/>
+                        <segue destination="e1h-5n-z4g" kind="custom" identifier="weekly" customClass="SWRevealViewControllerSegue" id="Xa1-nT-23v"/>
+                        <segue destination="nDg-tB-U2n" kind="custom" identifier="links" customClass="SWRevealViewControllerSegue" id="YxY-jC-UpJ"/>
+                        <segue destination="FIA-nd-dwC" kind="custom" identifier="rules" customClass="SWRevealViewControllerSegue" id="bvw-TY-oPV"/>
+                        <segue destination="BYZ-38-t0r" kind="custom" identifier="home" customClass="SWRevealViewControllerSegue" id="gqr-4j-Q6H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hWq-fo-86f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="462.5" y="-528.5"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="menu_logo.png" width="512" height="512"/>
         <image name="next" width="25" height="25"/>
         <image name="previous" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="srM-RE-eiN"/>
+        <segue reference="gqr-4j-Q6H"/>
     </inferredMetricsTieBreakers>
 </document>
