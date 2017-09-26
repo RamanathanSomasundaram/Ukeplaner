@@ -22,6 +22,7 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
         school_id = commonAppDelegate.school_id
         group_id = commonAppDelegate.group_id
         teacherInfoArray = NSMutableArray()
+        self.webTableView.register(UINib.init(nibName: "WebViewTableViewCell", bundle: nil), forCellReuseIdentifier: "WebViewCell")
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
@@ -72,6 +73,7 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
                         {
                             self.teacherInfoArray.add(jsonResponse[i])
                         }
+                        //self.webTableView.reloadData()
                     }
                     else
                     {
@@ -80,7 +82,6 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
                         print(jsonError)
                     }
                     DispatchQueue.main.async {
-                        self.webTableView.register(UINib.init(nibName: "WebViewTableViewCell", bundle: nil), forCellReuseIdentifier: "WebViewCell")
                         self.webTableView.reloadData()
                         Utilities.hideLoading()
                     }
@@ -113,24 +114,31 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
     func makeCardView (_ cell : UIView)
     {
         cell.layer.cornerRadius = 8
-        cell.layer.shadowRadius = 2.5
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0.0, height: 0.2)
-        cell.layer.masksToBounds  = false
-        let shadowPath = UIBezierPath(rect: cell.bounds)
-        cell.layer.shadowPath = shadowPath.cgPath
-        cell.layer.shadowOpacity = 0.9
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : WebViewTableViewCell = tableView.dequeueReusableCell(withIdentifier: "WebViewCell") as! WebViewTableViewCell
         let htmlHeight = contentHeights[indexPath.row]
         let dicValue = self.teacherInfoArray.object(at: indexPath.row) as! NSDictionary
-        let teacher_name = (dicValue.value(forKey: "Teacher Name")! as! String)
+        let align = "right"
+        let teacher_name = "<p align=\(align)>\(dicValue.value(forKey: "Teacher Name")! as! String)</p>"
         let message = (dicValue.value(forKey: "message")! as! String)
-        
+        let image_string = (dicValue.value(forKey: "Image")! as! String)
         cell.webViewContent.tag  = indexPath.row
-        cell.webViewContent.loadHTMLString("<html><body>\(teacher_name)\(message)</body></html>", baseURL: nil)
+        if(image_string != "")
+        {
+            
+            cell.webViewContent.loadHTMLString("<html><body>\(message)\(teacher_name)</body></html>", baseURL: nil)
+        }
+        else
+        {
+            cell.webViewContent.loadHTMLString("<html><body>\(message)\(teacher_name)</body></html>", baseURL: nil)
+        }
+//        cell.schoolLogo.sd_setShowActivityIndicatorView(true)
+//        cell.schoolLogo.sd_setIndicatorStyle(.gray)
+//        cell.schoolLogo.sd_setImage(with: URL(string: (dictValues!.value(forKey: "school_logo")! as! String))! , placeholderImage: image, options: .refreshCached)
+//        cell.schoolLogo.image = image
+        
         cell.webViewContent.delegate = self
         cell.webViewContent.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: htmlHeight)
         cell.contentSize.constant = tbl_height

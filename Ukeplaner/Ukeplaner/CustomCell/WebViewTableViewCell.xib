@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7PX-ub-ttc">
-                        <rect key="frame" x="10" y="5" width="300" height="36.5"/>
+                        <rect key="frame" x="10" y="5" width="290" height="33.5"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hV6-Vk-3hY">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="0.0"/>
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="0.0"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="9kd-KJ-g3u"/>
@@ -41,8 +41,8 @@
                 <constraints>
                     <constraint firstItem="7PX-ub-ttc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="CgI-Q0-UJz"/>
                     <constraint firstItem="7PX-ub-ttc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="IPd-K8-tMo"/>
-                    <constraint firstAttribute="bottom" secondItem="7PX-ub-ttc" secondAttribute="bottom" constant="2" id="cw2-rP-PM7"/>
-                    <constraint firstAttribute="trailing" secondItem="7PX-ub-ttc" secondAttribute="trailing" constant="10" id="dXH-2h-R5a"/>
+                    <constraint firstAttribute="bottom" secondItem="7PX-ub-ttc" secondAttribute="bottom" constant="5" id="cw2-rP-PM7"/>
+                    <constraint firstAttribute="trailing" secondItem="7PX-ub-ttc" secondAttribute="trailing" constant="20" id="dXH-2h-R5a"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
