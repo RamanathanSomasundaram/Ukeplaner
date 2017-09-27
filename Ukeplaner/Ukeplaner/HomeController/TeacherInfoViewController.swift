@@ -120,8 +120,7 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
         let cell : WebViewTableViewCell = tableView.dequeueReusableCell(withIdentifier: "WebViewCell") as! WebViewTableViewCell
         let htmlHeight = contentHeights[indexPath.row]
         let dicValue = self.teacherInfoArray.object(at: indexPath.row) as! NSDictionary
-        let align = "right"
-        let teacher_name = "<p align=\(align)>\(dicValue.value(forKey: "Teacher Name")! as! String)</p>"
+        let teacher_name = (dicValue.value(forKey: "Teacher Name")! as! String)
         let message = (dicValue.value(forKey: "message")! as! String)
         let image_string = (dicValue.value(forKey: "Image")! as! String)
         cell.webViewContent.tag  = indexPath.row
@@ -134,6 +133,7 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
         {
             cell.webViewContent.loadHTMLString("<html><body>\(message)\(teacher_name)</body></html>", baseURL: nil)
         }
+        cell.teacherName.text = teacher_name
 //        cell.schoolLogo.sd_setShowActivityIndicatorView(true)
 //        cell.schoolLogo.sd_setIndicatorStyle(.gray)
 //        cell.schoolLogo.sd_setImage(with: URL(string: (dictValues!.value(forKey: "school_logo")! as! String))! , placeholderImage: image, options: .refreshCached)
@@ -141,6 +141,8 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
         
         cell.webViewContent.delegate = self
         cell.webViewContent.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: htmlHeight)
+        cell.webViewContent.scrollView.bounces = false
+        cell.webViewContent.scrollView.showsVerticalScrollIndicator = false
         cell.contentSize.constant = tbl_height
         return cell
     }
