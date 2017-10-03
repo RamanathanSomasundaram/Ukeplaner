@@ -446,7 +446,7 @@
 				TargetAttributes = {
 					0D4F53171F3E1E0700F79487 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 6U6D63WXPD;
+						DevelopmentTeam = UU36BJMG2T;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
@@ -761,14 +761,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 6U6D63WXPD;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mujammil Ahamed (X6WMZP8898)";
+				DEVELOPMENT_TEAM = UU36BJMG2T;
 				INFOPLIST_FILE = Ukeplaner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.Ukeplaner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.ukeplanerapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fa211e06-04ad-4165-9417-0ba0748db9f7";
-				PROVISIONING_PROFILE_SPECIFIER = "iOS Development Common";
+				PROVISIONING_PROFILE = "b6cb84e0-9126-4b47-a6a6-61c6ce6475f0";
+				PROVISIONING_PROFILE_SPECIFIER = "Ukeplaner Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ukeplaner/Ukeplaner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -782,15 +783,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 6U6D63WXPD;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mujammil Ahamed (UU36BJMG2T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mujammil Ahamed (UU36BJMG2T)";
+				DEVELOPMENT_TEAM = UU36BJMG2T;
 				INFOPLIST_FILE = Ukeplaner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.Ukeplaner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.ukeplanerapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "91fe924d-9638-4f54-b0ad-cc6765a90738";
-				PROVISIONING_PROFILE_SPECIFIER = "iOS Distribution Common";
+				PROVISIONING_PROFILE = "db1faefe-8cc5-4edb-b8db-cd2d962af07c";
+				PROVISIONING_PROFILE_SPECIFIER = "Ukeplaner AppStore";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ukeplaner/Ukeplaner-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
