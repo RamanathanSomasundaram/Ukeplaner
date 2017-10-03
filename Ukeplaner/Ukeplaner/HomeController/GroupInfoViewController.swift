@@ -54,7 +54,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     override func viewDidAppear(_ animated: Bool) {
         collectionviewFlowlayout = UICollectionViewFlowLayout()
         let size1 = (self.view.frame.size.width - 4 ) / 2
-        collectionviewFlowlayout.itemSize = CGSize(width: size1, height: 100)
+        collectionviewFlowlayout.itemSize = CGSize(width: size1, height: 70)
         collectionviewFlowlayout.minimumLineSpacing = 1
         collectionviewFlowlayout.minimumInteritemSpacing = 1
         collectionviewFlowlayout.scrollDirection = .vertical

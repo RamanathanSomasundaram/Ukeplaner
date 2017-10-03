@@ -65,19 +65,19 @@ class MondayViewController: UIViewController,UITableViewDelegate,UITableViewData
                 subjDesc.add(dicSubj.object(at: i))
             }
         }
-        print(subjDesc)
+        //print(subjDesc)
         self.EnableAction()
         self.Tbl_timetable.register(UINib.init(nibName: "WeekTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "weekTimeTable")
     }
     
     @IBAction func nextAction(_ sender: Any) {
         commonAppDelegate.week_id = commonAppDelegate.week_id + 1
-        print("week_id \(commonAppDelegate.week_id!)")
+        //print("week_id \(commonAppDelegate.week_id!)")
           NotificationCenter.default.post(name: NSNotification.Name(rawValue:"reload_timetable"), object: self)
     }
     @IBAction func previousAction(_ sender: Any) {
         commonAppDelegate.week_id = commonAppDelegate.week_id - 1
-        print("week_id \(commonAppDelegate.week_id!)")
+        //print("week_id \(commonAppDelegate.week_id!)")
           NotificationCenter.default.post(name: NSNotification.Name(rawValue:"reload_timetable"), object: self)
     }
     //MARK: - Tableview Delegate and Datasource

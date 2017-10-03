@@ -55,7 +55,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
         else
         {
-            size1 = (self.view.frame.size.width - 4 ) / 1
+            size1 = (self.view.frame.size.width - 4 ) / 0.95
             
         }
         collectionViewFlowLayout.itemSize = CGSize(width: size1, height: 80)
@@ -67,7 +67,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
     //Navigation controller custom back button action
     @objc func backHome()
     {
-        schoolWeekList.removeAllObjects()
+        //schoolWeekList.removeAllObjects()
         self.navigationController?.popViewController(animated: true)
     }
     @objc func teacherInfo()

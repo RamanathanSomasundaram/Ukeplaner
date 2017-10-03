@@ -73,14 +73,14 @@ class WeekTimeTableViewController: UIViewController{
     }
     @IBAction func previousAction(_ sender: Any) {
         commonAppDelegate.week_id = commonAppDelegate.week_id - 1
-        print("week_id \(commonAppDelegate.week_id!)")
+       // print("week_id \(commonAppDelegate.week_id!)")
         self.loadweekTimeTable()
     }
     
     @IBAction func nextAction(_ sender: Any) {
 
         commonAppDelegate.week_id = commonAppDelegate.week_id + 1
-        print("week_id \(commonAppDelegate.week_id!)")
+        //print("week_id \(commonAppDelegate.week_id!)")
         self.loadweekTimeTable()
     }
     
