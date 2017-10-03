@@ -31,13 +31,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="fwP-Tb-KC5">
-                                <rect key="frame" x="10" y="134" width="300" height="300"/>
+                                <rect key="frame" x="-40" y="84" width="400" height="400"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="c7C-wM-xxT">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="512"/>
+                                    <constraint firstAttribute="width" constant="400" id="c7C-wM-xxT">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="900"/>
                                     </constraint>
-                                    <constraint firstAttribute="height" constant="300" id="r0h-Xt-h3z">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="512"/>
+                                    <constraint firstAttribute="height" constant="400" id="r0h-Xt-h3z">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="900"/>
                                     </constraint>
                                 </constraints>
                             </imageView>

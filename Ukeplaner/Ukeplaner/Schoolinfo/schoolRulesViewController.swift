@@ -65,6 +65,13 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
             self.refreshButton.isHidden = true
             Utilities.showLoading()
             Alamofire.request("\(CommonAPI)Roules?schoolid=\(school_id!)").responseJSON { response in
+                let error = response.result.error
+                if error != nil
+                {
+                    Utilities.hideLoading()
+                    Utilities.showAlert("\(error!)")
+                    return
+                }
                 if let json = response.result.value {
                     if ((json as AnyObject).isKind(of: NSArray.self))
                     {

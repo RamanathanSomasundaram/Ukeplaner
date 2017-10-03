@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D1142901F83E42200613BE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D11428F1F83E41A00613BE7 /* GoogleService-Info.plist */; };
 		0D1492941F5F1760002B2701 /* menu_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1492741F5F1760002B2701 /* menu_logo.png */; };
 		0D1492951F5F1760002B2701 /* sampleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1492751F5F1760002B2701 /* sampleImage.png */; };
 		0D1492961F5F1760002B2701 /* SchoolInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1492771F5F1760002B2701 /* SchoolInfoTableViewCell.swift */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		083CB76D5A697A35523066D4 /* Pods_Ukeplaner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ukeplaner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D11428F1F83E41A00613BE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0D1492741F5F1760002B2701 /* menu_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_logo.png; sourceTree = "<group>"; };
 		0D1492751F5F1760002B2701 /* sampleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleImage.png; sourceTree = "<group>"; };
 		0D1492771F5F1760002B2701 /* SchoolInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				0D4F53241F3E1E0700F79487 /* LaunchScreen.storyboard */,
 				0D4F534F1F3EDACC00F79487 /* Ukeplaner-Bridging-Header.h */,
 				0D4F53271F3E1E0700F79487 /* Info.plist */,
+				0D11428F1F83E41A00613BE7 /* GoogleService-Info.plist */,
 			);
 			name = Supportingfiles;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				0D4F53231F3E1E0700F79487 /* Assets.xcassets in Resources */,
 				0D1492971F5F1760002B2701 /* SchoolInfoTableViewCell.xib in Resources */,
 				0D5ADF521F698CFA00CC87AD /* WebViewTableViewCell.xib in Resources */,
+				0D1142901F83E42200613BE7 /* GoogleService-Info.plist in Resources */,
 				0D4F53211F3E1E0700F79487 /* Main.storyboard in Resources */,
 				0D1492951F5F1760002B2701 /* sampleImage.png in Resources */,
 			);

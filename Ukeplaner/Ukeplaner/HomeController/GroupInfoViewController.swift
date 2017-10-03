@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,SWRevealViewControllerDelegate {
     @IBOutlet var collectionView: UICollectionView!
     var collectionviewFlowlayout : UICollectionViewFlowLayout!
@@ -74,6 +74,13 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
             self.refreshButton.isHidden = true
             Utilities.showLoading()
             Alamofire.request("\(CommonAPI)groupList?schoolid=\(schoolID!)").responseJSON { response in
+                let error = response.result.error
+                if error != nil
+                {
+                    Utilities.hideLoading()
+                    Utilities.showAlert("\(error!)")
+                    return
+                }
                 if let json = response.result.value {
                     if ((json as AnyObject).isKind(of: NSArray.self))
                     {
@@ -159,6 +166,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         commonAppDelegate.group_id = (dicLoad.value(forKey: "group_id") as! NSString).integerValue
         let weekList = self.storyboard?.instantiateViewController(withIdentifier: "weekdayViewController") as! weekdayViewController
         self.navigationController?.pushViewController(weekList, animated: true)
+         Analytics.logEvent("Ukeplaner", parameters: ["Group_name" : "\((dicLoad.value(forKey: "group_name")! as! NSString))" as NSObject , "Group_ID" :"\((dicLoad.value(forKey: "group_id")! as! NSString))" as NSObject , "Group_Description" : "\((dicLoad.value(forKey: "group_name")! as! NSString)) is selected to show weeklist"])
     }
     deinit {
         self.groupInfolist.removeAllObjects()

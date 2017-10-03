@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,SWRevealViewControllerDelegate {
     var schoolLinksList : NSMutableArray!
     var school_id : Int!
@@ -114,6 +114,7 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
             let weblink = self.storyboard!.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
             weblink.URLString = (self.schoolWebLink.object(at: indexPath.row) as! String)
             self.navigationController?.pushViewController(weblink, animated: true)
+            Analytics.logEvent("Ukeplaner", parameters: ["Weblink_name" : "\(self.schoolLinksList.object(at: indexPath.row) as! String)" , "Website_URL" : "\(self.schoolWebLink.object(at: indexPath.row) as! String)", "Description" : "User visit this URL"])
         }
         else
         {

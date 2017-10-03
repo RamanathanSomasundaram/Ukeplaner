@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import Firebase
 let ThemeColor : UIColor = UIColor(red: 30.0/255.0, green: 34.0/255.0, blue: 39.0/255.0, alpha: 1.0)
 let TextColor : UIColor = UIColor(red: 140.0/255.0, green: 198.0/255.0, blue: 62.0/255.0, alpha: 1.0)
 class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
@@ -166,6 +167,13 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             self.refreshButton.isHidden = true
             Utilities.showLoading()
             Alamofire.request("\(CommonAPI)schoolList").responseJSON { response in
+                let error = response.result.error
+                if error != nil
+                {
+                Utilities.hideLoading()
+                Utilities.showAlert("\(error!)")
+                return
+                }
                 if let json = response.result.value {
                     if ((json as AnyObject).isKind(of: NSArray.self))
                     {
@@ -278,6 +286,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             let groupInfo = self.storyboard?.instantiateViewController(withIdentifier: "GroupInfoViewController") as! GroupInfoViewController
             commonAppDelegate.school_id = (dicSelected.value(forKey: "school_id") as! NSString).integerValue
             self.navigationController?.pushViewController(groupInfo, animated: true)
+            Analytics.logEvent("Ukeplaner", parameters: ["School_name" : "\((dicSelected.value(forKey: "school_name")! as! NSString))" as NSObject , "School_ID" :"\((dicSelected.value(forKey: "school_id")! as! NSString))" as NSObject , "Description" : "\((dicSelected.value(forKey: "school_name")! as! NSString)) is selected"])
         }
         else
         {

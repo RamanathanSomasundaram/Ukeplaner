@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
 
     @IBOutlet var weekCollectionView: UICollectionView!
@@ -89,6 +89,13 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
             self.noWeekLabel.isHidden = true
             Utilities.showLoading()
             Alamofire.request("\(CommonAPI)weekList?schoolid=\(school_id!)&group_id=\(group_id!)").responseJSON { response in
+                let error = response.result.error
+                if error != nil
+                {
+                    Utilities.hideLoading()
+                    Utilities.showAlert("\(error!)")
+                    return
+                }
                 if let json = response.result.value {
                     if ((json as AnyObject).isKind(of: NSArray.self))
                     {
@@ -194,9 +201,9 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         commonAppDelegate.week_id = (dicValues.value(forKey: "week_id") as! NSString).integerValue
         commonAppDelegate.weekid_first = ((schoolWeekList.object(at: 0) as! NSDictionary).value(forKey: "week_id") as! NSString).integerValue
         commonAppDelegate.weekid_last = ((schoolWeekList.object(at: schoolWeekList.count - 1) as! NSDictionary).value(forKey: "week_id") as! NSString).integerValue
-        print("Week-id \(commonAppDelegate.week_id)")
         let weekTime = self.storyboard?.instantiateViewController(withIdentifier: "WeekTimeTableViewController") as! WeekTimeTableViewController
         self.navigationController?.pushViewController(weekTime, animated: true)
+        Analytics.logEvent("Ukeplaner", parameters: ["Week_ID" : "\((dicValues.value(forKey: "week_id")! as! NSString))" as NSObject , "Week_Date" :"\((dicValues.value(forKey: "week_date")! as! NSString))" as NSObject , "Description" : "This week \((dicValues.value(forKey: "week_date")! as! NSString)) home work list"])
     }
     
     override func didReceiveMemoryWarning() {
