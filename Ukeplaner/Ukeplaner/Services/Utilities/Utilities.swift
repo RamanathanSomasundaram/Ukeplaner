@@ -42,22 +42,22 @@ class Utilities: NSObject {
     //show Loading
     class func showLoading() {
         //let window = UIApplication.shared.windows.last! as UIWindow
-        _ = MBProgressHUD.showAdded(to: commonAppDelegate.window, animated: true)
-   //     hud?.isUserInteractionEnabled = false
+        let hud = MBProgressHUD.showAdded(to: commonAppDelegate.window, animated: true)
+        hud?.isUserInteractionEnabled = false
         UIApplication.shared.beginIgnoringInteractionEvents()
-//        hud?.labelText = "Loading ..."
-//        hud?.labelColor = UIColor(netHex: 0x878787)
-//        hud?.color = UIColor(netHex: 0xC3C3C3)
+        hud?.labelText = "Loading ..."
+        hud?.labelColor = UIColor(netHex: 0x878787)
+        hud?.color = UIColor(netHex: 0xC3C3C3)
         //return hud!
     }
     
     class func showLoading(_ message: String) {
         //let window = UIApplication.shared.windows.last! as UIWindow
-        _ = MBProgressHUD.showAdded(to: commonAppDelegate.window, animated: true)
+        let hud = MBProgressHUD.showAdded(to: commonAppDelegate.window, animated: true)
         UIApplication.shared.beginIgnoringInteractionEvents()
-//        hud?.labelText = message
-//        hud?.labelColor = UIColor(netHex: 0x878787)
-//        hud?.color = UIColor(netHex: 0xC3C3C3)
+        hud?.labelText = message
+        hud?.labelColor = UIColor(netHex: 0x878787)
+        hud?.color = UIColor(netHex: 0xC3C3C3)
     }
     //To hide the loading
     class func hideLoading() {

@@ -112,7 +112,6 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
         if(Utilities.checkForInternet())
         {
             let weblink = self.storyboard!.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-            weblink.titleString = (self.schoolLinksList.object(at: indexPath.row) as! String)
             weblink.URLString = (self.schoolWebLink.object(at: indexPath.row) as! String)
             self.navigationController?.pushViewController(weblink, animated: true)
             Analytics.logEvent("Ukeplaner", parameters: ["Weblink_name" : "\(self.schoolLinksList.object(at: indexPath.row) as! String)" , "Website_URL" : "\(self.schoolWebLink.object(at: indexPath.row) as! String)", "Description" : "User visit this URL"])

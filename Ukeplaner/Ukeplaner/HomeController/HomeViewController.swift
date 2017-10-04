@@ -100,6 +100,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             searchBar.resignFirstResponder()
             searchBarController.resignFirstResponder()
             isFiltered = false
+            isFiltered = false
             self.tbl_schoolList.reloadData()
             searchString = ""
         }
@@ -127,12 +128,6 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             isFiltered = true
             self.tbl_schoolList.reloadData()
         }
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        searchBarController.resignFirstResponder()
-        searchBar.endEditing(true)
     }
     
     // user finished editing the search text

@@ -12,7 +12,6 @@ class WebViewController: UIViewController,UIWebViewDelegate {
 
     @IBOutlet var myWebView: UIWebView!
     var URLString : String!
-    var titleString : String!
     override func viewDidLoad() {
         super.viewDidLoad()
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -26,7 +25,7 @@ class WebViewController: UIViewController,UIWebViewDelegate {
     func navigationBarCustomButton()
     {
         //Navigation BackButton hide
-        self.title = titleString
+        self.title = "WebView"
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
