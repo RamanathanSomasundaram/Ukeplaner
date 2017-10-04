@@ -17,15 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-<<<<<<< HEAD
-<<<<<<< HEAD
-	<string>2</string>
-=======
 	<string>3</string>
->>>>>>> 382a9e5ae8db08175bcef318f09a216787dd8924
-=======
-	<string>1</string>
->>>>>>> parent of 382a9e5... Update loader
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
