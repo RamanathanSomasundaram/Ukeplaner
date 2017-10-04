@@ -789,7 +789,7 @@
 				DEVELOPMENT_TEAM = UU36BJMG2T;
 =======
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Lakeba Corporation Pty Ltd (6U6D63WXPD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lakeba Corporation Pty Ltd (6U6D63WXPD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mujammil Ahamed (UU36BJMG2T)";
 				DEVELOPMENT_TEAM = 6U6D63WXPD;
 >>>>>>> 382a9e5ae8db08175bcef318f09a216787dd8924
 				INFOPLIST_FILE = Ukeplaner/Info.plist;
