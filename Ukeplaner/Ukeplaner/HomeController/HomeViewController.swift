@@ -91,14 +91,14 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         searchBar.resignFirstResponder()
         searchBarController.resignFirstResponder()
         self.tbl_schoolList.reloadData()
-        self.searchBarController.endEditing(true)
+        //self.searchBarController.endEditing(true)
     }
     
     // user can change the text
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count == 0 {
-            searchBar.resignFirstResponder()
-            searchBarController.resignFirstResponder()
+           // searchBar.resignFirstResponder()
+            //searchBarController.resignFirstResponder()
             isFiltered = false
             self.tbl_schoolList.reloadData()
             searchString = ""
@@ -129,18 +129,12 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        searchBarController.resignFirstResponder()
-        searchBar.endEditing(true)
-    }
-    
     // user finished editing the search text
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
+       // searchBar.resignFirstResponder()
         searchBarController.resignFirstResponder()
-        self.searchBarController.endEditing(true)
-        searchBar.endEditing(true)
+        //self.searchBarController.endEditing(true)
+        //searchBar.endEditing(true)
     }
     
     // Search bar cancel button clicked

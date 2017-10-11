@@ -134,18 +134,13 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
         if(image_string != "")
         {
             
-            cell.webViewContent.loadHTMLString("<html><body>\(message)\(teacher_name)</body></html>", baseURL: nil)
+            cell.webViewContent.loadHTMLString("<html><body>\(message)</body></html>", baseURL: nil)
         }
         else
         {
-            cell.webViewContent.loadHTMLString("<html><body>\(message)\(teacher_name)</body></html>", baseURL: nil)
+            cell.webViewContent.loadHTMLString("<html><body>\(message)</body></html>", baseURL: nil)
         }
         cell.teacherName.text = teacher_name
-//        cell.schoolLogo.sd_setShowActivityIndicatorView(true)
-//        cell.schoolLogo.sd_setIndicatorStyle(.gray)
-//        cell.schoolLogo.sd_setImage(with: URL(string: (dictValues!.value(forKey: "school_logo")! as! String))! , placeholderImage: image, options: .refreshCached)
-//        cell.schoolLogo.image = image
-        
         cell.webViewContent.delegate = self
         cell.webViewContent.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: htmlHeight)
         cell.webViewContent.scrollView.bounces = false
@@ -162,8 +157,7 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
             // we already know height, no need to reload cell
             return
         }
-        
-        contentHeights[webView.tag] = webView.scrollView.contentSize.height
+        contentHeights[webView.tag] = webView.scrollView.contentSize.height + 20
         webTableView.reloadRows(at: [NSIndexPath(row: webView.tag, section: 0) as IndexPath] , with: .automatic)
     }
 

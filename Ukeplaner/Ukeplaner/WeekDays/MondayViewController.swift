@@ -59,11 +59,11 @@ class MondayViewController: UIViewController,UITableViewDelegate,UITableViewData
         for i in 0..<dicSubj.count
         {
             let dicValues = dicSubj.object(at: i) as! NSDictionary
-            let desc = (dicValues.value(forKey: "description") as! String)
-            if(desc != "")
-            {
-                subjDesc.add(dicSubj.object(at: i))
-            }
+            //let desc = (dicValues.value(forKey: "description") as! String)
+           // if(desc != "")
+            //{
+                subjDesc.add(dicValues)
+           // }
         }
         //print(subjDesc)
         self.EnableAction()
