@@ -20,7 +20,7 @@ class WeekTimeTableViewController: UIViewController{
     @IBOutlet var nextBtn: UIButton!
     @IBOutlet var noHomeLabel: UILabel!
     @IBOutlet var refreshButton: UIButton!
-    
+    var currentIndex : Int!
     
     override func viewDidLoad() {
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -35,7 +35,7 @@ class WeekTimeTableViewController: UIViewController{
     func navigationBarCustomButton()
     {
         //Navigation BackButton hide
-        self.title = "WeekTimeTable"
+        self.title = "Ukeplan.com"
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
@@ -195,9 +195,15 @@ class WeekTimeTableViewController: UIViewController{
             let days = self.daysArray.object(at: i) as! NSDictionary
             let week_date = days.value(forKey: "Week_date") as! String
             let week_day = days.value(forKey: "Week_day") as! String
+            if(WeekOfDate == week_date)
+            {
+                currentIndex = i
+            }
+            print("Current Index \(currentIndex)")
             tabItems.append((viewController: vc, title: "\(week_day)\n\(week_date)"))
             vc.subjects = dicvalue.value(forKey: week_day) as? NSMutableArray
         }
+        
         tc.tabItems = tabItems
         var option = TabPageOption()
         option.tabBackgroundColor = TextColor
@@ -209,7 +215,6 @@ class WeekTimeTableViewController: UIViewController{
         self.view.insertSubview(tc.view, at: 0) // Insert the page controller view below the navigation buttons
         tc.didMove(toParentViewController: self)
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

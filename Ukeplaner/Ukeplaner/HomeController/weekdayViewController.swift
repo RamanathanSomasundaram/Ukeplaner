@@ -8,6 +8,11 @@
 
 import UIKit
 import Firebase
+let date = Date()
+let calendar = Calendar.current
+let weekOfYear = calendar.component(.weekOfYear, from: Date.init(timeIntervalSinceNow: 0))
+let weekOfDay = calendar.dateComponents([.year, .month, .day], from: date)
+let WeekOfDate = "\(weekOfDay.day!)-\(weekOfDay.month!)-\(weekOfDay.year!)"
 class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
 
     @IBOutlet var weekCollectionView: UICollectionView!
@@ -18,6 +23,8 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
     var school_id : Int!
     var group_id : Int!
     var schoolWeekList : NSMutableArray!
+    var currentWeekIndex : Int! = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBarCustomButton()
@@ -35,7 +42,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
     func navigationBarCustomButton()
     {
         //Navigation BackButton hide
-        self.title = "Week List"
+        self.title = "Uker"
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
@@ -43,9 +50,9 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
-        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(teacherInfo))
-        flipRightButton.tintColor = UIColor.white
-        self.navigationItem.rightBarButtonItem = flipRightButton
+//        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(teacherInfo))
+//        flipRightButton.tintColor = UIColor.white
+//        self.navigationItem.rightBarButtonItem = flipRightButton
         weekCollectionView.backgroundColor = UIColor.lightGray
         collectionViewFlowLayout = UICollectionViewFlowLayout()
         var size1 : CGFloat!
@@ -104,6 +111,14 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
                         {
                             self.schoolWeekList.add(jsonResponse[i])
                         }
+                        for i in 0..<self.schoolWeekList.count
+                        {
+                            let dicValues = self.schoolWeekList.object(at: i) as! NSDictionary
+                            if((dicValues.value(forKey: "week_no") as! NSString).integerValue == weekOfYear)
+                            {
+                                self.currentWeekIndex = i
+                            }
+                        }
                     }
                     else
                     {
@@ -113,6 +128,8 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
                         print(jsonError)
                     }
                     DispatchQueue.main.async {
+                        self.weekCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerSection")
+                        self.collectionViewFlowLayout.headerReferenceSize = CGSize(width: 100, height: 40)
                         self.weekCollectionView.reloadData()
                         Utilities.hideLoading()
                     }
@@ -154,10 +171,39 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
     }
     //MARK: - Collection view datasource and delegate methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        if(section == 0)
+        {
+            if(schoolWeekList.count == 0)
+            {
+                return 0
+            }
+            else
+            {
+            return 1
+            }
+        }
+        else
+        {
         return schoolWeekList.count
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerSection", for: indexPath)
+        let label = (header.viewWithTag(510) as? UILabel)
+        if(indexPath.section == 0)
+        {
+            label?.text = "Current Week"
+        }
+        else
+        {
+            label?.text = "Other weeks"
+        }
+        return header
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: UICollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: "weekcell", for: indexPath)
@@ -170,22 +216,20 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         cell?.backgroundColor = UIColor.lightGray
         let infoTitle : UILabel = (cell?.viewWithTag(701) as! UILabel)
         let infoweekTitle : UILabel = (cell?.viewWithTag(700) as! UILabel)
-        let dicValues = schoolWeekList.object(at: indexPath.row) as! NSDictionary
-        if(dicValues.value(forKey: "ErrorMessage") != nil)
+        var dicValues : NSDictionary!
+        if(indexPath.section == 0)
         {
-            self.noWeekLabel.isHidden = false
+         dicValues = schoolWeekList.object(at: currentWeekIndex) as! NSDictionary
         }
         else
         {
-            self.noWeekLabel.isHidden = true
+        dicValues = schoolWeekList.object(at: indexPath.row) as! NSDictionary
         }
         infoTitle.text = (dicValues.value(forKey: "week_no") as! String)
         infoweekTitle.textColor = TextColor //255,165
         infoweekTitle.text = (dicValues.value(forKey: "week_date") as! String)
         infoweekTitle.numberOfLines = 1
         infoweekTitle.adjustsFontSizeToFitWidth = true
-        let calendar = Calendar.current
-        let weekOfYear = calendar.component(.weekOfYear, from: Date.init(timeIntervalSinceNow: 0))
         if((dicValues.value(forKey: "week_no") as! NSString).integerValue == weekOfYear)
         {
             infoTitle.textColor = UIColor(red: 92.0 / 255.0, green: 0.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
@@ -197,7 +241,15 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         return cell!
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let dicValues = schoolWeekList.object(at: indexPath.row) as! NSDictionary
+        var dicValues : NSDictionary!
+        if(indexPath.section == 0)
+        {
+            dicValues = schoolWeekList.object(at: currentWeekIndex) as! NSDictionary
+        }
+        else
+        {
+            dicValues = schoolWeekList.object(at: indexPath.row) as! NSDictionary
+        }
         commonAppDelegate.week_id = (dicValues.value(forKey: "week_id") as! NSString).integerValue
         commonAppDelegate.weekid_first = ((schoolWeekList.object(at: 0) as! NSDictionary).value(forKey: "week_id") as! NSString).integerValue
         commonAppDelegate.weekid_last = ((schoolWeekList.object(at: schoolWeekList.count - 1) as! NSDictionary).value(forKey: "week_id") as! NSString).integerValue

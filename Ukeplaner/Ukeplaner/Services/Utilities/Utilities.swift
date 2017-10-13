@@ -65,6 +65,12 @@ class Utilities: NSObject {
         UIApplication.shared.endIgnoringInteractionEvents()
         MBProgressHUD.hide(for: commonAppDelegate.window, animated: true)
     }
+    
+    class func hideAllLoading()
+    {
+        UIApplication.shared.endIgnoringInteractionEvents()
+        MBProgressHUD.hideAllHUDs(for: commonAppDelegate.window, animated: true)
+    }
 
     
     //MARK: - Check Internet Connection

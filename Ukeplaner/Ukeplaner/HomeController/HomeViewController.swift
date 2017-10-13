@@ -12,7 +12,6 @@ import Firebase
 let ThemeColor : UIColor = UIColor(red: 30.0/255.0, green: 34.0/255.0, blue: 39.0/255.0, alpha: 1.0)
 let TextColor : UIColor = UIColor(red: 140.0/255.0, green: 198.0/255.0, blue: 62.0/255.0, alpha: 1.0)
 class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
-    
     @IBOutlet var searchbarConstraint: NSLayoutConstraint!
     @IBOutlet var tableviewConstraint: NSLayoutConstraint!
     @IBOutlet var searchBarController: UISearchBar!

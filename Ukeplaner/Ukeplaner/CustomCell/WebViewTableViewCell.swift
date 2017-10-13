@@ -11,8 +11,7 @@ import UIKit
 class WebViewTableViewCell: UITableViewCell {
 
     @IBOutlet var webViewContent: UIWebView!
-    @IBOutlet var contentSize: NSLayoutConstraint!
-    
+    @IBOutlet var contentSize: NSLayoutConstraint!    
     @IBOutlet var teacherName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

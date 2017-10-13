@@ -18,20 +18,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="115.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7PX-ub-ttc">
-                        <rect key="frame" x="10" y="5" width="290" height="105.5"/>
+                    <view tag="222" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7PX-ub-ttc">
+                        <rect key="frame" x="5" y="5" width="310" height="100.5"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hV6-Vk-3hY">
-                                <rect key="frame" x="0.0" y="0.0" width="290" height="0.0"/>
+                                <rect key="frame" x="0.0" y="0.0" width="310" height="0.0"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="9kd-KJ-g3u"/>
                                 </constraints>
                             </webView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ev7-Bs-6vh">
-                                <rect key="frame" x="0.0" y="75.5" width="290" height="30"/>
+                                <rect key="frame" x="5" y="80.5" width="300" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="NHW-9G-6kU"/>
+                                    <constraint firstAttribute="height" constant="20" id="NHW-9G-6kU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -41,20 +41,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Ev7-Bs-6vh" secondAttribute="bottom" id="212-hb-w2G"/>
-                            <constraint firstItem="Ev7-Bs-6vh" firstAttribute="leading" secondItem="7PX-ub-ttc" secondAttribute="leading" id="INY-aC-0Ta"/>
+                            <constraint firstItem="Ev7-Bs-6vh" firstAttribute="leading" secondItem="7PX-ub-ttc" secondAttribute="leading" constant="5" id="INY-aC-0Ta"/>
                             <constraint firstAttribute="trailing" secondItem="hV6-Vk-3hY" secondAttribute="trailing" id="RwE-7q-J5B"/>
                             <constraint firstItem="hV6-Vk-3hY" firstAttribute="top" secondItem="7PX-ub-ttc" secondAttribute="top" id="SaX-pE-6RB"/>
-                            <constraint firstAttribute="trailing" secondItem="Ev7-Bs-6vh" secondAttribute="trailing" id="h1Q-wb-MUn"/>
+                            <constraint firstAttribute="trailing" secondItem="Ev7-Bs-6vh" secondAttribute="trailing" constant="5" id="h1Q-wb-MUn"/>
                             <constraint firstItem="hV6-Vk-3hY" firstAttribute="leading" secondItem="7PX-ub-ttc" secondAttribute="leading" id="rII-VJ-PfW"/>
                         </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="7PX-ub-ttc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="CgI-Q0-UJz"/>
+                    <constraint firstItem="7PX-ub-ttc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="CgI-Q0-UJz"/>
                     <constraint firstItem="7PX-ub-ttc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="IPd-K8-tMo"/>
-                    <constraint firstAttribute="bottom" secondItem="7PX-ub-ttc" secondAttribute="bottom" constant="5" id="cw2-rP-PM7"/>
-                    <constraint firstAttribute="trailing" secondItem="7PX-ub-ttc" secondAttribute="trailing" constant="20" id="dXH-2h-R5a"/>
+                    <constraint firstAttribute="bottom" secondItem="7PX-ub-ttc" secondAttribute="bottom" constant="10" id="cw2-rP-PM7"/>
+                    <constraint firstAttribute="trailing" secondItem="7PX-ub-ttc" secondAttribute="trailing" constant="5" id="dXH-2h-R5a"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

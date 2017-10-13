@@ -22,7 +22,6 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
         school_id = commonAppDelegate.school_id
         group_id = commonAppDelegate.group_id
         teacherInfoArray = NSMutableArray()
-        self.webTableView.register(UINib.init(nibName: "WebViewTableViewCell", bundle: nil), forCellReuseIdentifier: "WebViewCell")
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
@@ -41,7 +40,7 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
     func loadNavigationItem()
     {
         //Navigation BackButton hide
-        self.title = "Week TimeTable"
+        self.title = "Skolebeskjeder"
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
@@ -53,7 +52,6 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
     //Navigation controller custom back button action
     @objc func backHome()
     {
-        //schoolWeekList.removeAllObjects()
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -61,8 +59,6 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
     {
         if(Utilities.checkForInternet())
         {
-//            self.weekCollectionView.isUserInteractionEnabled = true
-//            self.refreshButton.isHidden = true
             Utilities.showLoading()
             Alamofire.request("\(CommonAPI)Informasjonstavla?schoolid=\(school_id!)&group_id=\(group_id!)").responseJSON { response in
                 let error = response.result.error
@@ -85,10 +81,10 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
                     else
                     {
                         let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
-                       // self.noWeekLabel.isHidden = false
                         print(jsonError)
                     }
                     DispatchQueue.main.async {
+                        self.webTableView.register(UINib.init(nibName: "WebViewTableViewCell", bundle: nil), forCellReuseIdentifier: "WebViewCell")
                         self.webTableView.reloadData()
                         Utilities.hideLoading()
                     }
@@ -103,11 +99,7 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
     //Loss internet connection
     func internetConnection()
     {
-       // self.weekCollectionView.isUserInteractionEnabled = false
         Utilities.showAlert("Please check your internet connection!")
-//        schoolWeekList.removeAllObjects()
-//        weekCollectionView.reloadData()
-//        refreshButton.isHidden = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
     //MARK: - TableView Datasource and Delegate Methods
@@ -131,6 +123,8 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
         let message = (dicValue.value(forKey: "message")! as! String)
         let image_string = (dicValue.value(forKey: "Image")! as! String)
         cell.webViewContent.tag  = indexPath.row
+        let View = cell.viewWithTag(222)!
+        self.makeCardView(View)
         if(image_string != "")
         {
             
@@ -142,23 +136,36 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         cell.teacherName.text = teacher_name
         cell.webViewContent.delegate = self
-        cell.webViewContent.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: htmlHeight)
+        cell.webViewContent.frame = CGRect(x: 0, y: 0, width: View.frame.size.width, height: htmlHeight)
         cell.webViewContent.scrollView.bounces = false
+        cell.webViewContent.scrollView.delegate = self
         cell.webViewContent.scrollView.showsVerticalScrollIndicator = false
         cell.contentSize.constant = tbl_height
+        Utilities.hideAllLoading()
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return contentHeights[indexPath.row]
+        return (contentHeights[indexPath.row] + 10.0)
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollView.contentOffset = webTableView.contentOffset
+        scrollView.scrollsToTop = true
+    }
+    //MARK: - Load Html in webview Delegate methods
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        Utilities.showLoading()
+       // self.webTableView.reloadData()
     }
     func webViewDidFinishLoad(_ webView: UIWebView) {
         if (contentHeights[webView.tag] != 0.0)
         {
-            // we already know height, no need to reload cell
             return
         }
         contentHeights[webView.tag] = webView.scrollView.contentSize.height + 20
         webTableView.reloadRows(at: [NSIndexPath(row: webView.tag, section: 0) as IndexPath] , with: .automatic)
+        DispatchQueue.main.async {
+            Utilities.hideAllLoading()
+        }
     }
 
     override func didReceiveMemoryWarning() {

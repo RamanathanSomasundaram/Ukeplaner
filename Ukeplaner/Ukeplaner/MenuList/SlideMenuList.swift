@@ -18,7 +18,7 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
         menuTitleList = NSMutableArray()
         menuIconList = NSMutableArray()
         selectMenuIconList = NSMutableArray()
-        menuTitleList = ["Skoler","Gruppeinfo","Informasjon fra skolen", "Informasjon fra elevrådet","Ukeplanregler","lenker","Rulleliste"]
+        menuTitleList = ["Skoler","Gruppeinfo","Informasjon fra skolen", "Informasjon fra elevrådet","Ukeplanregler","Lenker","Rulleliste"]
         menuIconList = ["gic_school","gic_group_info","gic_information_school","gic_student_council","gic_weekly_schedule","gic_student_links","gic_student_rules"]
         selectMenuIconList = ["ic_school","ic_group_info","ic_information_school","ic_student_council","ic_weekly_schedule","ic_student_links","ic_student_rules"]
     }
