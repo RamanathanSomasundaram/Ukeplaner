@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var week_id : Int!
     var weekid_first : Int!
     var weekid_last : Int!
+    var SchoolDict = NSMutableArray()
+    var weekNoArray = NSMutableArray()
+    var currentWeek_id : Int!
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()

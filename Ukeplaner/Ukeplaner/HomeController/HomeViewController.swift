@@ -283,6 +283,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }
             let groupInfo = self.storyboard?.instantiateViewController(withIdentifier: "GroupInfoViewController") as! GroupInfoViewController
             commonAppDelegate.school_id = (dicSelected.value(forKey: "school_id") as! NSString).integerValue
+            let Dic = ["Schoolname" : (dicSelected.value(forKey: "school_name") as! String)]
+            commonAppDelegate.SchoolDict.add(Dic)
             self.navigationController?.pushViewController(groupInfo, animated: true)
             Analytics.logEvent("Ukeplaner", parameters: ["School_name" : "\((dicSelected.value(forKey: "school_name")! as! NSString))" as NSObject , "School_ID" :"\((dicSelected.value(forKey: "school_id")! as! NSString))" as NSObject , "Description" : "\((dicSelected.value(forKey: "school_name")! as! NSString)) is selected"])
         }

@@ -15,6 +15,7 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
     @IBOutlet var noweekLabel: UILabel!
     @IBOutlet var tbl_weeklyList: UITableView!
     var refreshControl : UIRefreshControl!
+    @IBOutlet var SchoolName: UILabel!
     
     @IBOutlet var refreshButton: UIButton!
     
@@ -23,6 +24,8 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         self.title = "Ukeplanregler"
         self.noweekLabel.isHidden = true
+        SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
+        //SchoolName.textColor = TextColor
         self.loadNavigationItem()
         school_id = commonAppDelegate.school_id
         schoolWeekList = NSMutableArray()

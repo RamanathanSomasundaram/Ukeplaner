@@ -15,14 +15,16 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     var groupInfolist : NSMutableArray!
     @IBOutlet var refreshButton: UIButton!
     var refreshControl : UIRefreshControl!
-    
     @IBOutlet var noGroupLabel: UILabel!
+    @IBOutlet var SchoolName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         self.loadNavigationItem()
         self.title = "Klasser"
+        SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
+        //SchoolName.textColor = TextColor
         schoolID = commonAppDelegate.school_id
         self.refreshButton.isHidden = true
         self.groupInfolist = NSMutableArray()
@@ -45,6 +47,14 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
+        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "home.png"), style: .plain, target: self, action: #selector(backHome))
+        flipRightButton.tintColor = UIColor.white
+                self.navigationItem.rightBarButtonItem = flipRightButton
+    }
+    @objc func backHome()
+    {
+        commonAppDelegate.SchoolDict.removeAllObjects()
+        self.navigationController?.popViewController(animated: true)
     }
     @objc func refreshTableView()
     {
@@ -164,6 +174,8 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let dicLoad = groupInfolist.object(at: indexPath.row) as! NSDictionary
         commonAppDelegate.group_id = (dicLoad.value(forKey: "group_id") as! NSString).integerValue
+        let dicGroup = ["Groupname" : (dicLoad.value(forKey: "group_name")! as! String)]
+        commonAppDelegate.SchoolDict.add(dicGroup)
         let weekList = self.storyboard?.instantiateViewController(withIdentifier: "weekdayViewController") as! weekdayViewController
         self.navigationController?.pushViewController(weekList, animated: true)
          Analytics.logEvent("Ukeplaner", parameters: ["Group_name" : "\((dicLoad.value(forKey: "group_name")! as! NSString))" as NSObject , "Group_ID" :"\((dicLoad.value(forKey: "group_id")! as! NSString))" as NSObject , "Group_Description" : "\((dicLoad.value(forKey: "group_name")! as! NSString)) is selected to show weeklist"])
@@ -171,8 +183,8 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     deinit {
         self.groupInfolist.removeAllObjects()
     }
-    //MARK: - REVEAL VIEW CONTROLLER DELEGATE
     
+    //MARK: - REVEAL VIEW CONTROLLER DELEGATE
     func revealController(_ revealController: SWRevealViewController!, didMoveTo position: FrontViewPosition) {
         if(position == FrontViewPositionLeft){
             self.view.isUserInteractionEnabled = true

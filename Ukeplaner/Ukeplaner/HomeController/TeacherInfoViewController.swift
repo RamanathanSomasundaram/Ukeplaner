@@ -21,6 +21,7 @@ class TeacherInfoViewController: UIViewController,UITableViewDelegate,UITableVie
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         school_id = commonAppDelegate.school_id
         group_id = commonAppDelegate.group_id
+        
         teacherInfoArray = NSMutableArray()
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")

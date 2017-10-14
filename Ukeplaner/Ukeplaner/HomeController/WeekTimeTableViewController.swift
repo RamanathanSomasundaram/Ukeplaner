@@ -22,13 +22,15 @@ class WeekTimeTableViewController: UIViewController{
     @IBOutlet var refreshButton: UIButton!
     var currentIndex : Int!
     
+    @IBOutlet var schoolInfo: UILabel!
     override func viewDidLoad() {
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         //Custom navigation controller
         self.navigationBarCustomButton()
         //load API access
         self.loadweekTimeTable()
-        NotificationCenter.default.addObserver(self, selector: #selector(loadweekTimeTable), name: NSNotification.Name(rawValue:"reload_timetable"), object: nil)
+        schoolInfo.text = Utilities.weekno_list(week_id: commonAppDelegate.currentWeek_id)
+            NotificationCenter.default.addObserver(self, selector: #selector(loadweekTimeTable), name: NSNotification.Name(rawValue:"reload_timetable"), object: nil)
     }
     
     //Load navigation controller custom buttons
@@ -73,6 +75,8 @@ class WeekTimeTableViewController: UIViewController{
     }
     @IBAction func previousAction(_ sender: Any) {
         commonAppDelegate.week_id = commonAppDelegate.week_id - 1
+        commonAppDelegate.currentWeek_id = commonAppDelegate.currentWeek_id - 1
+        schoolInfo.text = Utilities.weekno_list(week_id: commonAppDelegate.currentWeek_id)
        // print("week_id \(commonAppDelegate.week_id!)")
         self.loadweekTimeTable()
     }
@@ -80,6 +84,8 @@ class WeekTimeTableViewController: UIViewController{
     @IBAction func nextAction(_ sender: Any) {
 
         commonAppDelegate.week_id = commonAppDelegate.week_id + 1
+        commonAppDelegate.currentWeek_id = commonAppDelegate.currentWeek_id + 1
+        schoolInfo.text = Utilities.weekno_list(week_id: commonAppDelegate.currentWeek_id)
         //print("week_id \(commonAppDelegate.week_id!)")
         self.loadweekTimeTable()
     }
@@ -199,7 +205,6 @@ class WeekTimeTableViewController: UIViewController{
             {
                 currentIndex = i
             }
-            print("Current Index \(currentIndex)")
             tabItems.append((viewController: vc, title: "\(week_day)\n\(week_date)"))
             vc.subjects = dicvalue.value(forKey: week_day) as? NSMutableArray
         }
@@ -211,6 +216,11 @@ class WeekTimeTableViewController: UIViewController{
         option.currentColor = UIColor.white
         option.tabMargin = 50.0
         tc.option = option
+        if(currentIndex != nil)
+        {
+            tc.displayControllerWithIndex(currentIndex!, direction: .forward, animated: false)
+        }
+        
         self.addChildViewController(tc)
         self.view.insertSubview(tc.view, at: 0) // Insert the page controller view below the navigation buttons
         tc.didMove(toParentViewController: self)

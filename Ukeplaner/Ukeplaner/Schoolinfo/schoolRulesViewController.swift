@@ -15,6 +15,7 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
     var refreshControl : UIRefreshControl!
     @IBOutlet var refreshButton: UIButton!
     @IBOutlet var noRulesLabel: UILabel!
+    @IBOutlet var SchoolName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,8 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
         self.noRulesLabel.isHidden = true
         self.loadNavigationItem()
         self.title = "Roules List"
+        SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
+        //SchoolName.textColor = TextColor
         school_id = commonAppDelegate.school_id
         schoolRulesList = NSMutableArray()
         self.revealViewController().delegate = self
@@ -87,7 +90,6 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
                         let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
                         self.noRulesLabel.isHidden = false
                         self.noRulesLabel.text = (jsonError as! String)
-                        print(jsonError)
                     }
                     DispatchQueue.main.async {
                         self.tbl_schoolRules.reloadData()

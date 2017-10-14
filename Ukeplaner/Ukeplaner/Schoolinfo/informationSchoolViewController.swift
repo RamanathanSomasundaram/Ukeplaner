@@ -16,6 +16,7 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
     @IBOutlet var tbl_schoolinfo: UITableView!
     var refreshControl : UIRefreshControl!
     
+    @IBOutlet var SchoolName: UILabel!
     @IBOutlet var refreshButton: UIButton!
     
     override func viewDidLoad() {
@@ -23,6 +24,8 @@ class informationSchoolViewController: UIViewController,UITableViewDataSource,UI
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         self.noInfoLabel.isHidden = true
         self.title = "Informasjon fra skolen"
+        SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
+        //SchoolName.textColor = TextColor
         self.school_id = commonAppDelegate.school_id
         self.loadNavigationItem()
         schoolinfoList = NSMutableArray()

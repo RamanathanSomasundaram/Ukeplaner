@@ -48,6 +48,7 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
         if(indexPath.row == 0)
         {
             self.performSegue(withIdentifier: "home", sender: nil)
+            commonAppDelegate.SchoolDict.removeAllObjects()
             self.tbl_schoolMenu.deselectRow(at: indexPath, animated: true)
         }
         else if(indexPath.row == 1)

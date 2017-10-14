@@ -15,10 +15,14 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
    // var refreshControl : UIRefreshControl!
     @IBOutlet var tbl_schoolLinks: UITableView!
     var schoolWebLink : NSMutableArray!
+    
+    @IBOutlet var SchoolName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         self.title = "lenker"
+        SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
+        //SchoolName.textColor = TextColor
         self.loadNavigationItem()
         school_id = commonAppDelegate.school_id
         self.refreshButton.isHidden = true

@@ -13,12 +13,14 @@ class MondayViewController: UIViewController,UITableViewDelegate,UITableViewData
     var subjects:NSMutableArray?
     var subjDesc : NSMutableArray!
     
+    @IBOutlet var schoolInfo: UILabel!
     @IBOutlet var nextBtn: UIButton!
     @IBOutlet var prevBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         subjDesc = NSMutableArray()
+        schoolInfo.text = Utilities.weekno_list(week_id: commonAppDelegate.currentWeek_id)
         self.Tbl_timetable.tableFooterView = UIView()
         // Do any additional setup after loading the view.
     }
@@ -72,11 +74,15 @@ class MondayViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     @IBAction func nextAction(_ sender: Any) {
         commonAppDelegate.week_id = commonAppDelegate.week_id + 1
+        commonAppDelegate.currentWeek_id = commonAppDelegate.currentWeek_id + 1
+        schoolInfo.text = Utilities.weekno_list(week_id: commonAppDelegate.currentWeek_id)
         //print("week_id \(commonAppDelegate.week_id!)")
           NotificationCenter.default.post(name: NSNotification.Name(rawValue:"reload_timetable"), object: self)
     }
     @IBAction func previousAction(_ sender: Any) {
         commonAppDelegate.week_id = commonAppDelegate.week_id - 1
+        commonAppDelegate.currentWeek_id = commonAppDelegate.currentWeek_id - 1
+        schoolInfo.text = Utilities.weekno_list(week_id: commonAppDelegate.currentWeek_id)
         //print("week_id \(commonAppDelegate.week_id!)")
           NotificationCenter.default.post(name: NSNotification.Name(rawValue:"reload_timetable"), object: self)
     }

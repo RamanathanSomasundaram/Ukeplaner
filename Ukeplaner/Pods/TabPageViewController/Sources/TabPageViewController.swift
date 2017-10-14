@@ -157,7 +157,7 @@ extension TabPageViewController {
                                      toItem: topLayoutGuide,
                                      attribute: .bottom,
                                      multiplier:1.0,
-                                     constant: 40.0)
+                                     constant: 80.0)
 
         let left = NSLayoutConstraint(item: tabView,
                                       attribute: .leading,
@@ -364,9 +364,11 @@ extension TabPageViewController: UIScrollViewDelegate {
 
         let scrollOffsetX = scrollView.contentOffset.x - view.frame.width
         tabView.scrollCurrentBarView(index, contentOffsetX: scrollOffsetX)
+        
     }
 
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         tabView.updateCurrentIndex(beforeIndex, shouldScroll: true)
+        
     }
 }
