@@ -86,6 +86,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
     @objc func backHome()
     {
         //schoolWeekList.removeAllObjects()
+        commonAppDelegate.SchoolDict.removeObject(at: 1)
         self.navigationController?.popViewController(animated: true)
     }
     
