@@ -84,7 +84,7 @@ public extension TabPageViewController {
         beforeIndex = index
         shouldScrollCurrentBar = false
         let nextViewControllers: [UIViewController] = [tabItems[index].viewController]
-
+        setupScrollView()
         let completion: ((Bool) -> Void) = { [weak self] _ in
             self?.shouldScrollCurrentBar = true
             self?.beforeIndex = index
@@ -97,6 +97,8 @@ public extension TabPageViewController {
             completion: completion)
 
         guard isViewLoaded else { return }
+//        let scrollOffsetX = TabPageViewController.contentOffset.x - view.frame.width
+//        tabView.scrollCurrentBarView(index, contentOffsetX: scrollOffsetX)
         tabView.updateCurrentIndex(index, shouldScroll: true)
     }
 }
@@ -123,6 +125,7 @@ extension TabPageViewController {
         scrollView?.scrollsToTop = false
         scrollView?.delegate = self
         scrollView?.backgroundColor = option.pageBackgoundColor
+        
     }
 
     /**
@@ -157,7 +160,7 @@ extension TabPageViewController {
                                      toItem: topLayoutGuide,
                                      attribute: .bottom,
                                      multiplier:1.0,
-                                     constant: 80.0)
+                                     constant: 0.0) //Change this height for option menu
 
         let left = NSLayoutConstraint(item: tabView,
                                       attribute: .leading,
@@ -174,7 +177,7 @@ extension TabPageViewController {
                                        attribute: .trailing,
                                        multiplier: 1.0,
                                        constant: 0.0)
-
+        
         view.addConstraints([top, left, right])
 
         tabView.pageTabItems = tabItems.map({ $0.title})
@@ -246,7 +249,7 @@ extension TabPageViewController {
             setupStatusView()
         }
 
-        statusViewHeightConstraint!.constant = topLayoutGuide.length
+        statusViewHeightConstraint!.constant = bottomLayoutGuide.length
     }
 
     public func showNavigationBar() {
@@ -368,6 +371,7 @@ extension TabPageViewController: UIScrollViewDelegate {
     }
 
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
         tabView.updateCurrentIndex(beforeIndex, shouldScroll: true)
         
     }

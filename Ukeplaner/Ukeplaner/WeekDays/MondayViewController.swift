@@ -12,39 +12,22 @@ class MondayViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet var Tbl_timetable: UITableView!
     var subjects:NSMutableArray?
     var subjDesc : NSMutableArray!
-    
-    @IBOutlet var schoolInfo: UILabel!
-    @IBOutlet var nextBtn: UIButton!
-    @IBOutlet var prevBtn: UIButton!
+
+    @IBOutlet var tbl_Height: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         subjDesc = NSMutableArray()
-        schoolInfo.text = Utilities.weekno_list(week_id: commonAppDelegate.currentWeek_id)
-        self.Tbl_timetable.tableFooterView = UIView()
-        // Do any additional setup after loading the view.
-    }
-    func EnableAction()
-    {
-        if(commonAppDelegate.weekid_first == commonAppDelegate.week_id)
+        if(UIScreen.main.bounds.size.height == 812.0)
         {
-            prevBtn.isEnabled = false
-            prevBtn.backgroundColor = UIColor.lightGray
-            nextBtn.isEnabled = true
-        }
-        else if (commonAppDelegate.weekid_last == commonAppDelegate.week_id)
-        {
-            prevBtn.isEnabled = true
-            nextBtn.isEnabled = false
-            nextBtn.backgroundColor = UIColor.lightGray
+            tbl_Height.constant = 190
         }
         else
         {
-            prevBtn.isEnabled = true
-            prevBtn.backgroundColor = UIColor(red: 0.0 / 255.0, green: 103.0 / 255.0, blue: 56.0 / 255.0, alpha: 1.0)
-            nextBtn.isEnabled = true
-            nextBtn.backgroundColor = UIColor(red: 0.0 / 255.0, green: 103.0 / 255.0, blue: 56.0 / 255.0, alpha: 1.0)
+            tbl_Height.constant = 150
         }
+        self.Tbl_timetable.tableFooterView = UIView()
+        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,25 +50,9 @@ class MondayViewController: UIViewController,UITableViewDelegate,UITableViewData
                 subjDesc.add(dicValues)
            // }
         }
-        //print(subjDesc)
-        self.EnableAction()
         self.Tbl_timetable.register(UINib.init(nibName: "WeekTimeTableViewCell", bundle: nil), forCellReuseIdentifier: "weekTimeTable")
     }
-    
-    @IBAction func nextAction(_ sender: Any) {
-        commonAppDelegate.week_id = commonAppDelegate.week_id + 1
-        commonAppDelegate.currentWeek_id = commonAppDelegate.currentWeek_id + 1
-        schoolInfo.text = Utilities.weekno_list(week_id: commonAppDelegate.currentWeek_id)
-        //print("week_id \(commonAppDelegate.week_id!)")
-          NotificationCenter.default.post(name: NSNotification.Name(rawValue:"reload_timetable"), object: self)
-    }
-    @IBAction func previousAction(_ sender: Any) {
-        commonAppDelegate.week_id = commonAppDelegate.week_id - 1
-        commonAppDelegate.currentWeek_id = commonAppDelegate.currentWeek_id - 1
-        schoolInfo.text = Utilities.weekno_list(week_id: commonAppDelegate.currentWeek_id)
-        //print("week_id \(commonAppDelegate.week_id!)")
-          NotificationCenter.default.post(name: NSNotification.Name(rawValue:"reload_timetable"), object: self)
-    }
+
     //MARK: - Tableview Delegate and Datasource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

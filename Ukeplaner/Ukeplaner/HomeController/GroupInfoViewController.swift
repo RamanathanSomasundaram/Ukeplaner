@@ -47,14 +47,14 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
-        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "home.png"), style: .plain, target: self, action: #selector(backHome))
-        flipRightButton.tintColor = UIColor.white
-                self.navigationItem.rightBarButtonItem = flipRightButton
+//        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "home.png"), style: .plain, target: self, action: #selector(backHome))
+//        flipRightButton.tintColor = UIColor.white
+//                self.navigationItem.rightBarButtonItem = flipRightButton
     }
     @objc func backHome()
     {
         commonAppDelegate.SchoolDict.removeAllObjects()
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     @objc func refreshTableView()
     {
@@ -183,7 +183,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     deinit {
         self.groupInfolist.removeAllObjects()
     }
-    
+
     //MARK: - REVEAL VIEW CONTROLLER DELEGATE
     func revealController(_ revealController: SWRevealViewController!, didMoveTo position: FrontViewPosition) {
         if(position == FrontViewPositionLeft){

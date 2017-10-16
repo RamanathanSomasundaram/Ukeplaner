@@ -20,7 +20,8 @@ class WeekTimeTableViewController: UIViewController{
     @IBOutlet var nextBtn: UIButton!
     @IBOutlet var noHomeLabel: UILabel!
     @IBOutlet var refreshButton: UIButton!
-    var currentIndex : Int!
+    var currentIndex : Int?
+    @IBOutlet var pageViewController: UIView!
     
     @IBOutlet var schoolInfo: UILabel!
     override func viewDidLoad() {
@@ -208,7 +209,6 @@ class WeekTimeTableViewController: UIViewController{
             tabItems.append((viewController: vc, title: "\(week_day)\n\(week_date)"))
             vc.subjects = dicvalue.value(forKey: week_day) as? NSMutableArray
         }
-        
         tc.tabItems = tabItems
         var option = TabPageOption()
         option.tabBackgroundColor = TextColor
@@ -219,10 +219,10 @@ class WeekTimeTableViewController: UIViewController{
         if(currentIndex != nil)
         {
             tc.displayControllerWithIndex(currentIndex!, direction: .forward, animated: false)
+            currentIndex = nil
         }
-        
         self.addChildViewController(tc)
-        self.view.insertSubview(tc.view, at: 0) // Insert the page controller view below the navigation buttons
+        self.pageViewController.insertSubview(tc.view, at: 0) // Insert the page controller view below the navigation buttons
         tc.didMove(toParentViewController: self)
     }
 

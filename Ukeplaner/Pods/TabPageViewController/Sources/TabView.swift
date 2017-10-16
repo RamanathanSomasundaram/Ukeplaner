@@ -236,7 +236,7 @@ extension TabView {
         if shouldScroll {
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: animated)
             layoutIfNeeded()
-            collectionViewContentOffsetX = 0.0
+            collectionViewContentOffsetX = collectionView.contentOffset.x
             currentBarViewWidth = 0.0
         }
         if let cell = collectionView.cellForItem(at: indexPath) as? TabCollectionCell {
@@ -359,13 +359,11 @@ extension TabView: UICollectionViewDelegate {
         if (scrollView.contentOffset.x <= 0.0) || (scrollView.contentOffset.x > pageTabItemsWidth * 2.0) {
             scrollView.contentOffset.x = pageTabItemsWidth
         }
-
     }
 
     internal func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         // Accept the touch event because animation is complete
         updateCollectionViewUserInteractionEnabled(true)
-
         guard isInfinity else {
             return
         }
@@ -374,8 +372,10 @@ extension TabView: UICollectionViewDelegate {
         if shouldScrollToItem {
             // After the moved so as not to sense of incongruity, to adjust the contentOffset at the currentIndex
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+            
             shouldScrollToItem = false
         }
+        scrollView.contentOffset.x = UIScreen.main.bounds.size.width / 2
     }
 }
 
