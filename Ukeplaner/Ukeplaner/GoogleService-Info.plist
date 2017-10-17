@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>410284734932-s5fbo4cgsa609jpb7u46fd9651hqptvn.apps.googleusercontent.com</string>
+	<string>58172411427-mh26749884rn4h6032v7poaol7r7p39q.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.410284734932-s5fbo4cgsa609jpb7u46fd9651hqptvn</string>
+	<string>com.googleusercontent.apps.58172411427-mh26749884rn4h6032v7poaol7r7p39q</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBz66MEZkMRqrlRvrrEv-_BkZ2eCvwow2k</string>
+	<string>AIzaSyAQZDGlY2aORP6A_xqRatmXRVpoAn3PCVI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>410284734932</string>
+	<string>58172411427</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.spiksolutions.Ukeplaner</string>
+	<string>com.spikesolutions.ukeplanerapp</string>
 	<key>PROJECT_ID</key>
-	<string>ukeplaner-92b52</string>
+	<string>ukeplanerapp</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ukeplaner-92b52.appspot.com</string>
+	<string>ukeplanerapp.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:410284734932:ios:3342584732f361e3</string>
+	<string>1:58172411427:ios:d7c32a697101c009</string>
 	<key>DATABASE_URL</key>
-	<string>https://ukeplaner-92b52.firebaseio.com</string>
+	<string>https://ukeplanerapp.firebaseio.com</string>
 </dict>
 </plist>

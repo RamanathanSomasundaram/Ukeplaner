@@ -74,7 +74,6 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     @IBAction func refreshAction(_ sender: Any) {
         self.loadInitialData()
     }
-    
     func loadInitialData()
     {
         if(Utilities.checkForInternet())
