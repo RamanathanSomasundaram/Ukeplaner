@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,SWRevealViewControllerDelegate {
+class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,SWRevealViewControllerDelegate,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet var collectionView: UICollectionView!
     var collectionviewFlowlayout : UICollectionViewFlowLayout!
     var schoolID : Int!
@@ -17,13 +17,14 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     var refreshControl : UIRefreshControl!
     @IBOutlet var noGroupLabel: UILabel!
     @IBOutlet var SchoolName: UILabel!
+    @IBOutlet var tbl_SchoolInfo: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         self.loadNavigationItem()
         self.title = "Klasser"
-        SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
+        //SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
         //SchoolName.textColor = TextColor
         schoolID = commonAppDelegate.school_id
         self.refreshButton.isHidden = true
@@ -36,6 +37,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         collectionView.addSubview(refreshControl)
         collectionView.backgroundColor = UIColor.lightGray
         self.noGroupLabel.isHidden = true
+        tbl_SchoolInfo.register(UINib.init(nibName: "SchoolTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolCell")
         // Do any additional setup after loading the view.
     }
     func loadNavigationItem()
@@ -47,9 +49,6 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
-//        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "home.png"), style: .plain, target: self, action: #selector(backHome))
-//        flipRightButton.tintColor = UIColor.white
-//                self.navigationItem.rightBarButtonItem = flipRightButton
     }
     @objc func backHome()
     {
@@ -140,6 +139,45 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         let shadowPath = UIBezierPath(rect: cell.bounds)
         cell.layer.shadowPath = shadowPath.cgPath
         cell.layer.shadowOpacity = 0.9
+    }
+    //MARK: - Tableview Datasource and Deleagate
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell: SchoolTableViewCell = tableView.dequeueReusableCell(withIdentifier: "schoolCell") as! SchoolTableViewCell
+        if(Utilities.checkForInternet())
+        {
+            let view : UIView = (cell.viewWithTag(2000))!
+            self.makeCardView(view)
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.separatorInset = .zero
+            let dictValues = commonAppDelegate.SchoolDict.object(at: indexPath.row) as! NSDictionary
+            DispatchQueue.main.async {
+                let image : UIImage = UIImage(named: "sampleImage.png")!
+                cell.schoolLogo.sd_setShowActivityIndicatorView(true)
+                cell.schoolLogo.sd_setIndicatorStyle(.gray)
+                cell.schoolLogo.sd_setImage(with: URL(string: (dictValues.value(forKey: "school_logo")! as! String))! , placeholderImage: image, options: .refreshCached)
+                cell.schoolLogo.image = image
+                cell.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
+                cell.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
+                cell.schoolPhoneNo.text = "Tif : \(dictValues.value(forKey: "phone_number") as! String)"
+                cell.setNeedsDisplay()
+            }
+            tbl_SchoolInfo.isUserInteractionEnabled = false
+        }
+        else
+        {
+            self.internetConnection()
+        }
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 130
     }
     //MARK: - Collection view datasource and delegate methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {

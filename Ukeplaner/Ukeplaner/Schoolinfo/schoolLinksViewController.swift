@@ -15,13 +15,12 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
    // var refreshControl : UIRefreshControl!
     @IBOutlet var tbl_schoolLinks: UITableView!
     var schoolWebLink : NSMutableArray!
-    
-    @IBOutlet var SchoolName: UILabel!
+    @IBOutlet var tbl_SchoolInfo: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         self.title = "lenker"
-        SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
+        //SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
         //SchoolName.textColor = TextColor
         self.loadNavigationItem()
         school_id = commonAppDelegate.school_id
@@ -29,6 +28,7 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
         self.revealViewController().delegate = self
         schoolLinksList = ["Melsom vgs","It's Learning","NDLA","Læreplaner","VKT (Bussen)","Ungt Entreprenørskap","Vestfold fylkeskommune","Eksamenskontoret"]
         schoolWebLink = ["https://www.vfk.no/Melsom-vgs/","https://vfk.itslearning.com/Index.aspx","https://ndla.no/","https://www.udir.no/laring-og-trivsel/lareplanverket/finn-lareplan/","https://www.vkt.no/","http://www.ukeplaner.com/school_info/groupinfo/www.ue.no","http://www.ukeplaner.com/school_info/groupinfo/www.vfk.no","https://www.vfk.no/Tema-og-tjenester/Utdanning/Eksamen/"]
+        tbl_SchoolInfo.register(UINib.init(nibName: "SchoolTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolCell")
 //        refreshControl = UIRefreshControl()
 //        refreshControl.tintColor = TextColor
 //        let attr = [NSAttributedStringKey.foregroundColor:UIColor.white]
@@ -85,11 +85,44 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        if(tableView == tbl_SchoolInfo)
+        {
+            return 1
+        }
+        else
+        {
         return schoolLinksList.count
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        if(tableView == tbl_SchoolInfo)
+        {
+            let cell: SchoolTableViewCell = tableView.dequeueReusableCell(withIdentifier: "schoolCell") as! SchoolTableViewCell
+            if(Utilities.checkForInternet())
+            {
+                let view : UIView = (cell.viewWithTag(2000))!
+                self.makeCardView(view)
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.separatorInset = .zero
+                let dictValues = commonAppDelegate.SchoolDict.object(at: indexPath.row) as! NSDictionary
+                DispatchQueue.main.async {
+                    let image : UIImage = UIImage(named: "sampleImage.png")!
+                    cell.schoolLogo.sd_setShowActivityIndicatorView(true)
+                    cell.schoolLogo.sd_setIndicatorStyle(.gray)
+                    cell.schoolLogo.sd_setImage(with: URL(string: (dictValues.value(forKey: "school_logo")! as! String))! , placeholderImage: image, options: .refreshCached)
+                    cell.schoolLogo.image = image
+                    cell.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
+                    cell.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
+                    cell.schoolPhoneNo.text = "Tif : \(dictValues.value(forKey: "phone_number") as! String)"
+                    cell.setNeedsDisplay()
+                }
+                tbl_SchoolInfo.isUserInteractionEnabled = false
+            }
+            return cell
+        }
+        else
+        {
         var cell = tableView.dequeueReusableCell(withIdentifier: "schoolinfo") as? SchoolInfoTableViewCell
         if(cell == nil)
         {
@@ -108,9 +141,17 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
         cell?.schoolInfoTitle.textAlignment = .center
         cell?.schoolInfoTitle.text = (self.schoolLinksList.object(at: indexPath.row) as! String)
         return cell!
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(tableView == tbl_SchoolInfo)
+        {
+            return 130
+        }
+        else
+        {
         return 60
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(Utilities.checkForInternet())

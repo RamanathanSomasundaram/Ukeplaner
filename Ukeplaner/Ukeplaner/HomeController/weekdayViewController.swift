@@ -32,7 +32,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         school_id = commonAppDelegate.school_id
         group_id = commonAppDelegate.group_id
         schoolWeekList = NSMutableArray()
-        SchoolInfo.text = "\((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)" + " - Ukeplan for \(((commonAppDelegate.SchoolDict.object(at: 1) as! NSDictionary).value(forKey: "Groupname") as! String))"
+        SchoolInfo.text = "\((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "school_name") as! String)" + " - Ukeplan for \(((commonAppDelegate.SchoolDict.object(at: 1) as! NSDictionary).value(forKey: "Groupname") as! String))"
         //SchoolInfo.textColor = TextColor
         self.loadInitialData()
         // Do any additional setup after loading the view.

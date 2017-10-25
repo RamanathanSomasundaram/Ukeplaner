@@ -257,13 +257,14 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cell.schoolLogo.image = image
         cell.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
         cell.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
-        cell.schoolPhoneNo.text = (dictValues.value(forKey: "phone_number") as! String)
+            cell.schoolPhoneNo.text = "Tif : \(dictValues.value(forKey: "phone_number") as! String)"
         cell.setNeedsDisplay()
             }
         
         }
         else
         {
+            refreshControl.endRefreshing()
             self.internetConnection()
         }
         return cell
@@ -283,8 +284,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }
             let groupInfo = self.storyboard?.instantiateViewController(withIdentifier: "GroupInfoViewController") as! GroupInfoViewController
             commonAppDelegate.school_id = (dicSelected.value(forKey: "school_id") as! NSString).integerValue
-            let Dic = ["Schoolname" : (dicSelected.value(forKey: "school_name") as! String)]
-            commonAppDelegate.SchoolDict.add(Dic)
+            //let Dic = ["Schoolname" : (dicSelected.value(forKey: "school_name") as! String)]
+            commonAppDelegate.SchoolDict.add(dicSelected)
             self.navigationController?.pushViewController(groupInfo, animated: true)
             Analytics.logEvent("Ukeplaner", parameters: ["School_name" : "\((dicSelected.value(forKey: "school_name")! as! NSString))" as NSObject , "School_ID" :"\((dicSelected.value(forKey: "school_id")! as! NSString))" as NSObject , "Description" : "\((dicSelected.value(forKey: "school_name")! as! NSString)) is selected"])
         }

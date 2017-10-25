@@ -249,7 +249,7 @@ extension TabPageViewController {
             setupStatusView()
         }
 
-        statusViewHeightConstraint!.constant = bottomLayoutGuide.length
+        statusViewHeightConstraint!.constant = topLayoutGuide.length
     }
 
     public func showNavigationBar() {

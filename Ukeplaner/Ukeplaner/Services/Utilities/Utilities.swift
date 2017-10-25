@@ -116,7 +116,7 @@ class Utilities: NSObject {
     
     class func weekno_list(week_id : Int) -> String
     {
-        let week_id_String = "\((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)" + " - Ukeplan for \(((commonAppDelegate.SchoolDict.object(at: 1) as! NSDictionary).value(forKey: "Groupname") as! String))" + " - Uke \((commonAppDelegate.weekNoArray.object(at: week_id)as! String))"
+        let week_id_String = "\((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "school_name") as! String)" + " - Ukeplan for \(((commonAppDelegate.SchoolDict.object(at: 1) as! NSDictionary).value(forKey: "Groupname") as! String))" + " - Uke \((commonAppDelegate.weekNoArray.object(at: week_id)as! String))"
         return week_id_String
     }
     //Check the Battery level

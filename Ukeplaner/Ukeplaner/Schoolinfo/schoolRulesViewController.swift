@@ -15,20 +15,20 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
     var refreshControl : UIRefreshControl!
     @IBOutlet var refreshButton: UIButton!
     @IBOutlet var noRulesLabel: UILabel!
-    @IBOutlet var SchoolName: UILabel!
-    
+    @IBOutlet var tbl_SchoolInfo: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         self.noRulesLabel.isHidden = true
         self.loadNavigationItem()
         self.title = "Roules List"
-        SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
+        //SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
         //SchoolName.textColor = TextColor
         school_id = commonAppDelegate.school_id
         schoolRulesList = NSMutableArray()
         self.revealViewController().delegate = self
         self.tbl_schoolRules.register(UINib.init(nibName: "SchoolInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolInfo")
+        tbl_SchoolInfo.register(UINib.init(nibName: "SchoolTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolCell")
         self.loadInitialData()
         // Do any additional setup after loading the view.
         refreshControl = UIRefreshControl()
@@ -130,10 +130,44 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(tableView == tbl_SchoolInfo)
+        {
+            return 1
+        }
+        else
+        {
         return schoolRulesList.count
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        if(tableView == tbl_SchoolInfo)
+        {
+            let cell: SchoolTableViewCell = tableView.dequeueReusableCell(withIdentifier: "schoolCell") as! SchoolTableViewCell
+            if(Utilities.checkForInternet())
+            {
+                let view : UIView = (cell.viewWithTag(2000))!
+                self.makeCardView(view)
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.separatorInset = .zero
+                let dictValues = commonAppDelegate.SchoolDict.object(at: indexPath.row) as! NSDictionary
+                DispatchQueue.main.async {
+                    let image : UIImage = UIImage(named: "sampleImage.png")!
+                    cell.schoolLogo.sd_setShowActivityIndicatorView(true)
+                    cell.schoolLogo.sd_setIndicatorStyle(.gray)
+                    cell.schoolLogo.sd_setImage(with: URL(string: (dictValues.value(forKey: "school_logo")! as! String))! , placeholderImage: image, options: .refreshCached)
+                    cell.schoolLogo.image = image
+                    cell.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
+                    cell.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
+                    cell.schoolPhoneNo.text = "Tif : \(dictValues.value(forKey: "phone_number") as! String)"
+                    cell.setNeedsDisplay()
+                }
+                tbl_SchoolInfo.isUserInteractionEnabled = false
+            }
+            return cell
+        }
+        else
+        {
         let cell : SchoolInfoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "schoolInfo") as! SchoolInfoTableViewCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.separatorInset = .zero
@@ -144,12 +178,27 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
         cell.schoolInfoTitle.text = (dictValues.value(forKey: "roules") as! String)
         cell.schoolInfoTitle.sizeToFit()
         return cell
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(tableView == tbl_SchoolInfo)
+        {
+            return 130
+        }
+        else
+        {
         return UITableViewAutomaticDimension
+        }
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(tableView == tbl_SchoolInfo)
+        {
+            return 130
+        }
+        else
+        {
         return UITableViewAutomaticDimension
+        }
     }
     deinit {
         self.schoolRulesList.removeAllObjects()
