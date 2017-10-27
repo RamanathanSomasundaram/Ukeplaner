@@ -13,7 +13,7 @@ let calendar = Calendar.current
 let weekOfYear = calendar.component(.weekOfYear, from: Date.init(timeIntervalSinceNow: 0))
 let weekOfDay = calendar.dateComponents([.year, .month, .day], from: date)
 let WeekOfDate = "\(weekOfDay.day!)-\(weekOfDay.month!)-\(weekOfDay.year!)"
-class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,internetConnectionDelegate {
     @IBOutlet var currentWeekCV: UICollectionView!
     @IBOutlet var SchoolInfo: UILabel!
     @IBOutlet var allWeekCV: UICollectionView!
@@ -101,7 +101,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         if(Utilities.checkForInternet())
         {
             //self.weekCollectionView.isUserInteractionEnabled = true
-            self.refreshButton.isHidden = true
+            //self.refreshButton.isHidden = true
             self.noWeekLabel.isHidden = true
             Utilities.showLoading()
             Alamofire.request("\(CommonAPI)weekList?schoolid=\(school_id!)&group_id=\(group_id!)").responseJSON { response in
@@ -147,18 +147,20 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
         else
         {
-            self.internetConnection()
+            self.callIntertnetView()
+            //self.internetConnection()
         }
     }
     //Loss internet connection
     func internetConnection()
     {
         self.noWeekLabel.isHidden = true
-        Utilities.showAlert("Please check your internet connection!")
+        //Utilities.showAlert("Please check your internet connection!")
         schoolWeekList.removeAllObjects()
+        self.loadInitialData()
         currentWeekCV.reloadData()
         allWeekCV.reloadData()
-        refreshButton.isHidden = false
+        //refreshButton.isHidden = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
@@ -285,6 +287,16 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         Analytics.logEvent("Ukeplaner", parameters: ["Week_ID" : "\((dicValues.value(forKey: "week_id")! as! NSString))" as NSObject , "Week_Date" :"\((dicValues.value(forKey: "week_date")! as! NSString))" as NSObject , "Description" : "This week \((dicValues.value(forKey: "week_date")! as! NSString)) home work list"])
     }
     
+    func callIntertnetView()
+    {
+        let internet = InternetConnectionViewController.init(nibName: "InternetConnectionViewController", root: self)
+        internet.internetDelegate = self
+        internet.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(internet, animated: true, completion: nil)
+    }
+    func internetconnection() {
+        self.internetConnection()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

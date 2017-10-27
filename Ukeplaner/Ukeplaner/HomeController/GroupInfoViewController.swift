@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,SWRevealViewControllerDelegate,UITableViewDelegate,UITableViewDataSource {
+class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,internetConnectionDelegate,SWRevealViewControllerDelegate,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet var collectionView: UICollectionView!
     var collectionviewFlowlayout : UICollectionViewFlowLayout!
     var schoolID : Int!
@@ -27,7 +27,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         //SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
         //SchoolName.textColor = TextColor
         schoolID = commonAppDelegate.school_id
-        self.refreshButton.isHidden = true
+        //self.refreshButton.isHidden = true
         self.groupInfolist = NSMutableArray()
         self.revealViewController().delegate = self
         self.loadInitialData()
@@ -38,6 +38,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         collectionView.backgroundColor = UIColor.lightGray
         self.noGroupLabel.isHidden = true
         tbl_SchoolInfo.register(UINib.init(nibName: "SchoolTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolCell")
+        tbl_SchoolInfo.backgroundColor = UIColor.lightGray
         // Do any additional setup after loading the view.
     }
     func loadNavigationItem()
@@ -79,7 +80,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         {
             self.collectionView.isUserInteractionEnabled = true
             self.navigationItem.rightBarButtonItem?.isEnabled = true
-            self.refreshButton.isHidden = true
+            //self.refreshButton.isHidden = true
             Utilities.showLoading()
             Alamofire.request("\(CommonAPI)groupList?schoolid=\(schoolID!)").responseJSON { response in
                 let error = response.result.error
@@ -114,7 +115,8 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         }
         else
         {
-            self.internetConnection()
+            self.callIntertnetView()
+            //self.internetConnection()
         }
     }
     //Loss internet connection
@@ -122,10 +124,12 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     {
         self.collectionView.isUserInteractionEnabled = false
         self.noGroupLabel.isHidden = true
-        Utilities.showAlert("Please check your internet connection!")
+        //Utilities.showAlert("Please check your internet connection!")
         groupInfolist.removeAllObjects()
-        collectionView.reloadData()
-        refreshButton.isHidden = false
+        self.loadInitialData()
+        self.tbl_SchoolInfo.reloadData()
+        //collectionView.reloadData()
+        //refreshButton.isHidden = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
     //Make card view on cell View
@@ -156,6 +160,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
             self.makeCardView(view)
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.separatorInset = .zero
+            cell.contentView.backgroundColor = UIColor.lightGray
             let dictValues = commonAppDelegate.SchoolDict.object(at: indexPath.row) as! NSDictionary
             DispatchQueue.main.async {
                 let image : UIImage = UIImage(named: "sampleImage.png")!
@@ -165,14 +170,15 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
                 cell.schoolLogo.image = image
                 cell.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
                 cell.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
-                cell.schoolPhoneNo.text = "Tif : \(dictValues.value(forKey: "phone_number") as! String)"
+                cell.schoolPhoneNo.text = "Tlf : \(dictValues.value(forKey: "phone_number") as! String)"
                 cell.setNeedsDisplay()
             }
             tbl_SchoolInfo.isUserInteractionEnabled = false
         }
         else
         {
-            self.internetConnection()
+            self.callIntertnetView()
+            //self.internetConnection()
         }
         return cell
     }
@@ -220,7 +226,17 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     deinit {
         self.groupInfolist.removeAllObjects()
     }
-
+    func callIntertnetView()
+    {
+        let internet = InternetConnectionViewController.init(nibName: "InternetConnectionViewController", root: self)
+        internet.internetDelegate = self
+        internet.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(internet, animated: true, completion: nil)
+    }
+    func internetconnection() {
+        self.internetConnection()
+    }
+    
     //MARK: - REVEAL VIEW CONTROLLER DELEGATE
     func revealController(_ revealController: SWRevealViewController!, didMoveTo position: FrontViewPosition) {
         if(position == FrontViewPositionLeft){

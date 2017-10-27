@@ -11,7 +11,9 @@ import Foundation
 import Firebase
 let ThemeColor : UIColor = UIColor(red: 30.0/255.0, green: 34.0/255.0, blue: 39.0/255.0, alpha: 1.0)
 let TextColor : UIColor = UIColor(red: 140.0/255.0, green: 198.0/255.0, blue: 62.0/255.0, alpha: 1.0)
-class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
+class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,internetConnectionDelegate,UISearchBarDelegate {
+    
+    
     @IBOutlet var searchbarConstraint: NSLayoutConstraint!
     @IBOutlet var tableviewConstraint: NSLayoutConstraint!
     @IBOutlet var searchBarController: UISearchBar!
@@ -26,7 +28,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var searchBarBool : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshButton.isHidden = true
+        //self.refreshButton.isHidden = true
         self.noSchoolInfo.isHidden = true
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         schoolListArray = NSMutableArray()
@@ -162,7 +164,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             tbl_schoolList.isUserInteractionEnabled = true
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             self.noSchoolInfo.isHidden = true
-            self.refreshButton.isHidden = true
+            //self.refreshButton.isHidden = true
             Utilities.showLoading()
             Alamofire.request("\(CommonAPI)schoolList").responseJSON { response in
                 let error = response.result.error
@@ -197,7 +199,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         else
         {
-            self.internetConnection()
+            self.callIntertnetView()
+            //self.internetConnection()
         }
     }
     //MARK: - Tableview Datasource and Delegate methods
@@ -257,7 +260,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cell.schoolLogo.image = image
         cell.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
         cell.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
-            cell.schoolPhoneNo.text = "Tif : \(dictValues.value(forKey: "phone_number") as! String)"
+            cell.schoolPhoneNo.text = "Tlf : \(dictValues.value(forKey: "phone_number") as! String)"
         cell.setNeedsDisplay()
             }
         
@@ -265,14 +268,15 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         else
         {
             refreshControl.endRefreshing()
-            self.internetConnection()
+            self.callIntertnetView()
+            //self.internetConnection()
         }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(Utilities.checkForInternet())
-        {
+//        if(Utilities.checkForInternet())
+//        {
             var dicSelected : NSDictionary!
             if(isFiltered)
             {
@@ -288,21 +292,32 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             commonAppDelegate.SchoolDict.add(dicSelected)
             self.navigationController?.pushViewController(groupInfo, animated: true)
             Analytics.logEvent("Ukeplaner", parameters: ["School_name" : "\((dicSelected.value(forKey: "school_name")! as! NSString))" as NSObject , "School_ID" :"\((dicSelected.value(forKey: "school_id")! as! NSString))" as NSObject , "Description" : "\((dicSelected.value(forKey: "school_name")! as! NSString)) is selected"])
-        }
-        else
-        {
-            self.internetConnection()
-        }
+//        }
+//        else
+//        {
+//            self.callIntertnetView()
+//        }
+    }
+    func callIntertnetView()
+    {
+        let internet = InternetConnectionViewController.init(nibName: "InternetConnectionViewController", root: self)
+        internet.internetDelegate = self
+        internet.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(internet, animated: true, completion: nil)
+    }
+    func internetconnection() {
+        self.internetConnection()
     }
     //Loss internet connection
     func internetConnection()
     {
-        Utilities.showAlert("Please check your internet connection!")
+        //Utilities.showAlert("Please check your internet connection!")
         tbl_schoolList.isUserInteractionEnabled = false
         self.noSchoolInfo.isHidden = true
         schoolListArray.removeAllObjects()
-        tbl_schoolList.reloadData()
-        self.refreshButton.isHidden = false
+        self.loadInitialData()
+        //tbl_schoolList.reloadData()
+        //self.refreshButton.isHidden = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -16,6 +16,8 @@ class WeekTimeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.subjectName.layer.masksToBounds = true
+        self.subjectName.layer.cornerRadius = 5
         // Initialization code
     }
 

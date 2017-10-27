@@ -8,7 +8,7 @@
 
 import UIKit
 
-class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,SWRevealViewControllerDelegate {
+class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,SWRevealViewControllerDelegate,internetConnectionDelegate {
     var schoolRulesList : NSMutableArray!
     var school_id : Int!
     @IBOutlet var tbl_schoolRules: UITableView!
@@ -35,12 +35,14 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
         tbl_schoolRules.addSubview(refreshControl)
+        tbl_SchoolInfo.backgroundColor = UIColor.lightGray
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
 
     @objc func refreshTableView()
     {
         self.tbl_schoolRules.reloadData()
+        self.tbl_SchoolInfo.reloadData()
         refreshControl.endRefreshing()
         
     }
@@ -65,7 +67,7 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
         if(Utilities.checkForInternet())
         {
             self.tbl_schoolRules.isUserInteractionEnabled = true
-            self.refreshButton.isHidden = true
+            //self.refreshButton.isHidden = true
             Utilities.showLoading()
             Alamofire.request("\(CommonAPI)Roules?schoolid=\(school_id!)").responseJSON { response in
                 let error = response.result.error
@@ -100,17 +102,20 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
         }
         else
         {
-            self.internetConnection()
+            self.callIntertnetView()
+            //self.internetConnection()
         }
     }
     //Loss internet connection
     func internetConnection()
     {
         self.tbl_schoolRules.isUserInteractionEnabled = false
-        Utilities.showAlert("Please check your internet connection!")
+        //Utilities.showAlert("Please check your internet connection!")
         schoolRulesList.removeAllObjects()
-        tbl_schoolRules.reloadData()
-        refreshButton.isHidden = false
+        self.loadInitialData()
+        self.tbl_SchoolInfo.reloadData()
+        //tbl_schoolRules.reloadData()
+        //refreshButton.isHidden = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
     //Make card view on cell View
@@ -150,6 +155,7 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
                 self.makeCardView(view)
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 cell.separatorInset = .zero
+                cell.contentView.backgroundColor = UIColor.lightGray
                 let dictValues = commonAppDelegate.SchoolDict.object(at: indexPath.row) as! NSDictionary
                 DispatchQueue.main.async {
                     let image : UIImage = UIImage(named: "sampleImage.png")!
@@ -159,7 +165,7 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
                     cell.schoolLogo.image = image
                     cell.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
                     cell.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
-                    cell.schoolPhoneNo.text = "Tif : \(dictValues.value(forKey: "phone_number") as! String)"
+                    cell.schoolPhoneNo.text = "Tlf : \(dictValues.value(forKey: "phone_number") as! String)"
                     cell.setNeedsDisplay()
                 }
                 tbl_SchoolInfo.isUserInteractionEnabled = false
@@ -202,6 +208,16 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
     }
     deinit {
         self.schoolRulesList.removeAllObjects()
+    }
+    func callIntertnetView()
+    {
+        let internet = InternetConnectionViewController.init(nibName: "InternetConnectionViewController", root: self)
+        internet.internetDelegate = self
+        internet.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(internet, animated: true, completion: nil)
+    }
+    func internetconnection() {
+        self.internetConnection()
     }
     //MARK: - REVEAL VIEW CONTROLLER DELEGATE
     

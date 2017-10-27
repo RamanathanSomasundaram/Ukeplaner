@@ -8,7 +8,7 @@
 
 import UIKit
 
-class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,SWRevealViewControllerDelegate {
+class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,SWRevealViewControllerDelegate,internetConnectionDelegate {
     var schoolWeekList : NSMutableArray!
     var school_id : Int!
     
@@ -39,6 +39,7 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
         tbl_weeklyList.addSubview(refreshControl)
+        tbl_SchoolInfo.backgroundColor = UIColor.lightGray
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
 
@@ -68,7 +69,7 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
         if(Utilities.checkForInternet())
         {
             self.tbl_weeklyList.isUserInteractionEnabled = true
-            self.refreshButton.isHidden = true
+            //self.refreshButton.isHidden = true
             Utilities.showLoading()
             Alamofire.request("\(CommonAPI)Ukeplanregler?schoolid=\(school_id!)").responseJSON { response in
                 let error = response.result.error
@@ -105,17 +106,20 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
         }
         else
         {
-            self.internetConnection()
+            self.callIntertnetView()
+            //self.internetConnection()
         }
     }
     //Loss internet connection
     func internetConnection()
     {
         self.tbl_weeklyList.isUserInteractionEnabled = false
-        Utilities.showAlert("Please check your internet connection!")
+        //Utilities.showAlert("Please check your internet connection!")
         schoolWeekList.removeAllObjects()
-        self.tbl_weeklyList.reloadData()
-        refreshButton.isHidden = false
+        self.loadInitialData()
+        self.tbl_SchoolInfo.reloadData()
+        //self.tbl_weeklyList.reloadData()
+       // refreshButton.isHidden = false
     }
     //Make card view on cell View
     func makeCardView (_ cell : UIView)
@@ -152,6 +156,7 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
                 let view : UIView = (cell.viewWithTag(2000))!
                 self.makeCardView(view)
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.contentView.backgroundColor = UIColor.lightGray
                 cell.separatorInset = .zero
                 let dictValues = commonAppDelegate.SchoolDict.object(at: indexPath.row) as! NSDictionary
                 DispatchQueue.main.async {
@@ -162,7 +167,7 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
                     cell.schoolLogo.image = image
                     cell.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
                     cell.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
-                    cell.schoolPhoneNo.text = "Tif : \(dictValues.value(forKey: "phone_number") as! String)"
+                    cell.schoolPhoneNo.text = "Tlf : \(dictValues.value(forKey: "phone_number") as! String)"
                     cell.setNeedsDisplay()
                 }
                 tbl_SchoolInfo.isUserInteractionEnabled = false
@@ -205,6 +210,16 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
     }
     deinit {
         self.schoolWeekList.removeAllObjects()
+    }
+    func callIntertnetView()
+    {
+        let internet = InternetConnectionViewController.init(nibName: "InternetConnectionViewController", root: self)
+        internet.internetDelegate = self
+        internet.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(internet, animated: true, completion: nil)
+    }
+    func internetconnection() {
+        self.internetConnection()
     }
     //MARK: - REVEAL VIEW CONTROLLER DELEGATE
     

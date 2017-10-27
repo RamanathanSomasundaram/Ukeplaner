@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		076D63971FA381B8001CC16C /* InternetConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D63951FA381B8001CC16C /* InternetConnectionViewController.swift */; };
+		076D63981FA381B8001CC16C /* InternetConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 076D63961FA381B8001CC16C /* InternetConnectionViewController.xib */; };
 		07ECB9DD1F95224A00F94861 /* RobotoSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07ECB9D11F95223D00F94861 /* RobotoSlab-Bold.ttf */; };
 		07ECB9DE1F95225500F94861 /* RobotoSlab-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07ECB9D21F95223D00F94861 /* RobotoSlab-Light.ttf */; };
 		07ECB9DF1F95225800F94861 /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07ECB9D31F95223D00F94861 /* RobotoSlab-Regular.ttf */; };
@@ -76,6 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		076D63951FA381B8001CC16C /* InternetConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionViewController.swift; sourceTree = "<group>"; };
+		076D63961FA381B8001CC16C /* InternetConnectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InternetConnectionViewController.xib; sourceTree = "<group>"; };
 		07ECB9D01F95223D00F94861 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		07ECB9D11F95223D00F94861 /* RobotoSlab-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Bold.ttf"; sourceTree = "<group>"; };
 		07ECB9D21F95223D00F94861 /* RobotoSlab-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Light.ttf"; sourceTree = "<group>"; };
@@ -171,6 +175,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		076D63941FA38173001CC16C /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				076D63951FA381B8001CC16C /* InternetConnectionViewController.swift */,
+				076D63961FA381B8001CC16C /* InternetConnectionViewController.xib */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		07ECB9CE1F95223D00F94861 /* CustomFonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +279,7 @@
 		0D1492881F5F1760002B2701 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				076D63941FA38173001CC16C /* CustomView */,
 				07ECB9CE1F95223D00F94861 /* CustomFonts */,
 				0D1492891F5F1760002B2701 /* LoadingView */,
 				0D14928C1F5F1760002B2701 /* swrevealController */,
@@ -563,6 +577,7 @@
 				0D5ADF521F698CFA00CC87AD /* WebViewTableViewCell.xib in Resources */,
 				0D1142901F83E42200613BE7 /* GoogleService-Info.plist in Resources */,
 				07ECB9E51F95226400F94861 /* SERIN___.ttf in Resources */,
+				076D63981FA381B8001CC16C /* InternetConnectionViewController.xib in Resources */,
 				07ECB9DE1F95225500F94861 /* RobotoSlab-Light.ttf in Resources */,
 				0D4F53211F3E1E0700F79487 /* Main.storyboard in Resources */,
 				07ECB9E31F95226400F94861 /* SERIM___.ttf in Resources */,
@@ -646,6 +661,7 @@
 				0D14929E1F5F1760002B2701 /* SlideMenuList.swift in Sources */,
 				0D1492A31F5F1760002B2701 /* weeklyScheduleViewController.swift in Sources */,
 				0D1492A51F5F1760002B2701 /* SWRevealViewController.m in Sources */,
+				076D63971FA381B8001CC16C /* InternetConnectionViewController.swift in Sources */,
 				0D14929F1F5F1760002B2701 /* informationSchoolViewController.swift in Sources */,
 				0D14929B1F5F1760002B2701 /* HomeViewController.swift in Sources */,
 				0D14929C1F5F1760002B2701 /* weekdayViewController.swift in Sources */,

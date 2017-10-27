@@ -8,7 +8,7 @@
 
 import UIKit
 import TabPageViewController
-class WeekTimeTableViewController: UIViewController{
+class WeekTimeTableViewController: UIViewController,internetConnectionDelegate{
     var dicvalue = NSMutableDictionary()
     let daysArray = NSMutableArray()
     var school_id : Int!
@@ -28,6 +28,8 @@ class WeekTimeTableViewController: UIViewController{
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         //Custom navigation controller
         self.navigationBarCustomButton()
+        prevBtn.layer.cornerRadius = 8
+        nextBtn.layer.cornerRadius = 8
         //load API access
         self.loadweekTimeTable()
         schoolInfo.text = Utilities.weekno_list(week_id: commonAppDelegate.currentWeek_id)
@@ -38,7 +40,7 @@ class WeekTimeTableViewController: UIViewController{
     func navigationBarCustomButton()
     {
         //Navigation BackButton hide
-        self.title = "Ukeplan.com"
+        self.title = "Ukeplaner.com"
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
@@ -96,7 +98,7 @@ class WeekTimeTableViewController: UIViewController{
     {
         if(Utilities.checkForInternet())
         {
-            self.refreshButton.isHidden = true
+            //self.refreshButton.isHidden = true
         self.noHomeLabel.isHidden = true
         if(dicvalue.count > 0 && daysArray.count > 0)
         {
@@ -172,17 +174,19 @@ class WeekTimeTableViewController: UIViewController{
         }
         else
         {
-         self.internetConnection()
+        self.callIntertnetView()
+         //self.internetConnection()
         }
     }
     //Loss internet connection
     func internetConnection()
     {
         self.noHomeLabel.isHidden = true
-        Utilities.showAlert("Please check your internet connection!")
+        //Utilities.showAlert("Please check your internet connection!")
         daysArray.removeAllObjects()
         dicvalue.removeAllObjects()
-        refreshButton.isHidden = false
+        self.loadweekTimeTable()
+        //refreshButton.isHidden = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
@@ -201,20 +205,21 @@ class WeekTimeTableViewController: UIViewController{
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "MondayViewController") as! MondayViewController
             let days = self.daysArray.object(at: i) as! NSDictionary
             let week_date = days.value(forKey: "Week_date") as! String
-            let week_day = days.value(forKey: "Week_day") as! String
+            let week_day = self.daysChangedtoNorwayString(dayString: days.value(forKey: "Week_day") as! String).uppercased()
+            let week_day_Eng = days.value(forKey: "Week_day") as! String
             if(WeekOfDate == week_date)
             {
                 currentIndex = i
             }
             tabItems.append((viewController: vc, title: "\(week_day)\n\(week_date)"))
-            vc.subjects = dicvalue.value(forKey: week_day) as? NSMutableArray
+            vc.subjects = dicvalue.value(forKey: week_day_Eng) as? NSMutableArray
         }
         tc.tabItems = tabItems
         var option = TabPageOption()
         option.tabBackgroundColor = TextColor
         option.tabHeight = 50.0
         option.currentColor = UIColor.white
-        option.tabMargin = 50.0
+        option.tabMargin = 20.0
         tc.option = option
         if(currentIndex != nil)
         {
@@ -225,7 +230,48 @@ class WeekTimeTableViewController: UIViewController{
         self.pageViewController.insertSubview(tc.view, at: 0) // Insert the page controller view below the navigation buttons
         tc.didMove(toParentViewController: self)
     }
-
+    func daysChangedtoNorwayString(dayString : String)-> String
+    {
+        if(dayString.lowercased() == "monday")
+        {
+            return "Mandag"
+        }
+        else if(dayString.lowercased() == "tuesday")
+        {
+            return "Tirsdag"
+        }
+        else if(dayString.lowercased() == "wednesday")
+        {
+            return "Onsdag"
+        }
+        else if(dayString.lowercased() == "thursday")
+        {
+            return "Torsdag"
+        }
+        else if(dayString.lowercased() == "friday")
+        {
+            return "Fredag"
+        }
+        else if(dayString.lowercased() == "saturday")
+        {
+            return "Lørdag"
+        }
+        else if(dayString.lowercased() == "sunday")
+        {
+            return "Søndag"
+        }
+        return ""
+    }
+    func callIntertnetView()
+    {
+        let internet = InternetConnectionViewController.init(nibName: "InternetConnectionViewController", root: self)
+        internet.internetDelegate = self
+        internet.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(internet, animated: true, completion: nil)
+    }
+    func internetconnection() {
+        self.internetConnection()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

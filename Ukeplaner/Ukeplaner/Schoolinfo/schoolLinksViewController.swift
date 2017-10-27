@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,SWRevealViewControllerDelegate {
+class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,SWRevealViewControllerDelegate,internetConnectionDelegate {
     var schoolLinksList : NSMutableArray!
     var school_id : Int!
     @IBOutlet var refreshButton: UIButton!
@@ -24,7 +24,7 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
         //SchoolName.textColor = TextColor
         self.loadNavigationItem()
         school_id = commonAppDelegate.school_id
-        self.refreshButton.isHidden = true
+        //self.refreshButton.isHidden = true
         self.revealViewController().delegate = self
         schoolLinksList = ["Melsom vgs","It's Learning","NDLA","Læreplaner","VKT (Bussen)","Ungt Entreprenørskap","Vestfold fylkeskommune","Eksamenskontoret"]
         schoolWebLink = ["https://www.vfk.no/Melsom-vgs/","https://vfk.itslearning.com/Index.aspx","https://ndla.no/","https://www.udir.no/laring-og-trivsel/lareplanverket/finn-lareplan/","https://www.vkt.no/","http://www.ukeplaner.com/school_info/groupinfo/www.ue.no","http://www.ukeplaner.com/school_info/groupinfo/www.vfk.no","https://www.vfk.no/Tema-og-tjenester/Utdanning/Eksamen/"]
@@ -36,6 +36,9 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
 //        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
 //        tbl_schoolLinks.addSubview(refreshControl)
         self.tbl_schoolLinks.tableFooterView = UIView()
+        tbl_SchoolInfo.backgroundColor = UIColor.lightGray
+        tbl_schoolLinks.backgroundColor = UIColor.lightGray
+        self.view.backgroundColor = UIColor.lightGray
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
     
@@ -62,11 +65,12 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
     //Loss internet connection
     func internetConnection()
     {
-        self.refreshButton.isHidden = false
-        Utilities.showAlert("Please check your internet connection!")
+        //self.refreshButton.isHidden = false
+        //Utilities.showAlert("Please check your internet connection!")
         schoolLinksList.removeAllObjects()
+        self.tbl_SchoolInfo.reloadData()
+        //self.loadInitialData()
         tbl_schoolLinks.reloadData()
-        
     }
     //Make card view on cell View
     func makeCardView (_ cell : UIView)
@@ -105,6 +109,7 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
                 self.makeCardView(view)
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 cell.separatorInset = .zero
+                cell.contentView.backgroundColor = UIColor.lightGray
                 let dictValues = commonAppDelegate.SchoolDict.object(at: indexPath.row) as! NSDictionary
                 DispatchQueue.main.async {
                     let image : UIImage = UIImage(named: "sampleImage.png")!
@@ -114,7 +119,7 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
                     cell.schoolLogo.image = image
                     cell.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
                     cell.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
-                    cell.schoolPhoneNo.text = "Tif : \(dictValues.value(forKey: "phone_number") as! String)"
+                    cell.schoolPhoneNo.text = "Tlf : \(dictValues.value(forKey: "phone_number") as! String)"
                     cell.setNeedsDisplay()
                 }
                 tbl_SchoolInfo.isUserInteractionEnabled = false
@@ -134,7 +139,7 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
         cell?.separatorInset = .zero
         let cellView = (cell?.viewWithTag(600)!)
-        
+        cell?.contentView.backgroundColor = UIColor.lightGray
         cellView?.layer.cornerRadius = 25
         //self.makeCardView(cellView!)
         cell?.schoolInfoTitle.textColor = TextColor
@@ -164,8 +169,19 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         else
         {
-            self.internetConnection()
+            self.callIntertnetView()
+           // self.internetConnection()
         }
+    }
+    func callIntertnetView()
+    {
+        let internet = InternetConnectionViewController.init(nibName: "InternetConnectionViewController", root: self)
+        internet.internetDelegate = self
+        internet.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(internet, animated: true, completion: nil)
+    }
+    func internetconnection() {
+        self.internetConnection()
     }
     //MARK: - REVEAL VIEW CONTROLLER DELEGATE
     
