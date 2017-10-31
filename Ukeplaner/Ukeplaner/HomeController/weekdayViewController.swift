@@ -19,8 +19,11 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
     @IBOutlet var allWeekCV: UICollectionView!
     var collectionViewFlowLayout : UICollectionViewFlowLayout!
     var collectionViewFlowLayout1 : UICollectionViewFlowLayout!
+    var collectionViewFlowLayout2 : UICollectionViewFlowLayout!
     @IBOutlet var noWeekLabel: UILabel!
     @IBOutlet var refreshButton: UIButton!
+    @IBOutlet var nextweekCV: UICollectionView!
+    var nextweekIndex : Int! = 0
     var school_id : Int!
     var group_id : Int!
     var schoolWeekList : NSMutableArray!
@@ -55,10 +58,13 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         currentWeekCV.backgroundColor = UIColor.lightGray
         currentWeekCV.delegate = self
         currentWeekCV.dataSource = self
+        nextweekCV.delegate = self
+        nextweekCV.dataSource = self
         allWeekCV.delegate = self
         allWeekCV.dataSource = self
         collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout1 = UICollectionViewFlowLayout()
+        collectionViewFlowLayout2 = UICollectionViewFlowLayout()
         var size1 : CGFloat!
         if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad)
         {
@@ -77,8 +83,14 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         collectionViewFlowLayout1.minimumLineSpacing = 1
         collectionViewFlowLayout1.minimumInteritemSpacing = 1
         collectionViewFlowLayout1.scrollDirection = .vertical
+        collectionViewFlowLayout2.itemSize = CGSize(width: size1, height: 80)
+        collectionViewFlowLayout2.minimumLineSpacing = 1
+        collectionViewFlowLayout2.minimumInteritemSpacing = 1
+        collectionViewFlowLayout2.scrollDirection = .vertical
         self.currentWeekCV.collectionViewLayout = collectionViewFlowLayout1
         self.currentWeekCV.reloadData()
+        self.nextweekCV.collectionViewLayout = collectionViewFlowLayout2
+        self.nextweekCV.reloadData()
         self.allWeekCV.collectionViewLayout = collectionViewFlowLayout
         self.allWeekCV.reloadData()
     }
@@ -129,6 +141,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
                                 self.currentWeekIndex = i
                             }
                         }
+                            self.nextweekIndex = self.currentWeekIndex + 1
                     }
                     else
                     {
@@ -139,6 +152,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
                     }
                     DispatchQueue.main.async {
                         self.currentWeekCV.reloadData()
+                        self.nextweekCV.reloadData()
                         self.allWeekCV.reloadData()
                         Utilities.hideLoading()
                     }
@@ -159,6 +173,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         schoolWeekList.removeAllObjects()
         self.loadInitialData()
         currentWeekCV.reloadData()
+        nextweekCV.reloadData()
         allWeekCV.reloadData()
         //refreshButton.isHidden = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false
@@ -166,19 +181,6 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     @IBAction func refershAction(_ sender: Any) {
         self.loadInitialData()
-    }
-    
-    //Make card view on cell View
-    func makeCardView (_ cell : UIView)
-    {
-        cell.layer.cornerRadius = 8
-        cell.layer.shadowRadius = 2.5
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0.0, height: 0.2)
-        cell.layer.masksToBounds  = false
-        let shadowPath = UIBezierPath(rect: cell.bounds)
-        cell.layer.shadowPath = shadowPath.cgPath
-        cell.layer.shadowOpacity = 0.9
     }
     //MARK: - Collection view datasource and delegate methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -189,6 +191,10 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         if(collectionView == allWeekCV)
         {
         allWeekCV.collectionViewLayout.invalidateLayout()
+        }
+        if(collectionView == nextweekCV)
+        {
+           nextweekCV.collectionViewLayout.invalidateLayout()
         }
         return 1
     }
@@ -206,6 +212,17 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
             return 1
             }
         }
+        if(collectionView == nextweekCV)
+        {
+            if(schoolWeekList.count == 0)
+            {
+                return 0
+            }
+            else
+            {
+                return 1
+            }
+        }
         if(collectionView == allWeekCV)
         {
         return schoolWeekList.count
@@ -215,14 +232,14 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell1 : UICollectionViewCell? = nil
-
         if(collectionView == currentWeekCV)
         {
-            
             let cell : UICollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: "weekcell", for: indexPath)
             let view = (cell?.viewWithTag(5000)!)
-            self.makeCardView(view!)
+            Utilities.makeCardView(view!)
             cell?.backgroundColor = UIColor.lightGray
+            if(currentWeekIndex <= (schoolWeekList.count - 1))
+            {
             let infoTitle : UILabel = (cell?.viewWithTag(701) as! UILabel)
             let infoweekTitle : UILabel = (cell?.viewWithTag(700) as! UILabel)
             let dicValues = schoolWeekList.object(at: currentWeekIndex) as! NSDictionary
@@ -235,9 +252,40 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
             {
                 infoTitle.textColor = UIColor(red: 92.0 / 255.0, green: 0.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
             }
+            }
+            return cell!
+        }
+        if(collectionView == nextweekCV)
+        {
+            let cell : UICollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: "weekcell2", for: indexPath)
+            let view = (cell?.viewWithTag(5003)!)
+            Utilities.makeCardView(view!)
+            cell?.backgroundColor = UIColor.lightGray
+            if(nextweekIndex <= (schoolWeekList.count - 1))
+            {
+            let infoTitle : UILabel = (cell?.viewWithTag(801) as! UILabel)
+            let infoweekTitle : UILabel = (cell?.viewWithTag(800) as! UILabel)
+            let dicValues = schoolWeekList.object(at: nextweekIndex) as! NSDictionary
+            infoTitle.text = (dicValues.value(forKey: "week_no") as! String)
+            infoweekTitle.textColor = TextColor //255,165
+            infoweekTitle.text = (dicValues.value(forKey: "week_date") as! String)
+            infoweekTitle.numberOfLines = 1
+            infoweekTitle.adjustsFontSizeToFitWidth = true
+            if(weekOfYear == 52)
+            {
+                if((dicValues.value(forKey: "week_no") as! NSString).integerValue == 1)
+                {
+                    infoTitle.textColor = UIColor(red: 255.0 / 255.0, green: 165.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)
+                }
+            }
             else
             {
-                infoTitle.textColor = UIColor(red: 255.0 / 255.0, green: 165.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)
+                if((dicValues.value(forKey: "week_no") as! NSString).integerValue == weekOfYear + 1)
+                {
+                    infoTitle.textColor = UIColor(red: 255.0 / 255.0, green: 165.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)
+                }
+                
+            }
             }
             return cell!
         }
@@ -245,7 +293,7 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         {
         let cell : UICollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: "weekcell1", for: indexPath)
         let view = (cell?.viewWithTag(5001)!)
-        self.makeCardView(view!)
+        Utilities.makeCardView(view!)
         cell?.backgroundColor = UIColor.lightGray
         let infoTitle : UILabel = (cell?.viewWithTag(703) as! UILabel)
         let infoweekTitle : UILabel = (cell?.viewWithTag(702) as! UILabel)
@@ -278,6 +326,11 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
         {
             commonAppDelegate.currentWeek_id = indexPath.row
             dicValues = schoolWeekList.object(at: indexPath.row) as! NSDictionary
+        }
+        if(collectionView == nextweekCV)
+        {
+            commonAppDelegate.currentWeek_id = nextweekIndex
+            dicValues = schoolWeekList.object(at: nextweekIndex) as! NSDictionary
         }
         commonAppDelegate.week_id = (dicValues.value(forKey: "week_id") as! NSString).integerValue
         commonAppDelegate.weekid_first = ((schoolWeekList.object(at: 0) as! NSDictionary).value(forKey: "week_id") as! NSString).integerValue

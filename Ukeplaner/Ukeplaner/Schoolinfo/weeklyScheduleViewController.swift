@@ -121,18 +121,6 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
         //self.tbl_weeklyList.reloadData()
        // refreshButton.isHidden = false
     }
-    //Make card view on cell View
-    func makeCardView (_ cell : UIView)
-    {
-        cell.layer.cornerRadius = 8
-        cell.layer.shadowRadius = 2.5
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0.0, height: 0.2)
-        cell.layer.masksToBounds  = false
-        let shadowPath = UIBezierPath(rect: cell.bounds)
-        cell.layer.shadowPath = shadowPath.cgPath
-        cell.layer.shadowOpacity = 0.9
-    }
     //MARK: - tableview datasource and delegate methods
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -151,27 +139,17 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
         if(tableView == tbl_SchoolInfo)
         {
             let cell: SchoolTableViewCell = tableView.dequeueReusableCell(withIdentifier: "schoolCell") as! SchoolTableViewCell
-            if(Utilities.checkForInternet())
-            {
                 let view : UIView = (cell.viewWithTag(2000))!
-                self.makeCardView(view)
+                Utilities.makeCardView(view)
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 cell.contentView.backgroundColor = UIColor.lightGray
                 cell.separatorInset = .zero
                 let dictValues = commonAppDelegate.SchoolDict.object(at: indexPath.row) as! NSDictionary
                 DispatchQueue.main.async {
-                    let image : UIImage = UIImage(named: "sampleImage.png")!
-                    cell.schoolLogo.sd_setShowActivityIndicatorView(true)
-                    cell.schoolLogo.sd_setIndicatorStyle(.gray)
-                    cell.schoolLogo.sd_setImage(with: URL(string: (dictValues.value(forKey: "school_logo")! as! String))! , placeholderImage: image, options: .refreshCached)
-                    cell.schoolLogo.image = image
-                    cell.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
-                    cell.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
-                    cell.schoolPhoneNo.text = "Tlf : \(dictValues.value(forKey: "phone_number") as! String)"
+                    cell.configureCell(dictValues: dictValues)
                     cell.setNeedsDisplay()
                 }
                 tbl_SchoolInfo.isUserInteractionEnabled = false
-            }
             return cell
         }
         else
@@ -180,11 +158,9 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.separatorInset = .zero
         let cellView = cell.viewWithTag(600)
-        self.makeCardView(cellView!)
+        Utilities.makeCardView(cellView!)
         let dictValues = self.schoolWeekList.object(at: indexPath.row) as! NSDictionary
-        cell.schoolInfoTitle.textColor = TextColor
-        cell.schoolInfoTitle.text = (dictValues.value(forKey: "Ukeplanregler") as! String)
-        cell.schoolInfoTitle.sizeToFit()
+        cell.configureCell(schoolinfo: (dictValues.value(forKey: "Ukeplanregler") as! String))
         return cell
         }
     }

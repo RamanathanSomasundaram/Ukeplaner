@@ -20,11 +20,11 @@ class MondayViewController: UIViewController,UITableViewDelegate,UITableViewData
         subjDesc = NSMutableArray()
         if(UIScreen.main.bounds.size.height == 812.0)
         {
-            tbl_Height.constant = 190
+            tbl_Height.constant = 200
         }
         else
         {
-            tbl_Height.constant = 150
+            tbl_Height.constant = 160
         }
         self.Tbl_timetable.tableFooterView = UIView()
         // Do any additional setup after loading the view.
@@ -72,10 +72,7 @@ class MondayViewController: UIViewController,UITableViewDelegate,UITableViewData
         self.makeCardView(viewCell1)
         self.makeCardView(viewCell)
         let dictValues = self.subjDesc.object(at: indexPath.row) as! NSDictionary
-        cell.subjectName.text = (dictValues.value(forKey: "subject_name") as! String)
-        cell.subjectName.layer.masksToBounds = true
-        cell.subjectName.layer.cornerRadius = 5
-        cell.subjectDesc.text = (dictValues.value(forKey: "description") as! String)
+        cell.configureCell(dictValues: dictValues)
         cell.isUserInteractionEnabled = false
         return cell
     }

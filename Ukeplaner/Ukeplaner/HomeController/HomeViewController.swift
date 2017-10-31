@@ -217,25 +217,14 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return schoolListArray.count
         }
     }
-    //Make card view on cell View
-    func makeCardView (_ cell : UIView)
-    {
-        cell.layer.cornerRadius = 8
-        cell.layer.shadowRadius = 2.5
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0.0, height: 0.2)
-        cell.layer.masksToBounds  = false
-        let shadowPath = UIBezierPath(rect: cell.bounds)
-        cell.layer.shadowPath = shadowPath.cgPath
-        cell.layer.shadowOpacity = 0.9
-    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell: SchoolTableViewCell = tableView.dequeueReusableCell(withIdentifier: "schoolCell") as! SchoolTableViewCell
         if(Utilities.checkForInternet())
         {
         let view : UIView = (cell.viewWithTag(2000))!
-        self.makeCardView(view)
+        Utilities.makeCardView(view)
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.separatorInset = .zero
         var dictValues : NSDictionary!
@@ -253,14 +242,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             dictValues = self.schoolListArray.object(at: indexPath.row) as! NSDictionary
         }
         DispatchQueue.main.async {
-        let image : UIImage = UIImage(named: "sampleImage.png")!
-        cell.schoolLogo.sd_setShowActivityIndicatorView(true)
-        cell.schoolLogo.sd_setIndicatorStyle(.gray)
-        cell.schoolLogo.sd_setImage(with: URL(string: (dictValues!.value(forKey: "school_logo")! as! String))! , placeholderImage: image, options: .refreshCached)
-        cell.schoolLogo.image = image
-        cell.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
-        cell.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
-            cell.schoolPhoneNo.text = "Tlf : \(dictValues.value(forKey: "phone_number") as! String)"
+        cell.configureCell(dictValues: dictValues)
         cell.setNeedsDisplay()
             }
         
@@ -275,8 +257,6 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if(Utilities.checkForInternet())
-//        {
             var dicSelected : NSDictionary!
             if(isFiltered)
             {
@@ -292,11 +272,6 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             commonAppDelegate.SchoolDict.add(dicSelected)
             self.navigationController?.pushViewController(groupInfo, animated: true)
             Analytics.logEvent("Ukeplaner", parameters: ["School_name" : "\((dicSelected.value(forKey: "school_name")! as! NSString))" as NSObject , "School_ID" :"\((dicSelected.value(forKey: "school_id")! as! NSString))" as NSObject , "Description" : "\((dicSelected.value(forKey: "school_name")! as! NSString)) is selected"])
-//        }
-//        else
-//        {
-//            self.callIntertnetView()
-//        }
     }
     func callIntertnetView()
     {

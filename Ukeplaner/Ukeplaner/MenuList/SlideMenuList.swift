@@ -41,7 +41,11 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
         cell?.textLabel?.text = (menuTitleList.object(at: indexPath.row) as! String)
         cell?.imageView?.image = UIImage.init(named: (menuIconList.object(at: indexPath.row) as! String))
         cell?.imageView?.highlightedImage = UIImage.init(named: (selectMenuIconList.object(at: indexPath.row) as! String))
-        
+        cell?.selectionStyle = .none
+        if(indexPath.row == 6)
+        {
+            cell?.separatorInset.bottom = 2
+        }
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

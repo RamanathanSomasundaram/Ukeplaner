@@ -132,18 +132,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         //refreshButton.isHidden = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
-    //Make card view on cell View
-    func makeCardView (_ cell : UIView)
-    {
-        cell.layer.cornerRadius = 8
-        cell.layer.shadowRadius = 2.5
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0.0, height: 0.2)
-        cell.layer.masksToBounds  = false
-        let shadowPath = UIBezierPath(rect: cell.bounds)
-        cell.layer.shadowPath = shadowPath.cgPath
-        cell.layer.shadowOpacity = 0.9
-    }
+
     //MARK: - Tableview Datasource and Deleagate
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -152,34 +141,18 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell: SchoolTableViewCell = tableView.dequeueReusableCell(withIdentifier: "schoolCell") as! SchoolTableViewCell
-        if(Utilities.checkForInternet())
-        {
             let view : UIView = (cell.viewWithTag(2000))!
-            self.makeCardView(view)
+        Utilities.makeCardView(view)
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.separatorInset = .zero
             cell.contentView.backgroundColor = UIColor.lightGray
             let dictValues = commonAppDelegate.SchoolDict.object(at: indexPath.row) as! NSDictionary
             DispatchQueue.main.async {
-                let image : UIImage = UIImage(named: "sampleImage.png")!
-                cell.schoolLogo.sd_setShowActivityIndicatorView(true)
-                cell.schoolLogo.sd_setIndicatorStyle(.gray)
-                cell.schoolLogo.sd_setImage(with: URL(string: (dictValues.value(forKey: "school_logo")! as! String))! , placeholderImage: image, options: .refreshCached)
-                cell.schoolLogo.image = image
-                cell.schoolName.text = (dictValues.value(forKey: "school_name") as! String)
-                cell.schoolEmailID.text = (dictValues.value(forKey: "school_email") as! String)
-                cell.schoolPhoneNo.text = "Tlf : \(dictValues.value(forKey: "phone_number") as! String)"
+                cell.configureCell(dictValues: dictValues)
                 cell.setNeedsDisplay()
             }
             tbl_SchoolInfo.isUserInteractionEnabled = false
-        }
-        else
-        {
-            self.callIntertnetView()
-            //self.internetConnection()
-        }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -194,24 +167,13 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: UICollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: "CellIdentifier", for: indexPath)
-        if cell == nil {
-            // print("empty value")
-        }
         let view = (cell?.viewWithTag(2001)!)
-        self.makeCardView(view!)
+        Utilities.makeCardView(view!)
         cell?.backgroundColor = UIColor.lightGray
         let infoTitle : UILabel = (cell?.viewWithTag(500) as! UILabel)
         infoTitle.textColor = TextColor
         let dicLoad = groupInfolist.object(at: indexPath.row) as! NSDictionary
-        if(dicLoad.value(forKey: "ErrorMessage") != nil)
-        {
-            self.noGroupLabel.isHidden = false
-        }
-        else
-        {
-            self.noGroupLabel.isHidden = true
         infoTitle.text = (dicLoad.value(forKey: "group_name") as! String)
-        }
         return cell!
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

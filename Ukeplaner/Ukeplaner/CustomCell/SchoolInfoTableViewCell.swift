@@ -15,6 +15,13 @@ class SchoolInfoTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func configureCell(schoolinfo : String)
+    {
+        self.schoolInfoTitle.textColor = TextColor
+        self.schoolInfoTitle.text = schoolinfo
+        self.schoolInfoTitle.sizeToFit()
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

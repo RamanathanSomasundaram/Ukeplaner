@@ -20,6 +20,13 @@ class WeekTimeTableViewCell: UITableViewCell {
         self.subjectName.layer.cornerRadius = 5
         // Initialization code
     }
+    func configureCell(dictValues : NSDictionary)
+    {
+        self.subjectName.text = (dictValues.value(forKey: "subject_name") as! String)
+        self.subjectName.layer.masksToBounds = true
+        self.subjectName.layer.cornerRadius = 5
+        self.subjectDesc.text = (dictValues.value(forKey: "description") as! String)
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

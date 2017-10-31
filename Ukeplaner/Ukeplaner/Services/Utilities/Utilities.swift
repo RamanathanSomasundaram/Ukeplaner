@@ -98,7 +98,7 @@ class Utilities: NSObject {
         
         return ret
     }
-    
+    //MARK: - Check internet Connection
     class func checkForInternet() -> Bool {
         
         if self.isConnectedToNetwork() == true
@@ -113,7 +113,7 @@ class Utilities: NSObject {
         }
         
     }
-    
+    //MARK: Change weeklist info lable String
     class func weekno_list(week_id : Int) -> String
     {
         let week_id_String = "\((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "school_name") as! String)" + " - Ukeplan for \(((commonAppDelegate.SchoolDict.object(at: 1) as! NSDictionary).value(forKey: "Groupname") as! String))" + " - uke \((commonAppDelegate.weekNoArray.object(at: week_id)as! String))"
@@ -139,6 +139,20 @@ class Utilities: NSObject {
             return true
         #endif
         
+    }
+    
+    //MARK: Make cardview for all cell
+    //Make card view on cell View
+   class func makeCardView (_ cell : UIView)
+    {
+        cell.layer.cornerRadius = 8
+        cell.layer.shadowRadius = 2.5
+        cell.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0.0, height: 0.2)
+        cell.layer.masksToBounds  = false
+        let shadowPath = UIBezierPath(rect: cell.bounds)
+        cell.layer.shadowPath = shadowPath.cgPath
+        cell.layer.shadowOpacity = 0.9
     }
    
 }
