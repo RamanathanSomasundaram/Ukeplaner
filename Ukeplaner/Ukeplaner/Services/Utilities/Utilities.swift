@@ -71,7 +71,16 @@ class Utilities: NSObject {
         UIApplication.shared.endIgnoringInteractionEvents()
         MBProgressHUD.hideAllHUDs(for: commonAppDelegate.window, animated: true)
     }
-
+    
+    //MARK: - date of string change two digits
+    class func changeTwoDigitString(_ dateString : String)-> String
+    {
+        if(dateString.characters.count < 2)
+        {
+            return "0\(dateString)"
+        }
+        return dateString
+    }
     
     //MARK: - Check Internet Connection
     //Checking the internet connection
