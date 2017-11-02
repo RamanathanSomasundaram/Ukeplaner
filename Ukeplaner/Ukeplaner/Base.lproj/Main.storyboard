@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WXg-PS-PRn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WXg-PS-PRn">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -279,10 +279,10 @@
             </objects>
             <point key="canvasLocation" x="2780.625" y="290.49295774647885"/>
         </scene>
-        <!--Web View Controller-->
+        <!--About View Controller-->
         <scene sceneID="3kI-fq-cxh">
             <objects>
-                <viewController storyboardIdentifier="WebViewController" id="jcs-l2-ley" customClass="WebViewController" customModule="Ukeplaner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutViewController" id="jcs-l2-ley" customClass="AboutViewController" customModule="Ukeplaner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="a9U-P7-NYN"/>
                         <viewControllerLayoutGuide type="bottom" id="M6I-sy-Fdr"/>
@@ -1286,11 +1286,48 @@
                         <segue destination="nDg-tB-U2n" kind="custom" identifier="links" customClass="SWRevealViewControllerSegue" id="YxY-jC-UpJ"/>
                         <segue destination="FIA-nd-dwC" kind="custom" identifier="rules" customClass="SWRevealViewControllerSegue" id="bvw-TY-oPV"/>
                         <segue destination="BYZ-38-t0r" kind="custom" identifier="home" customClass="SWRevealViewControllerSegue" id="gqr-4j-Q6H"/>
+                        <segue destination="jcs-l2-ley" kind="custom" identifier="webView" customClass="SWRevealViewControllerSegue" id="Iep-kA-sBh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWq-fo-86f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="462.5" y="-528.5"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="xCC-0o-x00">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" id="UDn-Xb-gtE" customClass="WebViewController" customModule="Ukeplaner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="igy-fh-cwm"/>
+                        <viewControllerLayoutGuide type="bottom" id="4kE-MR-5Cr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i1m-tI-iBO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSd-kD-0jb">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="UDn-Xb-gtE" id="6CT-3W-omb"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4kE-MR-5Cr" firstAttribute="top" secondItem="sSd-kD-0jb" secondAttribute="bottom" id="UzM-HZ-mjF"/>
+                            <constraint firstItem="sSd-kD-0jb" firstAttribute="top" secondItem="igy-fh-cwm" secondAttribute="bottom" id="cIw-YY-DHz"/>
+                            <constraint firstItem="sSd-kD-0jb" firstAttribute="leading" secondItem="i1m-tI-iBO" secondAttribute="leading" id="cgH-G9-cQU"/>
+                            <constraint firstAttribute="trailing" secondItem="sSd-kD-0jb" secondAttribute="trailing" id="dUI-7u-alm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myWebView" destination="sSd-kD-0jb" id="wIu-XI-qfR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e9y-6p-71d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5978" y="-529"/>
         </scene>
     </scenes>
     <resources>

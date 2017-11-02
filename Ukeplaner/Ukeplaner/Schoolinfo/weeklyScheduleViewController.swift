@@ -76,7 +76,7 @@ class weeklyScheduleViewController: UIViewController,UITableViewDataSource,UITab
                 if error != nil
                 {
                     Utilities.hideLoading()
-                    Utilities.showAlert("\(error!)")
+                    self.callIntertnetView()
                     return
                 }
                 if let json = response.result.value {

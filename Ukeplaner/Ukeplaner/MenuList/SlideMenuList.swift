@@ -136,7 +136,8 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
             }
             else if(indexPath.row == 1)
             {
-                UIApplication .shared.openURL(URL(string: "http://inventuretechnology.com/overview.php")!)
+                self.performSegue(withIdentifier: "webView", sender: nil)
+                //UIApplication .shared.openURL(URL(string: "http://inventuretechnology.com/overview.php")!)
             }
             else
             {

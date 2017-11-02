@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		072256041FAB99EE009BD11D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072256031FAB99EE009BD11D /* AboutViewController.swift */; };
 		076D63971FA381B8001CC16C /* InternetConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D63951FA381B8001CC16C /* InternetConnectionViewController.swift */; };
 		076D63981FA381B8001CC16C /* InternetConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 076D63961FA381B8001CC16C /* InternetConnectionViewController.xib */; };
 		07ECB9DD1F95224A00F94861 /* RobotoSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07ECB9D11F95223D00F94861 /* RobotoSlab-Bold.ttf */; };
@@ -78,6 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		072256031FAB99EE009BD11D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		076D63951FA381B8001CC16C /* InternetConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionViewController.swift; sourceTree = "<group>"; };
 		076D63961FA381B8001CC16C /* InternetConnectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InternetConnectionViewController.xib; sourceTree = "<group>"; };
 		07ECB9D01F95223D00F94861 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				0D1492921F5F1760002B2701 /* WebViewController.swift */,
+				072256031FAB99EE009BD11D /* AboutViewController.swift */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				0D5ADF4E1F69698200CC87AD /* TeacherInfoViewController.swift in Sources */,
 				0D14929D1F5F1760002B2701 /* WeekTimeTableViewController.swift in Sources */,
 				0D1492A41F5F1760002B2701 /* MBProgressHUD.m in Sources */,
+				072256041FAB99EE009BD11D /* AboutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

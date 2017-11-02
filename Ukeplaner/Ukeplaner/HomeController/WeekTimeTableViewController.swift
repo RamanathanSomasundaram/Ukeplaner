@@ -116,7 +116,7 @@ class WeekTimeTableViewController: UIViewController,internetConnectionDelegate{
             if error != nil
             {
                 Utilities.hideLoading()
-                Utilities.showAlert("\(error!)")
+                self.callIntertnetView()
                 return
             }
             if let json = response.result.value {

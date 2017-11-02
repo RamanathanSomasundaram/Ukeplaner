@@ -74,7 +74,7 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
                 if error != nil
                 {
                     Utilities.hideLoading()
-                    Utilities.showAlert("\(error!)")
+                    self.callIntertnetView()
                     return
                 }
                 if let json = response.result.value {
@@ -103,7 +103,6 @@ class schoolRulesViewController: UIViewController,UITableViewDataSource,UITableV
         else
         {
             self.callIntertnetView()
-            //self.internetConnection()
         }
     }
     //Loss internet connection
