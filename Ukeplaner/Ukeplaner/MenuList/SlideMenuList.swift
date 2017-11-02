@@ -75,7 +75,7 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
         if(section == 1)
         {
         let headerView = UIView.init(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 0.5))
-        headerView.backgroundColor = UIColor.lightGray
+        headerView.backgroundColor = UIColor.darkGray
         return headerView
         }
         return nil
@@ -118,17 +118,21 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
         {
             if(indexPath.row == 0)
             {
-                let ratenowAlert = UIAlertController(title: "Vurder denne appen", message: "Takk for at du bruker denne appen. Din tilbakemelding er viktig for oss!", preferredStyle: .alert)
-                let rateNow = UIAlertAction(title: "VURDER NÅ", style: .default, handler: { (action) ->Void in
-                    //Ratenow
-                    self.rateApp(appId: "1290367397", completion: { (success) in
-                        print("Success")
-                    })
+                //Ratenow
+                self.rateApp(appId: "id1290367397", completion: { (success) in
+                    print("Success")
                 })
-                let rateNotnow = UIAlertAction(title: "IKKE NÅ", style: .cancel, handler: nil)
-                ratenowAlert.addAction(rateNow)
-                ratenowAlert.addAction(rateNotnow)
-                self.present(ratenowAlert, animated: true, completion: nil)
+//                let ratenowAlert = UIAlertController(title: "Vurder denne appen", message: "Takk for at du bruker denne appen. Din tilbakemelding er viktig for oss!", preferredStyle: .alert)
+//                let rateNow = UIAlertAction(title: "VURDER NÅ", style: .default, handler: { (action) ->Void in
+//                    //Ratenow
+//                    self.rateApp(appId: "1290367397", completion: { (success) in
+//                        print("Success")
+//                    })
+//                })
+//                let rateNotnow = UIAlertAction(title: "IKKE NÅ", style: .cancel, handler: nil)
+//                ratenowAlert.addAction(rateNow)
+//                ratenowAlert.addAction(rateNotnow)
+//                self.present(ratenowAlert, animated: true, completion: nil)
             }
             else if(indexPath.row == 1)
             {

@@ -99,7 +99,9 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
         let cellView = (cell.viewWithTag(600)!)
         cell.contentView.backgroundColor = UIColor.lightGray
         cellView.layer.cornerRadius = 25
-        cell.configureCell(schoolinfo: (self.schoolLinksList.object(at: indexPath.row) as! String))
+        cell.schoolInfoTitle.textColor = TextColor
+        cell.schoolInfoTitle.text = (self.schoolLinksList.object(at: indexPath.row) as! String)
+        //cell.configureCell(schoolinfo: (self.schoolLinksList.object(at: indexPath.row) as! String))
         cell.schoolInfoTitle.textAlignment = .center
         return cell
         }

@@ -74,6 +74,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         searchBarController.showsCancelButton = true
         searchBarController.delegate = self
         searchBarController.returnKeyType = .search
+        searchBarController.becomeFirstResponder()
         }
         else
         {
@@ -94,10 +95,9 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.tbl_schoolList.reloadData()
         //self.searchBarController.endEditing(true)
     }
-    
     // user can change the text
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.characters.count == 0 {
+        if searchText.count == 0 {
            // searchBar.resignFirstResponder()
             //searchBarController.resignFirstResponder()
             isFiltered = false
