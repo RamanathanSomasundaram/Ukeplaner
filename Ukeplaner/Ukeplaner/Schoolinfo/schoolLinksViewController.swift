@@ -34,7 +34,9 @@ class schoolLinksViewController: UIViewController,UITableViewDelegate,UITableVie
         self.view.backgroundColor = UIColor.lightGray
         // Do any additional setup after loading the view, typically from a nib. ic_school_search
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        MBProgressHUD.hideAllHUDs(for: commonAppDelegate.window, animated: true)
+    }
     func loadNavigationItem()
     {
         self.navigationItem.hidesBackButton = true

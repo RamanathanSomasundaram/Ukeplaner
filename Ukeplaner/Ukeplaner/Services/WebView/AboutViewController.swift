@@ -22,7 +22,9 @@ class AboutViewController: UIViewController {
         myWebView.loadRequest(requestObj)
         // Do any additional setup after loading the view.
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        MBProgressHUD.hideAllHUDs(for: commonAppDelegate.window, animated: true)
+    }
     func navigationBarCustomButton()
     {
         //Navigation BackButton hide

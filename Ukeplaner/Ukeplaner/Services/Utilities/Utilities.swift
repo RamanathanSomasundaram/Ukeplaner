@@ -75,7 +75,7 @@ class Utilities: NSObject {
     //MARK: - date of string change two digits
     class func changeTwoDigitString(_ dateString : String)-> String
     {
-        if(dateString.characters.count < 2)
+        if(dateString.count < 2)
         {
             return "0\(dateString)"
         }
@@ -109,8 +109,8 @@ class Utilities: NSObject {
     }
     //MARK: - Check internet Connection
     class func checkForInternet() -> Bool {
-        
-        if self.isConnectedToNetwork() == true
+        let status = NetworkReachabilityManager.init(host: "www.google.com")
+        if self.isConnectedToNetwork() == true && status?.networkReachabilityStatus != .notReachable
         {
            // print("Internet Connection Available!")
             return true
