@@ -77,20 +77,31 @@ class WeekTimeTableViewController: UIViewController,internetConnectionDelegate{
         }
     }
     @IBAction func previousAction(_ sender: Any) {
+        if(Utilities.checkForInternet())
+        {
         commonAppDelegate.week_id = commonAppDelegate.week_id - 1
         commonAppDelegate.currentWeek_id = commonAppDelegate.currentWeek_id - 1
         schoolInfo.text = Utilities.weekno_list(week_id: commonAppDelegate.currentWeek_id)
-       // print("week_id \(commonAppDelegate.week_id!)")
         self.loadweekTimeTable()
+        }
+        else
+        {
+            self.callIntertnetView()
+        }
     }
     
     @IBAction func nextAction(_ sender: Any) {
-
+        if(Utilities.checkForInternet())
+        {
         commonAppDelegate.week_id = commonAppDelegate.week_id + 1
         commonAppDelegate.currentWeek_id = commonAppDelegate.currentWeek_id + 1
         schoolInfo.text = Utilities.weekno_list(week_id: commonAppDelegate.currentWeek_id)
-        //print("week_id \(commonAppDelegate.week_id!)")
         self.loadweekTimeTable()
+        }
+        else
+        {
+            self.callIntertnetView()
+        }
     }
     
     //Load Week Time table API service to get value
@@ -140,7 +151,6 @@ class WeekTimeTableViewController: UIViewController,internetConnectionDelegate{
                             self.dicvalue.setValue(dicArray, forKey: key)
                         }
                     }
-                   // print("DicValue : \(self.dicvalue)")
                     //Take date and day in dictionary
                     let mutArray = NSMutableArray()
                     for i in 0..<jsondic.count
@@ -155,6 +165,7 @@ class WeekTimeTableViewController: UIViewController,internetConnectionDelegate{
                         if(!self.daysArray.contains(obj))
                         {
                             self.daysArray.add(obj)
+                           
                         }
                     }
                     Utilities.hideLoading()
@@ -183,6 +194,7 @@ class WeekTimeTableViewController: UIViewController,internetConnectionDelegate{
     {
         self.noHomeLabel.isHidden = true
         //Utilities.showAlert("Please check your internet connection!")
+        tc.view.removeFromSuperview()
         daysArray.removeAllObjects()
         dicvalue.removeAllObjects()
         self.loadweekTimeTable()
@@ -198,7 +210,6 @@ class WeekTimeTableViewController: UIViewController,internetConnectionDelegate{
     func loadPageViewController()
     {
         tc = TabPageViewController.create()
-        //let commonArray = NSMutableArray()
         var tabItems:[(viewController: UIViewController, title: String)] = []
         for i in 0..<self.daysArray.count
         {

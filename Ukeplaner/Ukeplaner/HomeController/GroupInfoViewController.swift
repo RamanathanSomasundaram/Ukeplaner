@@ -104,7 +104,6 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
                         let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
                         self.noGroupLabel.isHidden = false
                         self.noGroupLabel.text = (jsonError as! String)
-                        print(jsonError)
                     }
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()

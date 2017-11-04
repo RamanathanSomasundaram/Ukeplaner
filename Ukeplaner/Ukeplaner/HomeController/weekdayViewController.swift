@@ -149,7 +149,6 @@ class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollect
                         let jsonError = (json as AnyObject).value(forKey: "ErrorMessage")!
                         self.noWeekLabel.isHidden = false
                         self.noWeekLabel.text = (jsonError as! String)
-                        print(jsonError)
                     }
                     DispatchQueue.main.async {
                         self.currentWeekCV.reloadData()

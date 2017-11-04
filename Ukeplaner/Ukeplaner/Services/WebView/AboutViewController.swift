@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutViewController: UIViewController {
+class AboutViewController: UIViewController,SWRevealViewControllerDelegate {
 
     @IBOutlet var myWebView: UIWebView!
     var URLString : String!
@@ -17,6 +17,7 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         self.navigationBarCustomButton()
+        self.revealViewController().delegate = self
         let url = URL (string: "http://inventuretechnology.com/overview.php")
         let requestObj = URLRequest(url: url!)
         myWebView.loadRequest(requestObj)
@@ -28,7 +29,7 @@ class AboutViewController: UIViewController {
     func navigationBarCustomButton()
     {
         //Navigation BackButton hide
-        self.title = "Inventure Technology"
+        self.title = "Om oss"
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
@@ -53,6 +54,28 @@ class AboutViewController: UIViewController {
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         MBProgressHUD.hideAllHUDs(for: commonAppDelegate.window, animated: true)
         webView.reload()
+    }
+    //MARK: - REVEAL VIEW CONTROLLER DELEGATE
+    
+    func revealController(_ revealController: SWRevealViewController!, didMoveTo position: FrontViewPosition) {
+        if(position == FrontViewPositionLeft){
+            self.view.isUserInteractionEnabled = true
+            //   self.navigationItem.rightBarButtonItem?.isEnabled = true
+            
+        } else {
+            self.view.isUserInteractionEnabled = false
+            //  self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
+    
+    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
+        if(position == FrontViewPositionLeft)
+        {
+            self.view.isUserInteractionEnabled = true
+            
+        } else {
+            self.view.isUserInteractionEnabled = false
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

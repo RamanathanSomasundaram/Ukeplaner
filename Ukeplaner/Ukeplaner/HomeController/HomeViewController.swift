@@ -162,7 +162,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         if(Utilities.checkForInternet())
         {
             tbl_schoolList.isUserInteractionEnabled = true
-            self.navigationItem.rightBarButtonItem?.isEnabled = true
+            //self.navigationItem.rightBarButtonItem?.isEnabled = true
             self.noSchoolInfo.isHidden = true
             //self.refreshButton.isHidden = true
             Utilities.showLoading()
@@ -257,6 +257,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(Utilities.checkForInternet())
+        {
             var dicSelected : NSDictionary!
             if(isFiltered)
             {
@@ -272,6 +274,11 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             commonAppDelegate.SchoolDict.add(dicSelected)
             self.navigationController?.pushViewController(groupInfo, animated: true)
             Analytics.logEvent("Ukeplaner", parameters: ["School_name" : "\((dicSelected.value(forKey: "school_name")! as! NSString))" as NSObject , "School_ID" :"\((dicSelected.value(forKey: "school_id")! as! NSString))" as NSObject , "Description" : "\((dicSelected.value(forKey: "school_name")! as! NSString)) is selected"])
+        }
+        else
+        {
+            callIntertnetView()
+        }
     }
     func callIntertnetView()
     {
@@ -293,7 +300,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.loadInitialData()
         //tbl_schoolList.reloadData()
         //self.refreshButton.isHidden = false
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        //self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130

@@ -850,7 +850,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mujammil Ahamed (X6WMZP8898)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mujammil Ahamed (X6WMZP8898)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = UU36BJMG2T;
 				INFOPLIST_FILE = Ukeplaner/Info.plist;
@@ -874,7 +874,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Mujammil Ahamed (UU36BJMG2T)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mujammil Ahamed (UU36BJMG2T)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = UU36BJMG2T;
 				INFOPLIST_FILE = Ukeplaner/Info.plist;
