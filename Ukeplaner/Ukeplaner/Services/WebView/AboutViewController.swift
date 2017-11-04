@@ -34,9 +34,16 @@ class AboutViewController: UIViewController,SWRevealViewControllerDelegate {
         self.navigationController?.navigationBar.barTintColor = ThemeColor
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
+        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backGroupinfo))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
+    }
+    @objc func backGroupinfo()
+    {
+        let slideMenu : SlideMenuList? = (self.revealViewController().rearViewController as? SlideMenuList)
+        slideMenu?.tbl_schoolMenu.selectRow(at: [0,1], animated: true, scrollPosition: .top)
+        slideMenu?.performSegue(withIdentifier: "groupinfo", sender: nil)
+        //self.performSegue(withIdentifier: "groupinfo", sender: nil)
     }
     //Navigation controller custom back button action
     @objc func backHome()
@@ -75,6 +82,18 @@ class AboutViewController: UIViewController,SWRevealViewControllerDelegate {
             
         } else {
             self.view.isUserInteractionEnabled = false
+        }
+    }
+    
+    //MARK: - Prepare for segue action
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue .isKind(of: SWRevealViewControllerSegue.self)){
+            let swSegue = (segue as! SWRevealViewControllerSegue)
+            swSegue.performBlock = {(_ rvc_segue: SWRevealViewControllerSegue?, _ svc: UIViewController?, _ dvc: UIViewController?) -> Void in
+                let navController = (self.revealViewController().frontViewController as! UINavigationController)
+                navController.setViewControllers([dvc!], animated: false)
+                self.revealViewController().setFrontViewPosition(FrontViewPositionLeft, animated: true)
+            }
         }
     }
     override func didReceiveMemoryWarning() {
