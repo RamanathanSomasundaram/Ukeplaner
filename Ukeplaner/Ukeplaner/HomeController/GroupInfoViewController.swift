@@ -8,9 +8,9 @@
 
 import UIKit
 import Firebase
-class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,internetConnectionDelegate,SWRevealViewControllerDelegate,UITableViewDelegate,UITableViewDataSource {
+
+class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,internetConnectionDelegate,SWRevealViewControllerDelegate,UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegateFlowLayout {
     @IBOutlet var collectionView: UICollectionView!
-    var collectionviewFlowlayout : UICollectionViewFlowLayout!
     var schoolID : Int!
     var groupInfolist : NSMutableArray!
     @IBOutlet var refreshButton: UIButton!
@@ -18,10 +18,15 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     @IBOutlet var noGroupLabel: UILabel!
     @IBOutlet var SchoolName: UILabel!
     @IBOutlet var tbl_SchoolInfo: UITableView!
+    var CollectionViewsize : CGFloat!
+    var contentSize : [CGSize]!
+    @IBOutlet var CollectionViewWidthConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
+        contentSize = [CGSize]()
+        CollectionViewsize = (self.view.frame.size.width - 4 ) / 2
         self.loadNavigationItem()
         self.title = "Klasser"
         //SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
@@ -38,6 +43,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         collectionView.backgroundColor = UIColor.lightGray
         self.noGroupLabel.isHidden = true
         tbl_SchoolInfo.register(UINib.init(nibName: "SchoolTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolCell")
+        
         tbl_SchoolInfo.backgroundColor = UIColor.lightGray
         // Do any additional setup after loading the view.
     }
@@ -51,6 +57,8 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
     }
+    
+
     @objc func backHome()
     {
         commonAppDelegate.SchoolDict.removeAllObjects()
@@ -60,15 +68,6 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
     {
         self.collectionView.reloadData()
         refreshControl.endRefreshing()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        collectionviewFlowlayout = UICollectionViewFlowLayout()
-        let size1 = (self.view.frame.size.width - 4 ) / 2
-        collectionviewFlowlayout.itemSize = CGSize(width: size1, height: 50)
-        collectionviewFlowlayout.minimumLineSpacing = 1
-        collectionviewFlowlayout.minimumInteritemSpacing = 1
-        collectionviewFlowlayout.scrollDirection = .vertical
-        self.collectionView.collectionViewLayout = collectionviewFlowlayout
     }
     
     @IBAction func refreshAction(_ sender: Any) {
@@ -106,8 +105,11 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
                         self.noGroupLabel.text = (jsonError as! String)
                     }
                     DispatchQueue.main.async {
+                        self.contentSize(content: self.groupInfolist!)
+                        self.collectionView.register(UINib.init(nibName: "GroupInfoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "groupInfo")
                         self.collectionView.reloadData()
                         Utilities.hideLoading()
+                        self.collectionView.reloadData()
                     }
                 }
             }
@@ -116,6 +118,20 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         {
             self.callIntertnetView()
             //self.internetConnection()
+        }
+    }
+    //Calculate contentSize
+    func contentSize(content : NSMutableArray)
+    {
+        for i in 0..<content.count
+        {
+            let contentDict = content.object(at: i) as! NSDictionary
+            let textString = (contentDict.value(forKey: "group_name") as! NSString)
+            let LabelFont = [ NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 25)]
+            let height1 = textString.boundingRect(with: CGSize(width: CollectionViewsize, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: LabelFont, context: nil)
+            let height = (height1.size.height > 50) ? height1.size.height + 40 : 50
+            let width = (height1.size.width > CollectionViewsize) ? height1.size.width : CollectionViewsize
+            contentSize.append( CGSize(width: width!, height: height))
         }
     }
     //Loss internet connection
@@ -165,15 +181,12 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         return groupInfolist.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: "CellIdentifier", for: indexPath)
-        let view = (cell?.viewWithTag(2001)!)
-        Utilities.makeCardView(view!)
-        cell?.backgroundColor = UIColor.lightGray
-        let infoTitle : UILabel = (cell?.viewWithTag(500) as! UILabel)
-        infoTitle.textColor = TextColor
+        let cell: GroupInfoCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "groupInfo", for: indexPath) as! GroupInfoCollectionViewCell
         let dicLoad = groupInfolist.object(at: indexPath.row) as! NSDictionary
-        infoTitle.text = (dicLoad.value(forKey: "group_name") as! String)
-        return cell!
+        cell.setupCollectionViewCell(dicValues: dicLoad)
+        cell.layoutIfNeeded()
+        cell.setNeedsLayout()
+        return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let dicLoad = groupInfolist.object(at: indexPath.row) as! NSDictionary
@@ -184,8 +197,19 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         self.navigationController?.pushViewController(weekList, animated: true)
          Analytics.logEvent("Ukeplaner", parameters: ["Group_name" : "\((dicLoad.value(forKey: "group_name")! as! NSString))" as NSObject , "Group_ID" :"\((dicLoad.value(forKey: "group_id")! as! NSString))" as NSObject , "Group_Description" : "\((dicLoad.value(forKey: "group_name")! as! NSString)) is selected to show weeklist"])
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+         
+        return contentSize[indexPath.row]
+    }
     deinit {
         self.groupInfolist.removeAllObjects()
+        self.contentSize.removeAll()
     }
     func callIntertnetView()
     {

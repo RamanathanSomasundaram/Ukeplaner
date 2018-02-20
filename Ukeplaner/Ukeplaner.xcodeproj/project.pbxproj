@@ -58,6 +58,8 @@
 		0DA8571F1F60605000DE954F /* MondayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8571E1F60605000DE954F /* MondayViewController.swift */; };
 		0DA8572B1F60623400DE954F /* WeekTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA857291F60623400DE954F /* WeekTimeTableViewCell.swift */; };
 		0DA8572C1F60623400DE954F /* WeekTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA8572A1F60623400DE954F /* WeekTimeTableViewCell.xib */; };
+		0DF2E5D220316999000B5753 /* GroupInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF2E5D020316999000B5753 /* GroupInfoCollectionViewCell.swift */; };
+		0DF2E5D320316999000B5753 /* GroupInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF2E5D120316999000B5753 /* GroupInfoCollectionViewCell.xib */; };
 		8F667416022915E1E47D1C03 /* Pods_Ukeplaner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083CB76D5A697A35523066D4 /* Pods_Ukeplaner.framework */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +144,8 @@
 		0DA8571E1F60605000DE954F /* MondayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MondayViewController.swift; sourceTree = "<group>"; };
 		0DA857291F60623400DE954F /* WeekTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekTimeTableViewCell.swift; sourceTree = "<group>"; };
 		0DA8572A1F60623400DE954F /* WeekTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekTimeTableViewCell.xib; sourceTree = "<group>"; };
+		0DF2E5D020316999000B5753 /* GroupInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		0DF2E5D120316999000B5753 /* GroupInfoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupInfoCollectionViewCell.xib; sourceTree = "<group>"; };
 		3AF7B8B32CAC81EFEB5361E4 /* Pods-Ukeplaner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ukeplaner.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ukeplaner/Pods-Ukeplaner.release.xcconfig"; sourceTree = "<group>"; };
 		4881DFF51BC9BE4FEE6FE32A /* Pods-Ukeplaner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ukeplaner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ukeplaner/Pods-Ukeplaner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -239,6 +243,8 @@
 				0D14927A1F5F1760002B2701 /* SchoolTableViewCell.xib */,
 				0D5ADF4F1F698CFA00CC87AD /* WebViewTableViewCell.swift */,
 				0D5ADF501F698CFA00CC87AD /* WebViewTableViewCell.xib */,
+				0DF2E5D020316999000B5753 /* GroupInfoCollectionViewCell.swift */,
+				0DF2E5D120316999000B5753 /* GroupInfoCollectionViewCell.xib */,
 			);
 			name = CustomCell;
 			path = ../CustomCell;
@@ -521,7 +527,7 @@
 				TargetAttributes = {
 					0D4F53171F3E1E0700F79487 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = UU36BJMG2T;
+						DevelopmentTeam = 6U6D63WXPD;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
@@ -574,6 +580,7 @@
 				0D4F53261F3E1E0700F79487 /* LaunchScreen.storyboard in Resources */,
 				0D1492941F5F1760002B2701 /* menu_logo.png in Resources */,
 				07ECB9DF1F95225800F94861 /* RobotoSlab-Regular.ttf in Resources */,
+				0DF2E5D320316999000B5753 /* GroupInfoCollectionViewCell.xib in Resources */,
 				0D4F53231F3E1E0700F79487 /* Assets.xcassets in Resources */,
 				0D1492971F5F1760002B2701 /* SchoolInfoTableViewCell.xib in Resources */,
 				07ECB9E41F95226400F94861 /* SERIMI__.ttf in Resources */,
@@ -663,6 +670,7 @@
 				0D5ADF511F698CFA00CC87AD /* WebViewTableViewCell.swift in Sources */,
 				0D14929E1F5F1760002B2701 /* SlideMenuList.swift in Sources */,
 				0D1492A31F5F1760002B2701 /* weeklyScheduleViewController.swift in Sources */,
+				0DF2E5D220316999000B5753 /* GroupInfoCollectionViewCell.swift in Sources */,
 				0D1492A51F5F1760002B2701 /* SWRevealViewController.m in Sources */,
 				076D63971FA381B8001CC16C /* InternetConnectionViewController.swift in Sources */,
 				0D14929F1F5F1760002B2701 /* informationSchoolViewController.swift in Sources */,
@@ -849,17 +857,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mujammil Ahamed (X6WMZP8898)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mujammil Ahamed (X6WMZP8898)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Prabakaran Shanmugam (9BV3HF8FVA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Prabakaran Shanmugam (9BV3HF8FVA)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = UU36BJMG2T;
+				DEVELOPMENT_TEAM = 6U6D63WXPD;
 				INFOPLIST_FILE = Ukeplaner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.ukeplanerapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b6cb84e0-9126-4b47-a6a6-61c6ce6475f0";
-				PROVISIONING_PROFILE_SPECIFIER = "Ukeplaner Development";
+				PROVISIONING_PROFILE = "34a08cc4-c831-44c7-b192-45bababbac1e";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS Development Common";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ukeplaner/Ukeplaner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -873,17 +881,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mujammil Ahamed (UU36BJMG2T)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mujammil Ahamed (UU36BJMG2T)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Lakeba Corporation Pty Ltd (6U6D63WXPD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lakeba Corporation Pty Ltd (6U6D63WXPD)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = UU36BJMG2T;
+				DEVELOPMENT_TEAM = 6U6D63WXPD;
 				INFOPLIST_FILE = Ukeplaner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spiksolutions.ukeplanerapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "db1faefe-8cc5-4edb-b8db-cd2d962af07c";
-				PROVISIONING_PROFILE_SPECIFIER = "Ukeplaner AppStore";
+				PROVISIONING_PROFILE = "fa3640a1-7ffc-4967-a5b6-1638ee299071";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS Distribution Common";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ukeplaner/Ukeplaner-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
