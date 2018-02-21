@@ -133,6 +133,25 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
             let width = (height1.size.width > CollectionViewsize) ? height1.size.width : CollectionViewsize
             contentSize.append( CGSize(width: width!, height: height))
         }
+        for i in 0..<contentSize.count
+        {
+            let size = contentSize[i]
+            let size1 : CGSize!
+            if(i < contentSize.count - 1)
+            {
+                size1 = contentSize[i+1]
+                if(size.height > size1!.height)
+                {
+                    contentSize.remove(at: i)
+                    contentSize.insert(size, at: i)
+                }
+                else
+                {
+                    contentSize.remove(at: i)
+                    contentSize.insert(size1!, at: i)
+                }
+            }
+        }
     }
     //Loss internet connection
     func internetConnection()
