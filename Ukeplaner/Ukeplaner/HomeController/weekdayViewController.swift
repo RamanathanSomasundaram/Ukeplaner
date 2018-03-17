@@ -13,7 +13,8 @@ let calendar = Calendar.current
 let weekOfYear = calendar.component(.weekOfYear, from: Date.init(timeIntervalSinceNow: 0))
 let weekOfDay = calendar.dateComponents([.year, .month, .day], from: date)
 let dateOfString = "\(weekOfDay.day!)"
-let WeekOfDate = "\(Utilities.changeTwoDigitString(dateOfString))-\(weekOfDay.month!)-\(weekOfDay.year!)"
+let WeekOfDate = "\(Utilities.changeTwoDigitString(dateOfString))-\(Utilities.changeTwoDigitString("\(weekOfDay.month!)"))-\(weekOfDay.year!)"
+let weekofDatealt = "\(weekOfDay.day!)-\(weekOfDay.month!)-\(weekOfDay.year!)"
 class weekdayViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,internetConnectionDelegate {
     @IBOutlet var currentWeekCV: UICollectionView!
     @IBOutlet var SchoolInfo: UILabel!

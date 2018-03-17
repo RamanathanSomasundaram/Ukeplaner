@@ -218,7 +218,7 @@ class WeekTimeTableViewController: UIViewController,internetConnectionDelegate{
             let week_date = days.value(forKey: "Week_date") as! String
             let week_day = self.daysChangedtoNorwayString(dayString: days.value(forKey: "Week_day") as! String).uppercased()
             let week_day_Eng = days.value(forKey: "Week_day") as! String
-            if(WeekOfDate == week_date)
+            if(WeekOfDate == week_date || weekofDatealt == week_date)
             {
                 currentIndex = i
             }
