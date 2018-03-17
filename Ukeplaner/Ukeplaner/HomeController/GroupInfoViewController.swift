@@ -29,10 +29,7 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         CollectionViewsize = (self.view.frame.size.width - 4 ) / 2
         self.loadNavigationItem()
         self.title = "Klasser"
-        //SchoolName.text = ((commonAppDelegate.SchoolDict.object(at: 0) as! NSDictionary).value(forKey: "Schoolname") as! String)
-        //SchoolName.textColor = TextColor
         schoolID = commonAppDelegate.school_id
-        //self.refreshButton.isHidden = true
         self.groupInfolist = NSMutableArray()
         self.revealViewController().delegate = self
         self.loadInitialData()
@@ -43,7 +40,6 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
         collectionView.backgroundColor = UIColor.lightGray
         self.noGroupLabel.isHidden = true
         tbl_SchoolInfo.register(UINib.init(nibName: "SchoolTableViewCell", bundle: nil), forCellReuseIdentifier: "schoolCell")
-        
         tbl_SchoolInfo.backgroundColor = UIColor.lightGray
         // Do any additional setup after loading the view.
     }
@@ -128,11 +124,12 @@ class GroupInfoViewController: UIViewController,UICollectionViewDelegate,UIColle
             let contentDict = content.object(at: i) as! NSDictionary
             let textString = (contentDict.value(forKey: "group_name") as! NSString)
             let LabelFont = [ NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 25)]
-            let height1 = textString.boundingRect(with: CGSize(width: CollectionViewsize, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: LabelFont, context: nil)
+            let height1 = textString.boundingRect(with: CGSize(width: CollectionViewsize / 1.5 , height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: LabelFont, context: nil)
             let height = (height1.size.height > 50) ? height1.size.height + 40 : 50
             let width = (height1.size.width > CollectionViewsize) ? height1.size.width : CollectionViewsize
             contentSize.append( CGSize(width: width!, height: height))
         }
+        //Equal Height for all cells
         for i in 0..<contentSize.count
         {
             let size = contentSize[i]
